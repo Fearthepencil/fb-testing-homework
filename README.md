@@ -3,7 +3,7 @@
 ## Overview
 Automated UI test suite for FishingBooker destination page functionality, completed as part of a QA Engineer take-home assignment.
 
-**Author:** [Your Name]  
+**Author:** Pavle Stefanovic  
 **Date:** January 2025
 
 ---
