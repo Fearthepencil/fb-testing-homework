@@ -138,8 +138,17 @@
                         • No JavaScript errors in browser console<br>
                         • No 404 or 500 errors displayed<br>
                         • Page content is visible and rendered correctly<br>
-                        • Main page sections are present (hero, charter listings, related species, about section)
+                        • Main page sections are present (hero, charter listings, related species, about section)<br>
+                        • Breadcrumb navigation is present and displays correct fish species name
                     </p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Result</h4>
+                    <p><strong>Status:</strong> <span class="badge" style="background-color: red;">FAILED</span></p>
+                    <p><strong>Failure Point:</strong> Test fails at the breadcrumb verification step (last step in "Then" section).</p>
+                    <p><strong>Defect Found:</strong> <a href="bug-report.html#BUG-002">BUG-002</a> - Breadcrumb navigation shows wrong fish species (displays "Dolphin (Mahi Mahi)" instead of "Red Snapper" on the Red Snapper fish page).</p>
+                    <p><strong>Note:</strong> All other verification steps pass successfully. Only the breadcrumb content accuracy fails.</p>
                 </div>
 
                 <div class="test-case-section">
