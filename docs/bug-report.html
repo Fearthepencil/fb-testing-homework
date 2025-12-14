@@ -57,7 +57,7 @@
             <h2>Discovered Defects</h2>
 
             <!-- BUG-001: Image 403 Forbidden Error -->
-            <div class="bug">
+            <div class="bug" id="BUG-001">
                 <div class="bug-header">
                     <span class="bug-id">BUG-001: Image Returns 403 Forbidden Error from Upstream Server</span>
                     <div>
@@ -114,79 +114,52 @@
                     </tr>
                 </table>
 
-                <div style="margin-top: 20px;">
-                    <h3>Description</h3>
-                    <p>During exploratory testing of the fish page for Red Snapper, one image on the page fails to load and displays a 403 Forbidden error. The error originates from an upstream server, indicating a permissions or access control issue with the image resource.</p>
+                <h3>Description</h3>
+                <p>One image on the Red Snapper fish page fails to load and returns a 403 Forbidden error from the upstream server, indicating a permissions or access control issue.</p>
 
-                    <h3>Steps to Reproduce</h3>
-                    <ol>
-                        <li>Navigate to <a href="https://nextjs15.dev.fishingbooker.com/fish/snapper-red" target="_blank">https://nextjs15.dev.fishingbooker.com/fish/snapper-red</a></li>
-                        <li>Log in with credentials: fishingbooker / QAFBTest (if required)</li>
-                        <li>Scroll through the page to view all images</li>
-                        <li>Observe the page for any broken or failed image loads</li>
-                        <li>Open browser Developer Tools (F12) and check the Network tab</li>
-                        <li>Look for any image requests returning 403 Forbidden status</li>
-                    </ol>
+                <h3>Steps to Reproduce</h3>
+                <ol>
+                    <li>Navigate to <a href="https://nextjs15.dev.fishingbooker.com/fish/snapper-red" target="_blank">https://nextjs15.dev.fishingbooker.com/fish/snapper-red</a></li>
+                    <li>Log in with credentials: fishingbooker / QAFBTest (if required)</li>
+                    <li>Scroll through the page and observe images</li>
+                    <li>Open Developer Tools (F12) → Network tab</li>
+                    <li>Check for image requests returning 403 status</li>
+                </ol>
 
-                    <h3>Expected Result</h3>
-                    <p>All images on the fish page should load successfully and display correctly without any HTTP error codes.</p>
+                <h3>Expected Result</h3>
+                <p>All images load successfully without HTTP errors.</p>
 
-                    <h3>Actual Result</h3>
-                    <p>One image fails to load and returns a <strong>403 Forbidden</strong> error from the upstream server. The image either:</p>
-                    <ul>
-                        <li>Displays as a broken image placeholder</li>
-                        <li>Shows an error icon or message</li>
-                        <li>Appears as a blank space where the image should be</li>
-                    </ul>
-                    <p>The Network tab in Developer Tools shows the image request with HTTP status code <strong>403</strong>.</p>
+                <h3>Actual Result</h3>
+                <p>One image fails to load with 403 Forbidden error. The image displays as broken placeholder or blank space. Network tab shows HTTP 403 status.</p>
 
-                    <h3>Evidence</h3>
-                    <p>Screenshots demonstrating the issue:</p>
-                    
-                    <div style="margin: 20px 0;">
-                        <img src="bug_data/bug1_screenshot1.png" alt="Screenshot showing broken image on fish page" style="max-width: 100%; height: auto; border: 1px solid #ccc; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-                    </div>
-
-                    <div style="margin: 20px 0;">
-                        <img src="bug_data/bug1_screenshot2.png" alt="Screenshot showing 403 Forbidden error in browser Network tab" style="max-width: 100%; height: auto; border: 1px solid #ccc; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-                    </div>
-
-                    <h3>Impact</h3>
-                    <ul>
-                        <li><strong>User Experience:</strong> Degraded visual experience due to missing/broken image</li>
-                        <li><strong>Content Quality:</strong> Incomplete content presentation affects page professionalism</li>
-                        <li><strong>SEO:</strong> Broken images may negatively impact SEO if alt text is not properly configured</li>
-                        <li><strong>Accessibility:</strong> Users relying on images may miss important visual information</li>
-                    </ul>
-
-                    <h3>Possible Root Causes</h3>
-                    <ul>
-                        <li>Image file permissions incorrectly configured on the upstream server</li>
-                        <li>CDN or image hosting service access control rules blocking the request</li>
-                        <li>Expired or invalid image URL/token</li>
-                        <li>Server-side authentication/authorization issue with the image resource</li>
-                        <li>CORS (Cross-Origin Resource Sharing) policy blocking the image request</li>
-                    </ul>
-
-                    <h3>Suggested Fix</h3>
-                    <ol>
-                        <li>Verify the image file exists and is accessible on the upstream server</li>
-                        <li>Check and correct file permissions on the upstream server (ensure read access is granted)</li>
-                        <li>Review CDN/image hosting service configuration and access control rules</li>
-                        <li>Verify the image URL is correct and not expired</li>
-                        <li>If using authentication tokens, ensure they are valid and properly included in the request</li>
-                        <li>Check CORS configuration if the image is hosted on a different domain</li>
-                        <li>Replace the broken image with a working alternative if the upstream issue cannot be resolved</li>
-                        <li>Implement proper error handling to display a fallback image or placeholder when images fail to load</li>
-                    </ol>
-
-                    <h3>Additional Notes</h3>
-                    <p>This issue was discovered during exploratory testing. The specific image URL and exact location on the page can be identified from the screenshots. It is recommended to test all images on the page to ensure no other images are affected by similar issues.</p>
+                <h3>Evidence</h3>
+                <div style="margin: 20px 0;">
+                    <img src="bug_data/bug1_screenshot1.png" alt="Broken image on fish page" style="max-width: 100%; height: auto; border: 1px solid #ccc; margin-bottom: 20px;">
+                    <img src="bug_data/bug1_screenshot2.png" alt="403 error in Network tab" style="max-width: 100%; height: auto; border: 1px solid #ccc; margin-bottom: 20px;">
                 </div>
+
+                <h3>Impact</h3>
+                <ul>
+                    <li>Degraded visual experience</li>
+                    <li>Incomplete content presentation</li>
+                    <li>Potential SEO impact if alt text not configured</li>
+                </ul>
+
+                <h3>Root Cause</h3>
+                <p>Possible causes: incorrect file permissions, CDN access control rules, expired URL/token, or CORS policy blocking the request.</p>
+
+                <h3>Suggested Fix</h3>
+                <ol>
+                    <li>Verify image file exists and is accessible on upstream server</li>
+                    <li>Check and correct file permissions</li>
+                    <li>Review CDN/image hosting access control rules</li>
+                    <li>Verify image URL is valid and not expired</li>
+                    <li>Implement fallback image or placeholder for failed loads</li>
+                </ol>
             </div>
 
             <!-- BUG-002: Incorrect Breadcrumb Navigation -->
-            <div class="bug">
+            <div class="bug" id="BUG-002">
                 <div class="bug-header">
                     <span class="bug-id">BUG-002: Breadcrumb Navigation Shows Wrong Fish Species</span>
                     <div>
@@ -243,65 +216,49 @@
                     </tr>
                 </table>
 
-                <div style="margin-top: 20px;">
-                    <h3>Description</h3>
-                    <p>When viewing the Red Snapper fish page, the breadcrumb navigation displays "Home / Fish Species / Dolphin (Mahi Mahi)" instead of the expected "Home / Fish Species / Red Snapper". This is incorrect as Dolphin (Mahi Mahi) and Red Snapper are completely different fish species. The breadcrumb should accurately reflect the current page content.</p>
+                <h3>Description</h3>
+                <p>Breadcrumb navigation on Red Snapper page displays "Home / Fish Species / Dolphin (Mahi Mahi)" instead of "Home / Fish Species / Red Snapper". Dolphin and Red Snapper are different species.</p>
 
-                    <h3>Steps to Reproduce</h3>
-                    <ol>
-                        <li>Navigate to <a href="https://nextjs15.dev.fishingbooker.com/fish/snapper-red" target="_blank">https://nextjs15.dev.fishingbooker.com/fish/snapper-red</a></li>
-                        <li>Log in with credentials: fishingbooker / QAFBTest (if required)</li>
-                        <li>Observe the breadcrumb navigation located below the hero section</li>
-                        <li>Note the breadcrumb text displayed</li>
-                    </ol>
+                <h3>Steps to Reproduce</h3>
+                <ol>
+                    <li>Navigate to <a href="https://nextjs15.dev.fishingbooker.com/fish/snapper-red" target="_blank">https://nextjs15.dev.fishingbooker.com/fish/snapper-red</a></li>
+                    <li>Log in with credentials: fishingbooker / QAFBTest (if required)</li>
+                    <li>Observe breadcrumb navigation below hero section</li>
+                </ol>
 
-                    <h3>Expected Result</h3>
-                    <p>The breadcrumb navigation should display: <strong>"Home / Fish Species / Red Snapper"</strong> (or similar, accurately reflecting the current fish species page).</p>
+                <h3>Expected Result</h3>
+                <p>Breadcrumb displays: "Home / Fish Species / Red Snapper"</p>
 
-                    <h3>Actual Result</h3>
-                    <p>The breadcrumb navigation displays: <strong>"Home / Fish Species / Dolphin (Mahi Mahi)"</strong>, which is incorrect. The page content is about Red Snapper, but the breadcrumb shows a completely different fish species (Dolphin/Mahi Mahi).</p>
+                <h3>Actual Result</h3>
+                <p>Breadcrumb displays: "Home / Fish Species / Dolphin (Mahi Mahi)"</p>
 
-                    <h3>Evidence</h3>
-                    <div style="margin: 20px 0;">
-                        <img src="bug_data/bug2_screenshot1.png" alt="Screenshot showing incorrect breadcrumb displaying Dolphin (Mahi Mahi) on Red Snapper page" style="max-width: 100%; height: auto; border: 1px solid #ccc; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-                    </div>
-
-                    <h3>Impact</h3>
-                    <ul>
-                        <li><strong>User Experience:</strong> Confusion for users who rely on breadcrumbs for navigation context</li>
-                        <li><strong>Content Accuracy:</strong> Inconsistent information between page content and navigation elements</li>
-                        <li><strong>SEO:</strong> Incorrect breadcrumb schema may negatively impact SEO and structured data</li>
-                        <li><strong>Trust:</strong> Users may lose trust in the accuracy of the website content</li>
-                        <li><strong>Navigation:</strong> Users clicking on breadcrumb links may navigate to wrong pages</li>
-                    </ul>
-
-                    <h3>Possible Root Causes</h3>
-                    <ul>
-                        <li>Hardcoded breadcrumb text that was not updated when creating the Red Snapper page</li>
-                        <li>Template or component reuse issue where breadcrumb data is not dynamically populated based on the current page</li>
-                        <li>Database or CMS mapping error linking the wrong fish species to the breadcrumb</li>
-                        <li>URL routing issue where the breadcrumb is reading from incorrect page metadata</li>
-                        <li>Copy-paste error during page creation where breadcrumb was copied from Dolphin (Mahi Mahi) page</li>
-                    </ul>
-
-                    <h3>Suggested Fix</h3>
-                    <ol>
-                        <li>Verify the breadcrumb component is dynamically reading the correct fish species name from the page data/URL</li>
-                        <li>Check the database/CMS to ensure Red Snapper page has correct metadata for breadcrumb generation</li>
-                        <li>Update the breadcrumb to display "Home / Fish Species / Red Snapper" (or appropriate format)</li>
-                        <li>Verify breadcrumb links navigate to correct pages when clicked</li>
-                        <li>Test breadcrumb on all fish species pages to ensure this is not a systemic issue</li>
-                        <li>If using structured data (Schema.org BreadcrumbList), ensure it matches the visual breadcrumb</li>
-                        <li>Implement automated tests to catch breadcrumb mismatches in the future</li>
-                    </ol>
-
-                    <h3>Additional Notes</h3>
-                    <p>This bug was discovered during execution of TC-001 (Fish Page Loads Successfully). The breadcrumb is a critical navigation element that should accurately reflect the current page context. It is recommended to check all fish species pages to ensure breadcrumbs are correct across the site.</p>
+                <h3>Evidence</h3>
+                <div style="margin: 20px 0;">
+                    <img src="bug_data/bug2_screenshot1.png" alt="Incorrect breadcrumb showing Dolphin" style="max-width: 100%; height: auto; border: 1px solid #ccc; margin-bottom: 20px;">
                 </div>
+
+                <h3>Impact</h3>
+                <ul>
+                    <li>User confusion and navigation context errors</li>
+                    <li>Content inconsistency</li>
+                    <li>Potential SEO impact on breadcrumb schema</li>
+                    <li>Users may navigate to wrong pages</li>
+                </ul>
+
+                <h3>Root Cause</h3>
+                <p>Breadcrumb not dynamically populated from page data. Possible causes: hardcoded text, template reuse issue, CMS mapping error, or copy-paste error.</p>
+
+                <h3>Suggested Fix</h3>
+                <ol>
+                    <li>Verify breadcrumb component reads correct species from page data/URL</li>
+                    <li>Check database/CMS metadata for Red Snapper page</li>
+                    <li>Update breadcrumb to display correct species</li>
+                    <li>Test all fish species pages for similar issues</li>
+                </ol>
             </div>
 
                         <!-- BUG-003: Charter Detail Page Navigation Error -->
-            <div class="bug">
+            <div class="bug" id="BUG-003">
                 <div class="bug-header">
                     <span class="bug-id">BUG-003: Charter Detail Page Navigation Fails</span>
                     <div>
@@ -358,69 +315,47 @@
                     </tr>
                 </table>
 
-                <div style="margin-top: 20px;">
-                    <h3>Description</h3>
-                    <p>When clicking on any charter listing card or link from the fish page (e.g., Red Snapper page), the navigation to the charter detail page fails. This prevents users from viewing detailed information about fishing charters, including pricing, availability, boat specifications, and booking options. All other navigation links in TC-002 pass successfully, but this specific step fails consistently across all charter listings.</p>
+                <h3>Description</h3>
+                <p>Clicking on any charter listing link from the fish page fails to navigate to the charter detail page, preventing users from viewing charter information and booking trips.</p>
 
-                    <h3>Steps to Reproduce</h3>
-                    <ol>
-                        <li>Navigate to <a href="https://nextjs15.dev.fishingbooker.com/fish/snapper-red" target="_blank">https://nextjs15.dev.fishingbooker.com/fish/snapper-red</a></li>
-                        <li>Log in with credentials: fishingbooker / QAFBTest (if required)</li>
-                        <li>Wait for the page to load and charter listings to be displayed</li>
-                        <li>Locate any charter listing card in the charter listings section</li>
-                        <li>Click on the charter name/link or the charter card to navigate to the detail page</li>
-                        <li>Observe the navigation behavior</li>
-                    </ol>
+                <h3>Steps to Reproduce</h3>
+                <ol>
+                    <li>Navigate to <a href="https://nextjs15.dev.fishingbooker.com/fish/snapper-red" target="_blank">https://nextjs15.dev.fishingbooker.com/fish/snapper-red</a></li>
+                    <li>Log in with credentials: fishingbooker / QAFBTest (if required)</li>
+                    <li>Wait for charter listings to load</li>
+                    <li>Click on any charter listing card or link</li>
+                </ol>
 
-                    <h3>Expected Result</h3>
-                    <p>Clicking on a charter listing should successfully navigate to the charter detail page, displaying comprehensive information about the charter including boat details, pricing, availability calendar, reviews, photos, and booking options.</p>
+                <h3>Expected Result</h3>
+                <p>Navigation to charter detail page displaying boat details, pricing, availability, and booking options.</p>
 
-                    <h3>Actual Result</h3>
-                    <p>Clicking on any charter listing link fails to navigate to the charter detail page. The navigation does not complete successfully, preventing users from accessing charter information. The exact error or behavior observed is shown in the screenshot below.</p>
+                <h3>Actual Result</h3>
+                <p>Navigation fails. Users cannot access charter detail pages.</p>
 
-                    <h3>Evidence</h3>
-                    <div style="margin: 20px 0;">
-                        <img src="bug_data/bug3_screenshot1.png" alt="Screenshot showing charter detail page navigation failure" style="max-width: 100%; height: auto; border: 1px solid #ccc; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-                    </div>
-
-                    <h3>Impact</h3>
-                    <ul>
-                        <li><strong>User Experience:</strong> Critical navigation failure prevents users from accessing charter details, blocking the primary user journey</li>
-                        <li><strong>Business Impact:</strong> Users cannot view charter information or proceed with bookings, directly impacting revenue and conversions</li>
-                        <li><strong>Functionality:</strong> Core feature (charter detail page access) is completely broken</li>
-                        <li><strong>User Trust:</strong> Broken navigation links damage user confidence in the platform</li>
-                        <li><strong>SEO:</strong> Internal linking issues may negatively impact SEO if search engines cannot crawl charter detail pages</li>
-                    </ul>
-
-                    <h3>Possible Root Causes</h3>
-                    <ul>
-                        <li>Broken URL routing or incorrect URL generation for charter detail pages</li>
-                        <li>JavaScript error preventing navigation event from executing</li>
-                        <li>Missing or incorrect href attributes on charter listing links</li>
-                        <li>Authentication or authorization issue blocking access to charter detail pages</li>
-                        <li>API endpoint failure when fetching charter detail data</li>
-                        <li>Client-side routing error in Next.js application</li>
-                        <li>404 error for charter detail page routes that don't exist</li>
-                        <li>Network request failure or timeout when loading charter detail page</li>
-                    </ul>
-
-                    <h3>Suggested Fix</h3>
-                    <ol>
-                        <li>Verify charter listing links have correct href attributes pointing to valid charter detail page URLs</li>
-                        <li>Check browser console for JavaScript errors when clicking charter links</li>
-                        <li>Verify the charter detail page route exists and is properly configured in Next.js routing</li>
-                        <li>Test API endpoints that fetch charter detail data to ensure they return valid responses</li>
-                        <li>Check network tab in browser DevTools to see if requests are being made and what responses are returned</li>
-                        <li>Verify authentication/authorization is not blocking access to charter detail pages</li>
-                        <li>Test URL generation logic to ensure charter IDs/slugs are correctly formatted</li>
-                        <li>Check if the issue is specific to certain charter listings or affects all listings</li>
-                        <li>Verify client-side navigation (if using Next.js Link component) is properly configured</li>
-                        <li>Test on multiple browsers to rule out browser-specific issues</li>
-                    </ol>
-
-                    <h3>Additional Notes</h3>
-                    <p>This bug was discovered during execution of TC-002 (Navigation and Internal Links Work Correctly). All other navigation elements in TC-002 pass successfully (breadcrumb links, related species links, destination links, etc.), but charter listing links consistently fail. This is a critical issue as charter detail pages are essential for the booking flow and user decision-making process.</p>
+                <h3>Evidence</h3>
+                <div style="margin: 20px 0;">
+                    <img src="bug_data/bug3_screenshot1.png" alt="Charter detail page navigation failure" style="max-width: 100%; height: auto; border: 1px solid #ccc; margin-bottom: 20px;">
                 </div>
+
+                <h3>Impact</h3>
+                <ul>
+                    <li>Blocks primary user journey - users cannot view charter details</li>
+                    <li>Direct revenue impact - users cannot proceed with bookings</li>
+                    <li>Core functionality broken</li>
+                    <li>Potential SEO impact on internal linking</li>
+                </ul>
+
+                <h3>Root Cause</h3>
+                <p>Possible causes: broken URL routing, JavaScript error, missing href attributes, authentication issue, API endpoint failure, or client-side routing error.</p>
+
+                <h3>Suggested Fix</h3>
+                <ol>
+                    <li>Verify charter links have correct href attributes</li>
+                    <li>Check browser console for JavaScript errors</li>
+                    <li>Verify charter detail page route exists in Next.js</li>
+                    <li>Test API endpoints for charter detail data</li>
+                    <li>Check network tab for request/response issues</li>
+                </ol>
             </div>
 
                        <!-- BUG-004: Inappropriate Filter Options for Fish Species -->
@@ -485,86 +420,49 @@
                     </tr>
                 </table>
 
-                <div style="margin-top: 20px;">
-                    <h3>Description</h3>
-                    <p><strong>Domain Logic Violation:</strong> When viewing the Red Snapper fish page and opening the Filters modal, the "Type of Fishing" section displays "River Fishing" as a selectable option. This is a fundamental domain logic error: Red Snapper (Lutjanus campechanus) is a saltwater/marine fish species that lives in ocean waters, while River Fishing implies freshwater environments. Showing Red Snapper charters under River Fishing is factually incorrect and violates core domain knowledge.</p>
-                    
-                    <p><strong>Filter Behavior Issue:</strong> When "River Fishing" filter is applied, the results show coastal Croatia sea charters with no rivers involved. This indicates that at least one of the following is broken:</p>
-                    <ul>
-                        <li><strong>Filter label is wrong:</strong> The filter is mislabeled and should not be called "River Fishing"</li>
-                        <li><strong>Filter logic is wrong:</strong> Results don't match the selected filter criteria</li>
-                        <li><strong>Fish-habitat mapping is wrong:</strong> Red Snapper is incorrectly tagged as available in river environments</li>
-                        <li><strong>Backend query ignores filter:</strong> The filter UI is displayed but the backend query doesn't respect it</li>
-                    </ul>
-                    
-                    <p>This is not a preference issue or subjective content - it's a domain inconsistency that breaks search functionality. The filter options should be contextually appropriate for the fish species being viewed. For Red Snapper, appropriate fishing types would include Inshore Fishing, Nearshore Fishing, Offshore Fishing, Reef Fishing, etc., but not River Fishing or Lake Fishing (freshwater options).</p>
+                <h3>Description</h3>
+                <p>Filters modal displays "River Fishing" as an option for Red Snapper, which is a saltwater fish. When applied, results show sea charters (coastal Croatia), demonstrating filter results don't match criteria.</p>
 
-                    <h3>Steps to Reproduce</h3>
-                    <ol>
-                        <li>Navigate to <a href="https://nextjs15.dev.fishingbooker.com/fish/snapper-red" target="_blank">https://nextjs15.dev.fishingbooker.com/fish/snapper-red</a></li>
-                        <li>Log in with credentials: fishingbooker / QAFBTest (if required)</li>
-                        <li>Wait for the page to load and charter listings to be displayed</li>
-                        <li>Click on the "Filters" button (located above the map on the right side)</li>
-                        <li>Observe the Filters modal that opens</li>
-                        <li>Scroll down to the "Type of Fishing" section</li>
-                        <li>Note that "River Fishing" is listed as an option and can be selected</li>
-                    </ol>
+                <h3>Steps to Reproduce</h3>
+                <ol>
+                    <li>Navigate to <a href="https://nextjs15.dev.fishingbooker.com/fish/snapper-red" target="_blank">https://nextjs15.dev.fishingbooker.com/fish/snapper-red</a></li>
+                    <li>Log in with credentials: fishingbooker / QAFBTest (if required)</li>
+                    <li>Click "Filters" button</li>
+                    <li>Observe "Type of Fishing" section</li>
+                    <li>Note "River Fishing" is available and selectable</li>
+                </ol>
 
-                    <h3>Expected Result</h3>
-                    <p>The Filters modal should only display fishing type options that are appropriate for Red Snapper, which is a saltwater/marine fish. River Fishing and Lake Fishing (freshwater options) should not be available as filter options for this fish species. Only saltwater fishing types should be shown (e.g., Inshore Fishing, Nearshore Fishing, Offshore Fishing, Reef Fishing, Wreck Fishing, Flats Fishing, Backcountry Fishing).</p>
+                <h3>Expected Result</h3>
+                <p>Only saltwater fishing types should be shown (Inshore, Nearshore, Offshore, Reef, etc.). River Fishing and Lake Fishing should not be available for saltwater fish.</p>
 
-                    <h3>Actual Result</h3>
-                    <p>The Filters modal displays "River Fishing" as a selectable option in the "Type of Fishing" section. This option can be checked/selected, which is inappropriate for Red Snapper since it is a saltwater fish that does not inhabit freshwater rivers. The filter system does not appear to be contextually aware of the fish species being viewed.</p>
+                <h3>Actual Result</h3>
+                <p>"River Fishing" is displayed and selectable. When applied, results show sea charters, not river locations.</p>
 
-                    <h3>Evidence</h3>
-                    <div style="margin: 20px 0;">
-                        <p><strong>Screenshot 1:</strong> Filters modal showing "River Fishing" option available and selected for Red Snapper page. The modal displays "Type of Fishing" section with "River Fishing" checked, which is inappropriate for a saltwater fish species.</p>
-                        <img src="bug_data/bug4_screenshot1.png" alt="Screenshot showing Filters modal with River Fishing option selected for Red Snapper" style="max-width: 100%; height: auto; border: 1px solid #ccc; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-                        
-                        <p><strong>Screenshot 2:</strong> Map view showing results when "River Fishing" filter is applied. The map displays coastal Croatia and Adriatic Sea locations with sea charters, demonstrating that the filter results don't match the filter criteria (no rivers are involved, only sea/coastal locations).</p>
-                        <img src="bug_data/bug4_screenshot2.png" alt="Screenshot showing map with sea charters when River Fishing filter is applied" style="max-width: 100%; height: auto; border: 1px solid #ccc; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-                    </div>
-
-                    <h3>Impact</h3>
-                    <ul>
-                        <li><strong>User Experience:</strong> Users looking for river fishing see sea charters, and users researching Red Snapper get misleading information. This directly affects usability and conversion rates.</li>
-                        <li><strong>Domain Logic Violation:</strong> Core search logic is broken - factually incorrect information is presented (saltwater fish shown with freshwater fishing option).</li>
-                        <li><strong>Trust & Credibility:</strong> Trust in filters and landing pages is damaged. Users may question the accuracy of all information on the site.</li>
-                        <li><strong>Search Functionality:</strong> Filter behavior is fundamentally incorrect - filters don't apply correctly or results don't match filter criteria.</li>
-                        <li><strong>SEO Trust Signals:</strong> Incorrect content and filter logic can negatively impact SEO trust signals and search engine rankings.</li>
-                        <li><strong>Business Impact:</strong> Poor filter accuracy leads to decreased user satisfaction, lost bookings, and damaged brand credibility.</li>
-                        <li><strong>Data Integrity:</strong> Fish-habitat mapping appears incorrect, suggesting broader data quality issues.</li>
-                    </ul>
-
-                    <h3>Possible Root Causes</h3>
-                    <ul>
-                        <li>Filter options are hardcoded and not dynamically filtered based on fish species characteristics</li>
-                        <li>Missing logic to exclude freshwater fishing types for saltwater fish species</li>
-                        <li>Fish species metadata does not include information about habitat type (saltwater vs freshwater)</li>
-                        <li>Filter component does not receive context about the current fish species being viewed</li>
-                        <li>Template reuse issue where the same filter options are shown for all fish species regardless of their habitat</li>
-                    </ul>
-
-                    <h3>Suggested Fix</h3>
-                    <ol>
-                        <li>Add fish species metadata to indicate habitat type (saltwater, freshwater, or both)</li>
-                        <li>Implement logic to filter available fishing type options based on the fish species habitat</li>
-                        <li>For saltwater fish (like Red Snapper): Exclude River Fishing and Lake Fishing options</li>
-                        <li>For freshwater fish: Exclude saltwater-specific options (e.g., Offshore Fishing, Reef Fishing, Wreck Fishing)</li>
-                        <li>For fish that can be found in both: Show all options</li>
-                        <li>Test filter options for all fish species pages to ensure contextual appropriateness</li>
-                        <li>Consider adding tooltips or help text explaining why certain filters are not available for specific fish species</li>
-                    </ol>
-
-                    <h3>Additional Notes</h3>
-                    <p>This bug was discovered during execution of TC-004 (Interactive Elements Function Correctly) and also violates TC-010 (Content Is Relevant to Fish Species). While the filter UI functionality itself works (the modal opens, options can be selected), the domain logic and filter behavior are fundamentally broken. This is not just a content accuracy issue - it's a functional defect that breaks core search logic.</p>
-                    
-                    <p><strong>Classification:</strong> This is a <strong>Functional + Data Integrity</strong> bug with <strong>Major</strong> severity (not a crash, but core logic is wrong) and <strong>High</strong> priority (affects discoverability and trust). It maps to Product Risk PR-01 (Page functionality issues - HIGH) and PR-03 (Inconsistent or irrelevant content - MEDIUM).</p>
-                    
-                    <p><strong>Note on Geographic Context:</strong> The map shows the Adriatic Sea region (Croatia, Montenegro). Red Snapper as commonly known (Lutjanus campechanus) is native to the Gulf of Mexico and western Atlantic, not the Mediterranean/Adriatic. If the page is referring to a different snapper species native to the Mediterranean, the filter logic should still exclude freshwater options like River Fishing, as all snapper species are marine/saltwater fish.</p>
-                    
-                    <p><strong>Recommendation:</strong> Review all fish species pages to ensure filter options are appropriate for each species. Implement domain logic validation to prevent saltwater fish from showing freshwater fishing options and vice versa.</p>
+                <h3>Evidence</h3>
+                <div style="margin: 20px 0;">
+                    <img src="bug_data/bug4_screenshot1.png" alt="Filters modal with River Fishing option" style="max-width: 100%; height: auto; border: 1px solid #ccc; margin-bottom: 20px;">
+                    <img src="bug_data/bug4_screenshot2.png" alt="Map showing sea charters when River Fishing applied" style="max-width: 100%; height: auto; border: 1px solid #ccc; margin-bottom: 20px;">
                 </div>
+
+                <h3>Impact</h3>
+                <ul>
+                    <li>Domain logic violation - saltwater fish shown with freshwater option</li>
+                    <li>Misleading information affects user trust and conversion</li>
+                    <li>Filter results don't match filter criteria</li>
+                    <li>Broken search functionality</li>
+                </ul>
+
+                <h3>Root Cause</h3>
+                <p>Filter options not dynamically filtered based on fish species habitat. Missing logic to exclude inappropriate fishing types.</p>
+
+                <h3>Suggested Fix</h3>
+                <ol>
+                    <li>Add fish species metadata for habitat type (saltwater/freshwater)</li>
+                    <li>Implement logic to filter options based on species habitat</li>
+                    <li>Exclude River/Lake Fishing for saltwater fish</li>
+                    <li>Exclude saltwater options for freshwater fish</li>
+                    <li>Test all fish species pages for appropriate filters</li>
+                </ol>
             </div>
 
             <!-- BUG-005: Empty Title Tag on Red Snapper Fish Page -->
@@ -628,72 +526,48 @@
                     </tr>
                 </table>
 
-                <div style="margin-top: 20px;">
-                    <h3>Description</h3>
-                    <p>The Red Snapper fish page has an empty &lt;title&gt; tag in the HTML head section. The title tag is the primary SEO ranking signal, browser tab label, and default SERP headline. An empty title tag means Google will auto-generate a title (uncontrolled), leading to lower CTR and SEO inconsistency.</p>
-                    
-                    <p><strong>Comparison with Other Pages:</strong> Testing of Tuna and Salmon pages shows that both have properly populated title tags, ruling out browser issues, environment-wide issues, or rendering failures for all fish pages. This is a page-specific defect affecting only the Red Snapper page.</p>
+                <h3>Description</h3>
+                <p>Red Snapper page has an empty &lt;title&gt; tag. Title tag is the primary SEO ranking signal. Empty title means Google auto-generates title (uncontrolled), leading to lower CTR. Other pages (Tuna, Salmon) have proper titles, confirming this is page-specific.</p>
 
-                    <h3>Steps to Reproduce</h3>
-                    <ol>
-                        <li>Navigate to <a href="https://nextjs15.dev.fishingbooker.com/fish/snapper-red" target="_blank">https://nextjs15.dev.fishingbooker.com/fish/snapper-red</a></li>
-                        <li>Log in with credentials: fishingbooker / QAFBTest (if required)</li>
-                        <li>Open page source (Right-click → View Page Source) or open DevTools → Elements tab</li>
-                        <li>Locate the &lt;title&gt; tag in the &lt;head&gt; section</li>
-                        <li>Observe that the title tag is present but empty</li>
-                    </ol>
+                <h3>Steps to Reproduce</h3>
+                <ol>
+                    <li>Navigate to <a href="https://nextjs15.dev.fishingbooker.com/fish/snapper-red" target="_blank">https://nextjs15.dev.fishingbooker.com/fish/snapper-red</a></li>
+                    <li>Log in with credentials: fishingbooker / QAFBTest (if required)</li>
+                    <li>Open page source or DevTools → Elements tab</li>
+                    <li>Locate &lt;title&gt; tag in &lt;head&gt; section</li>
+                    <li>Observe title tag is empty</li>
+                </ol>
 
-                    <h3>Expected Result</h3>
-                    <p>The &lt;title&gt; tag should be populated with a descriptive, species-specific title that is 50-60 characters long and contains the fish species name. Example: "Red Snapper Fishing Charters | FishingBooker" or "Red Snapper Fishing Trips & Charters - FishingBooker".</p>
+                <h3>Expected Result</h3>
+                <p>Title tag should contain descriptive, species-specific title (50-60 chars), e.g., "Red Snapper Fishing Charters | FishingBooker"</p>
 
-                    <h3>Actual Result</h3>
-                    <p>The &lt;title&gt; tag is present in the HTML but is empty (no content between opening and closing tags). This results in:</p>
-                    <ul>
-                        <li>Browser tab showing no page title or default browser text</li>
-                        <li>Search engines auto-generating titles from page content (uncontrolled)</li>
-                        <li>SEO ranking degradation due to missing primary ranking signal</li>
-                        <li>Inconsistency with other fish pages (Tuna, Salmon) which have proper titles</li>
-                    </ul>
+                <h3>Actual Result</h3>
+                <p>Title tag is present but empty. Browser tab shows URL or generic title.</p>
 
-                    <h3>Evidence</h3>
-                    <div style="margin: 20px 0;">
-                        <p><strong>Screenshot:</strong> Page source showing empty &lt;title&gt; tag in the HTML head section for Red Snapper fish page.</p>
-                        <img src="bug_data/bug5_screenshot1.png" alt="Screenshot showing empty title tag in page source for Red Snapper page" style="max-width: 100%; height: auto; border: 1px solid #ccc; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-                    </div>
-
-                    <h3>Impact</h3>
-                    <ul>
-                        <li><strong>SEO Ranking:</strong> Missing primary SEO ranking signal, leading to potential ranking degradation</li>
-                        <li><strong>Search Engine Results:</strong> Google will auto-generate title from page content, which may not be optimal for CTR</li>
-                        <li><strong>User Experience:</strong> Browser tab shows no descriptive title, making it difficult for users to identify the page in multiple tabs</li>
-                        <li><strong>Consistency:</strong> Inconsistent with other fish pages (Tuna, Salmon) which have properly populated titles</li>
-                        <li><strong>CTR Impact:</strong> Lower click-through rates from search results due to uncontrolled title generation</li>
-                        <li><strong>SEO Best Practices:</strong> Violates fundamental SEO best practices requiring unique, descriptive title tags</li>
-                    </ul>
-
-                    <h3>Possible Root Causes</h3>
-                    <ul>
-                        <li>Title tag generation logic missing or failing for Red Snapper page specifically</li>
-                        <li>Template variable not populated for Red Snapper species</li>
-                        <li>Data mapping issue where Red Snapper metadata is missing title field</li>
-                        <li>Conditional rendering logic that incorrectly excludes title for this specific page</li>
-                        <li>CMS or content management issue where title was not set for Red Snapper page</li>
-                    </ul>
-
-                    <h3>Suggested Fix</h3>
-                    <ol>
-                        <li>Verify title tag generation logic works for all fish species pages</li>
-                        <li>Check if Red Snapper page has title metadata in the database/CMS</li>
-                        <li>Ensure template variable for title is properly populated for Red Snapper</li>
-                        <li>Add fallback logic to generate title from fish species name if metadata is missing</li>
-                        <li>Test title tag on all fish species pages to ensure consistency</li>
-                        <li>Verify title tag is 50-60 characters and contains fish species name</li>
-                        <li>Implement automated SEO checks to catch empty title tags in the future</li>
-                    </ol>
-
-                    <h3>Additional Notes</h3>
-                    <p>This bug was discovered during execution of TC-006 (Meta Title and Description Are Present and Optimized). The empty title tag is a critical SEO failure that directly impacts search engine rankings and user experience. This is a page-specific issue, as other fish pages (Tuna, Salmon) have properly populated title tags, indicating the problem is isolated to the Red Snapper page configuration or data.</p>
+                <h3>Evidence</h3>
+                <div style="margin: 20px 0;">
+                    <img src="bug_data/bug5_screenshot1.png" alt="Empty title tag in page source" style="max-width: 100%; height: auto; border: 1px solid #ccc; margin-bottom: 20px;">
                 </div>
+
+                <h3>Impact</h3>
+                <ul>
+                    <li>Critical SEO failure - primary ranking signal missing</li>
+                    <li>Google auto-generates uncontrolled title</li>
+                    <li>Lower CTR from search results</li>
+                    <li>Inconsistent with other fish pages</li>
+                </ul>
+
+                <h3>Root Cause</h3>
+                <p>Title tag generation logic missing/failing for Red Snapper page, template variable not populated, or missing metadata.</p>
+
+                <h3>Suggested Fix</h3>
+                <ol>
+                    <li>Verify title generation logic works for all fish pages</li>
+                    <li>Check Red Snapper page has title metadata in database/CMS</li>
+                    <li>Ensure template variable is populated</li>
+                    <li>Add fallback to generate title from species name if missing</li>
+                    <li>Test all fish pages for consistency</li>
+                </ol>
             </div>
 
             <!-- BUG-006: Duplicate Meta Description Template on Red Snapper Page -->
@@ -758,95 +632,49 @@
                     </tr>
                 </table>
 
-                <div style="margin-top: 20px;">
-                    <h3>Description</h3>
-                    <p>The Red Snapper fish page meta description uses a templated structure that is identical to the Salmon page, with only the species name variable swapped. The description text follows the pattern: "Popular {Species} Fishing Charters. Good availability and great rates..." This violates SEO uniqueness best practices and fails to provide species-specific unique selling points or compelling content.</p>
-                    
-                    <p><strong>Template Pattern Observed:</strong></p>
-                    <ul>
-                        <li><strong>Red Snapper:</strong> "Popular Snapper (Red) Fishing Charters. Good availability and great rates..."</li>
-                        <li><strong>Salmon:</strong> "Popular Salmon Fishing Charters. Good availability and great rates..." (identical structure)</li>
-                    </ul>
-                    
-                    <p>This indicates the meta description is generated from a template with only the species name variable replaced, rather than being uniquely crafted for each fish species with specific value propositions, unique selling points, or species-specific information.</p>
+                <h3>Description</h3>
+                <p>Red Snapper page meta description uses templated structure identical to Salmon page, with only species name swapped. Pattern: "Popular {Species} Fishing Charters. Good availability and great rates..." Violates SEO uniqueness best practices.</p>
 
-                    <h3>Steps to Reproduce</h3>
-                    <ol>
-                        <li>Navigate to <a href="https://nextjs15.dev.fishingbooker.com/fish/snapper-red" target="_blank">https://nextjs15.dev.fishingbooker.com/fish/snapper-red</a></li>
-                        <li>Log in with credentials: fishingbooker / QAFBTest (if required)</li>
-                        <li>Open page source (Right-click → View Page Source) or open DevTools → Elements tab</li>
-                        <li>Locate the &lt;meta name="description"&gt; tag in the &lt;head&gt; section</li>
-                        <li>Note the meta description content</li>
-                        <li>Navigate to the Salmon fish page and compare the meta description</li>
-                        <li>Observe that both descriptions follow the same template structure with only species name swapped</li>
-                    </ol>
+                <h3>Steps to Reproduce</h3>
+                <ol>
+                    <li>Navigate to <a href="https://nextjs15.dev.fishingbooker.com/fish/snapper-red" target="_blank">https://nextjs15.dev.fishingbooker.com/fish/snapper-red</a></li>
+                    <li>Log in with credentials: fishingbooker / QAFBTest (if required)</li>
+                    <li>Open page source or DevTools → Elements tab</li>
+                    <li>Locate meta description tag</li>
+                    <li>Navigate to Salmon page and compare descriptions</li>
+                </ol>
 
-                    <h3>Expected Result</h3>
-                    <p>Each fish page should have a unique, species-specific meta description that:</p>
-                    <ul>
-                        <li>Is 150-160 characters long</li>
-                        <li>Contains relevant keywords specific to the fish species</li>
-                        <li>Provides unique value propositions or selling points for that species</li>
-                        <li>Is compelling and encourages clicks from search results</li>
-                        <li>Differentiates the page from other fish species pages</li>
-                        <li>Highlights species-specific fishing characteristics, locations, or benefits</li>
-                    </ul>
+                <h3>Expected Result</h3>
+                <p>Meta description should be unique, compelling, and species-specific (150-160 chars), highlighting Red Snapper-specific characteristics, locations, or techniques.</p>
 
-                    <h3>Actual Result</h3>
-                    <p>The meta description for Red Snapper page:</p>
-                    <ul>
-                        <li>Is present and within character limits (150-160 characters)</li>
-                        <li>Uses a generic template structure identical to other fish pages (e.g., Salmon)</li>
-                        <li>Only swaps the species name variable: "Popular Snapper (Red) Fishing Charters. Good availability and great rates..."</li>
-                        <li>Lacks unique selling points specific to Red Snapper</li>
-                        <li>Does not highlight species-specific fishing characteristics, locations, or benefits</li>
-                        <li>Fails to differentiate from other fish species pages</li>
-                        <li>Is not compelling or unique as required by SEO best practices</li>
-                    </ul>
+                <h3>Actual Result</h3>
+                <p>Meta description uses templated structure identical to other fish pages, with only species name variable swapped. Generic messaging doesn't differentiate Red Snapper.</p>
 
-                    <h3>Evidence</h3>
-                    <div style="margin: 20px 0;">
-                        <p><strong>Screenshot 1:</strong> Page source showing meta description for Red Snapper page with templated content.</p>
-                        <img src="bug_data/bug6_screenshot1.png" alt="Screenshot showing meta description for Red Snapper page" style="max-width: 100%; height: auto; border: 1px solid #ccc; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-                        
-                        <p><strong>Screenshot 2:</strong> Comparison showing identical template structure between Red Snapper and Salmon pages, demonstrating the duplicate/templated meta description issue.</p>
-                        <img src="bug_data/bug6_screenshot2.png" alt="Screenshot comparing meta descriptions between Red Snapper and Salmon pages" style="max-width: 100%; height: auto; border: 1px solid #ccc; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-                    </div>
-
-                    <h3>Impact</h3>
-                    <ul>
-                        <li><strong>SEO Effectiveness:</strong> Reduced SEO effectiveness due to lack of uniqueness and species-specific keywords</li>
-                        <li><strong>Click-Through Rate:</strong> Lower CTR from search results due to generic, non-compelling description</li>
-                        <li><strong>SEO Best Practices:</strong> Violates SEO uniqueness best practices requiring unique meta descriptions for each page</li>
-                        <li><strong>User Experience:</strong> Generic descriptions don't help users understand what makes Red Snapper fishing unique or appealing</li>
-                        <li><strong>Search Engine Ranking:</strong> Search engines may penalize or devalue pages with duplicate/templated content</li>
-                        <li><strong>Brand Perception:</strong> Generic templated content may appear low-quality to users and search engines</li>
-                    </ul>
-
-                    <h3>Possible Root Causes</h3>
-                    <ul>
-                        <li>Meta description generation uses a generic template with only species name variable</li>
-                        <li>No unique meta description content stored in database/CMS for Red Snapper</li>
-                        <li>Content management system defaults to template when unique description is missing</li>
-                        <li>Lack of content strategy requiring unique descriptions for each fish species</li>
-                        <li>Automated content generation that doesn't create species-specific value propositions</li>
-                    </ul>
-
-                    <h3>Suggested Fix</h3>
-                    <ol>
-                        <li>Create unique, species-specific meta descriptions for each fish page</li>
-                        <li>Include Red Snapper-specific keywords, characteristics, or fishing locations</li>
-                        <li>Highlight unique selling points for Red Snapper fishing (e.g., best locations, seasons, techniques)</li>
-                        <li>Ensure descriptions are 150-160 characters and compelling</li>
-                        <li>Review all fish species pages to identify and fix similar templated descriptions</li>
-                        <li>Implement content guidelines requiring unique meta descriptions for each page</li>
-                        <li>Add validation to prevent duplicate/templated meta descriptions</li>
-                        <li>Consider A/B testing different descriptions to optimize CTR</li>
-                    </ol>
-
-                    <h3>Additional Notes</h3>
-                    <p>This bug was discovered during execution of TC-006 (Meta Title and Description Are Present and Optimized). While the meta description is present and within character limits, it fails the "unique and compelling" requirements. The templated approach may be acceptable for initial implementation, but for SEO optimization and user experience, each fish species page should have a unique, species-specific meta description that highlights what makes that particular fishing experience special.</p>
+                <h3>Evidence</h3>
+                <div style="margin: 20px 0;">
+                    <img src="bug_data/bug6_screenshot1.png" alt="Red Snapper meta description" style="max-width: 100%; height: auto; border: 1px solid #ccc; margin-bottom: 20px;">
+                    <img src="bug_data/bug6_screenshot2.png" alt="Comparison of Red Snapper and Salmon meta descriptions" style="max-width: 100%; height: auto; border: 1px solid #ccc; margin-bottom: 20px;">
                 </div>
+
+                <h3>Impact</h3>
+                <ul>
+                    <li>Reduced SEO effectiveness due to lack of uniqueness</li>
+                    <li>Lower CTR from search results</li>
+                    <li>Generic content doesn't highlight species-specific value</li>
+                    <li>Violates SEO best practices</li>
+                </ul>
+
+                <h3>Root Cause</h3>
+                <p>Meta description generation uses template with only species name variable, without customization or unique content per species.</p>
+
+                <h3>Suggested Fix</h3>
+                <ol>
+                    <li>Create unique, species-specific meta descriptions for each fish page</li>
+                    <li>Include Red Snapper-specific keywords, characteristics, or locations</li>
+                    <li>Highlight unique selling points (best locations, seasons, techniques)</li>
+                    <li>Ensure 150-160 characters and compelling content</li>
+                    <li>Review all fish pages for uniqueness</li>
+                </ol>
             </div>
 
             <!-- BUG-007: Missing H1 Tag on Red Snapper Fish Page -->
@@ -910,86 +738,45 @@
                     </tr>
                 </table>
 
-                <div style="margin-top: 20px;">
-                    <h3>Description</h3>
-                    <p><strong>SEO Semantics Broken:</strong> The Red Snapper fish page is missing an H1 tag, which is the primary semantic heading element that search engines use to identify the main topic of the page. The page displays "Red Snapper Fishing" text visually, but it is contained within a styled &lt;div&gt; element instead of a semantic H1 tag. A &lt;div&gt; cannot replace H1, no matter how it's styled, resulting in weakened keyword relevance, poor page topic signaling, and inconsistent SEO structure.</p>
-                    
-                    <p><strong>Accessibility Violation:</strong> Screen readers and assistive technologies rely on H1 tags as the page entry point and use heading navigation to help users understand page structure. A styled &lt;div&gt; is invisible to assistive technologies and breaks WCAG heading navigation, creating an accessibility defect.</p>
-                    
-                    <p><strong>Page Structure:</strong> The page has H2, H3, and H4 tags present, but no H1 tag. Visually, the page appears to have a main heading, but semantically it does not.</p>
+                <h3>Description</h3>
+                <p>Red Snapper page is missing H1 tag. Main heading "Red Snapper Fishing" is displayed in a styled &lt;div&gt; instead of semantic H1 tag, breaking SEO semantics and accessibility. Page has H2, H3, H4 tags but no H1.</p>
 
-                    <h3>Steps to Reproduce</h3>
-                    <ol>
-                        <li>Navigate to <a href="https://nextjs15.dev.fishingbooker.com/fish/snapper-red" target="_blank">https://nextjs15.dev.fishingbooker.com/fish/snapper-red</a></li>
-                        <li>Log in with credentials: fishingbooker / QAFBTest (if required)</li>
-                        <li>Open page source (Right-click → View Page Source) or open DevTools → Elements tab</li>
-                        <li>Search for H1 tags in the HTML (Ctrl+F → search for "&lt;h1" or "&lt;/h1&gt;")</li>
-                        <li>Observe that no H1 tags are present</li>
-                        <li>Locate the "Red Snapper Fishing" text in the page source</li>
-                        <li>Note that it is contained within a &lt;div&gt; element with CSS classes, not an H1 tag</li>
-                    </ol>
+                <h3>Steps to Reproduce</h3>
+                <ol>
+                    <li>Navigate to <a href="https://nextjs15.dev.fishingbooker.com/fish/snapper-red" target="_blank">https://nextjs15.dev.fishingbooker.com/fish/snapper-red</a></li>
+                    <li>Log in with credentials: fishingbooker / QAFBTest (if required)</li>
+                    <li>Open page source or DevTools → Elements tab</li>
+                    <li>Search for H1 tags in HTML</li>
+                    <li>Observe no H1 tags are present</li>
+                    <li>Locate "Red Snapper Fishing" text - note it's in a &lt;div&gt; element, not H1</li>
+                </ol>
 
-                    <h3>Expected Result</h3>
-                    <p>The page should have exactly one H1 tag that:</p>
-                    <ul>
-                        <li>Contains the fish species name (e.g., "Red Snapper Fishing" or "Red Snapper")</li>
-                        <li>Is the primary semantic heading for the page</li>
-                        <li>Is properly structured in the HTML hierarchy (H1 → H2 → H3)</li>
-                        <li>Is accessible to screen readers and assistive technologies</li>
-                        <li>Signals the main topic to search engines</li>
-                    </ul>
+                <h3>Expected Result</h3>
+                <p>Page should have exactly one H1 tag containing fish species name, properly structured in HTML hierarchy (H1 → H2 → H3), accessible to screen readers.</p>
 
-                    <h3>Actual Result</h3>
-                    <p>The page has:</p>
-                    <ul>
-                        <li><strong>Zero H1 tags</strong> - No H1 tag is present in the HTML</li>
-                        <li>H2, H3, and H4 tags exist and are properly structured</li>
-                        <li>The main heading text "Red Snapper Fishing" is displayed in a styled &lt;div&gt; element with CSS classes (e.g., "sc-cbdcff82-0 vvGZi sc-6fa1122d-0 hZhQzD sc-689f9d01-0")</li>
-                        <li>Visually, the page appears to have a main heading, but semantically it does not</li>
-                        <li>Screen readers cannot identify the main heading</li>
-                        <li>Search engines cannot properly identify the primary topic of the page</li>
-                    </ul>
+                <h3>Actual Result</h3>
+                <p>Zero H1 tags present. Main heading text is in styled &lt;div&gt; element. Visually appears as heading, but semantically does not. Screen readers cannot identify main heading.</p>
 
-                    <h3>Evidence</h3>
-                    <div style="margin: 20px 0;">
-                        <p><strong>Screenshot:</strong> Page source showing the missing H1 tag. The "Red Snapper Fishing" text is contained within a &lt;div&gt; element instead of a semantic H1 tag.</p>
-                        <img src="bug_data/bug7_screenshot1.png" alt="Screenshot showing missing H1 tag - Red Snapper Fishing text in div element" style="max-width: 100%; height: auto; border: 1px solid #ccc; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-                    </div>
+                <h3>Impact</h3>
+                <ul>
+                    <li>Weakened SEO - search engines can't identify primary page topic</li>
+                    <li>Accessibility violation - screen readers can't navigate headings</li>
+                    <li>Violates semantic HTML best practices</li>
+                    <li>Inconsistent SEO structure</li>
+                </ul>
 
-                    <h3>Impact</h3>
-                    <ul>
-                        <li><strong>SEO Ranking:</strong> Weakened keyword relevance and poor page topic signaling to search engines, potentially affecting search rankings</li>
-                        <li><strong>Search Engine Understanding:</strong> Search engines rely on H1 tags to identify the primary topic of the page - without it, page topic identification is compromised</li>
-                        <li><strong>Accessibility:</strong> Screen readers cannot identify the main heading, breaking WCAG heading navigation and making the page less accessible to users with disabilities</li>
-                        <li><strong>Semantic HTML:</strong> Violates semantic HTML best practices - visual styling cannot replace semantic meaning</li>
-                        <li><strong>Consistency:</strong> Inconsistent SEO structure compared to pages that properly use H1 tags</li>
-                        <li><strong>User Experience:</strong> Users relying on assistive technologies cannot properly navigate the page structure</li>
-                    </ul>
+                <h3>Root Cause</h3>
+                <p>Component/template uses styled div instead of semantic H1 tag. Visual styling applied but semantic HTML not used.</p>
 
-                    <h3>Possible Root Causes</h3>
-                    <ul>
-                        <li>Component/template uses a styled div instead of semantic H1 tag for the main heading</li>
-                        <li>CSS styling applied to div to make it look like a heading, but semantic HTML was not used</li>
-                        <li>Template or component library issue where heading component defaults to div</li>
-                        <li>Missing or incorrect heading component implementation</li>
-                        <li>Design system issue where visual heading styles are applied to divs instead of semantic heading tags</li>
-                    </ul>
-
-                    <h3>Suggested Fix</h3>
-                    <ol>
-                        <li>Replace the styled &lt;div&gt; containing "Red Snapper Fishing" with a semantic &lt;h1&gt; tag</li>
-                        <li>Apply the same CSS classes/styles to the H1 tag to maintain visual appearance</li>
-                        <li>Ensure exactly one H1 tag is present on the page</li>
-                        <li>Verify H1 tag contains the fish species name</li>
-                        <li>Test with screen readers to ensure proper heading navigation</li>
-                        <li>Verify H1 tag is properly structured in the heading hierarchy (H1 → H2 → H3)</li>
-                        <li>Review all fish species pages to ensure they have proper H1 tags</li>
-                        <li>Update component library/template to use semantic H1 tags instead of styled divs for main headings</li>
-                    </ol>
-
-                    <h3>Additional Notes</h3>
-                    <p>This bug was discovered during execution of TC-007 (Header Tags (H1, H2, H3) Are Properly Structured). The test case explicitly requires "Exactly one H1 tag is present" and "H1 tag contains fish species name" - both requirements fail. This is not a styling choice issue - it's a semantic HTML and accessibility violation. Visual appearance cannot replace semantic meaning, and search engines and assistive technologies require proper semantic HTML structure.</p>
-                </div>
+                <h3>Suggested Fix</h3>
+                <ol>
+                    <li>Replace styled &lt;div&gt; with semantic &lt;h1&gt; tag</li>
+                    <li>Apply same CSS classes/styles to H1 to maintain visual appearance</li>
+                    <li>Ensure exactly one H1 tag is present</li>
+                    <li>Verify H1 contains fish species name</li>
+                    <li>Test with screen readers</li>
+                    <li>Review all fish pages for proper H1 tags</li>
+                </ol>
             </div>
 
             <!-- BUG-008: 500 Server Error for Invalid Fish Species Slug -->
@@ -1053,213 +840,44 @@
                     </tr>
                 </table>
 
-                <div style="margin-top: 20px;">
-                    <h3>Description</h3>
-                    <p><strong>Inappropriate Error Response:</strong> When accessing a fish page with an invalid or non-existent species slug (e.g., <code>/fish/xyz123</code>), the application returns a 500 Internal Server Error instead of a 404 Not Found error. A 500 error indicates a server-side problem or application crash, which is misleading for a "resource not found" scenario. This violates HTTP status code best practices and creates confusion for both users and developers.</p>
-                    
-                    <p><strong>Expected Behavior:</strong> Invalid or non-existent fish species slugs should return a 404 Not Found error (or a custom error page with 404 status), indicating that the requested resource does not exist. This is the standard HTTP response for missing resources and provides clear, accurate information about the error condition.</p>
-
-                    <p><strong>User Experience Impact:</strong> While the error page does display a user-friendly message ("We are already working on this") and provides a "Return to home" link, the underlying 500 error status is incorrect and may cause confusion. Users may think the site is broken rather than understanding that the page simply doesn't exist.</p>
-
-                    <h3>Steps to Reproduce</h3>
-                    <ol>
-                        <li>Navigate to <a href="https://nextjs15.dev.fishingbooker.com/fish/xyz123" target="_blank">https://nextjs15.dev.fishingbooker.com/fish/xyz123</a> (or any invalid fish species slug)</li>
-                        <li>Log in with credentials: fishingbooker / QAFBTest (if required)</li>
-                        <li>Observe the error page displayed</li>
-                        <li>Check the browser's Network tab or page source to verify the HTTP status code</li>
-                        <li>Note that the page returns a 500 Internal Server Error instead of 404 Not Found</li>
-                    </ol>
-
-                    <h3>Expected Result</h3>
-                    <p>The page should return a 404 Not Found error (or custom error page with 404 status) that:</p>
-                    <ul>
-                        <li>Indicates the requested fish species page does not exist</li>
-                        <li>Provides a user-friendly error message</li>
-                        <li>Offers navigation options (e.g., link back to home, search, or fish species list)</li>
-                        <li>Uses the correct HTTP status code (404) for "resource not found" scenarios</li>
-                        <li>Maintains consistent branding and styling</li>
-                    </ul>
-
-                    <h3>Actual Result</h3>
-                    <p>The page returns:</p>
-                    <ul>
-                        <li><strong>HTTP Status Code:</strong> 500 Internal Server Error (incorrect for missing resource)</li>
-                        <li><strong>Error Message:</strong> "500 This is an error. We are already working on this. If you need any help or if you have any questions, feel free to contact us"</li>
-                        <li><strong>Navigation Option:</strong> "Return to home →" link is present</li>
-                        <li><strong>Visual:</strong> Error page with illustration (person falling into crocodile mouth)</li>
-                        <li><strong>Issue:</strong> The 500 status code suggests a server-side problem rather than a missing resource, which is misleading</li>
-                    </ul>
-
-                    <h3>Evidence</h3>
-                    <div style="margin: 20px 0;">
-                        <p><strong>Screenshot:</strong> 500 Server Error page displayed when accessing invalid fish species slug (<code>/fish/xyz123</code>). The error page shows "500 This is an error" with a user-friendly message and navigation link, but uses incorrect HTTP status code.</p>
-                        <img src="bug_data/bug8_screenshot1.png" alt="Screenshot showing 500 Server Error for invalid fish species slug" style="max-width: 100%; height: auto; border: 1px solid #ccc; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-                    </div>
-
-                    <h3>Impact</h3>
-                    <ul>
-                        <li><strong>Error Handling:</strong> Incorrect HTTP status code violates REST API and web standards - 500 indicates server problems, not missing resources</li>
-                        <li><strong>Developer Confusion:</strong> Developers monitoring error logs may incorrectly interpret 500 errors as server crashes or application bugs, when they're actually "not found" scenarios</li>
-                        <li><strong>User Experience:</strong> Users may think the site is broken rather than understanding the page doesn't exist</li>
-                        <li><strong>SEO Impact:</strong> Search engines may incorrectly interpret 500 errors as site problems rather than missing pages</li>
-                        <li><strong>Monitoring & Analytics:</strong> Error tracking systems may incorrectly categorize these as critical server errors, skewing metrics and alerting</li>
-                        <li><strong>Debugging:</strong> Makes it harder to distinguish between actual server errors and missing resources during troubleshooting</li>
-                    </ul>
-
-                    <h3>Possible Root Causes</h3>
-                    <ul>
-                        <li>Server-side code throws an unhandled exception when processing invalid fish species slug</li>
-                        <li>Database query or API call fails with an exception instead of returning "not found"</li>
-                        <li>Error handling middleware incorrectly maps all errors to 500 status</li>
-                        <li>Missing error handling for invalid route parameters in Next.js application</li>
-                        <li>Server-side validation throws exception instead of returning 404 for invalid slugs</li>
-                        <li>Error boundary or catch-all route incorrectly returns 500 for all errors</li>
-                    </ul>
-
-                    <h3>Suggested Fix</h3>
-                    <ol>
-                        <li>Implement proper error handling for invalid fish species slugs</li>
-                        <li>Return 404 Not Found status code when fish species slug does not exist in database</li>
-                        <li>Update error handling middleware to distinguish between server errors (500) and missing resources (404)</li>
-                        <li>Add validation/check for fish species existence before processing request</li>
-                        <li>Ensure Next.js catch-all routes or error boundaries return appropriate status codes</li>
-                        <li>Update error page to display appropriate message for 404 vs 500 errors</li>
-                        <li>Test with various invalid slugs to ensure consistent 404 responses</li>
-                        <li>Review server logs to identify why invalid slugs trigger 500 errors instead of 404</li>
-                    </ol>
-
-                    <h3>Additional Notes</h3>
-                    <p>This bug was discovered during execution of TC-013 (Invalid Fish Species Slug Returns Appropriate Error). The test case explicitly requires "Page returns an appropriate error response (404 Not Found or custom error page)" - this requirement fails because a 500 error is not appropriate for a missing resource scenario. While the error page is user-friendly and provides navigation options, the underlying HTTP status code is incorrect and violates web standards. This is a common issue in web applications where error handling doesn't properly distinguish between different types of errors.</p>
-                </div>
-            </div>
-
-            <!-- Template for bug reports - Copy this section for each new bug -->
-            <!--
-            <div class="bug">
-                <div class="bug-header">
-                    <span class="bug-id">BUG-XXX: [Bug Title]</span>
-                    <div>
-                        <span class="badge badge-[severity]">[Severity] Severity</span>
-                        <span class="badge badge-[priority]">[Priority] Priority</span>
-                    </div>
-                </div>
-
-                <table style="margin-top: 15px;">
-                    <tr>
-                        <th style="width: 200px;">Bug ID</th>
-                        <td>BUG-XXX</td>
-                    </tr>
-                    <tr>
-                        <th>Summary</th>
-                        <td>[Brief summary of the bug]</td>
-                    </tr>
-                    <tr>
-                        <th>Type</th>
-                        <td>[Functional Bug / UI Issue / SEO Issue / Content Issue]</td>
-                    </tr>
-                    <tr>
-                        <th>Reported By</th>
-                        <td>[Your Name]</td>
-                    </tr>
-                    <tr>
-                        <th>Date Reported</th>
-                        <td>[Date]</td>
-                    </tr>
-                    <tr>
-                        <th>Status</th>
-                        <td>Open</td>
-                    </tr>
-                    <tr>
-                        <th>Severity</th>
-                        <td><span class="badge badge-[severity]">[Severity]</span> - [Explanation]</td>
-                    </tr>
-                    <tr>
-                        <th>Priority</th>
-                        <td><span class="badge badge-[priority]">[Priority]</span> - [Explanation]</td>
-                    </tr>
-                    <tr>
-                        <th>Related Test Case</th>
-                        <td><a href="test-cases.html#TC-XXX">TC-XXX: [Test Case Name]</a></td>
-                    </tr>
-                    <tr>
-                        <th>Test Object</th>
-                        <td>[Component or system being tested - e.g., Fish Page for Salmon]</td>
-                    </tr>
-                    <tr>
-                        <th>Test Environment</th>
-                        <td>
-                            <strong>OS:</strong> [Operating System]<br>
-                            <strong>Browser:</strong> [Browser and version]<br>
-                            <strong>URL:</strong> [Page URL where bug was found]<br>
-                            <strong>Date:</strong> [Date when anomaly was observed]
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Context</th>
-                        <td>
-                            <strong>Test Case:</strong> [Related test case ID]<br>
-                            <strong>Test Activity:</strong> [Test execution, exploratory testing, etc.]<br>
-                            <strong>Test Technique:</strong> [Test technique used - e.g., checklist-based, exploratory]<br>
-                            <strong>SDLC Phase:</strong> [System testing, acceptance testing, etc.]
-                        </td>
-                    </tr>
-                </table>
-
                 <h3>Description</h3>
-                <p>[Detailed description of the failure/anomaly, what it affects, and why it's a problem. According to ISTQB, this should enable reproduction and resolution.]</p>
+                <p>Accessing invalid fish species slug (e.g., <code>/fish/xyz123</code>) returns 500 Internal Server Error instead of 404 Not Found. 500 indicates server problem, not missing resource, violating HTTP status code best practices.</p>
 
                 <h3>Steps to Reproduce</h3>
-                <p><strong>Test Steps:</strong> The test steps that detected the anomaly (ISTQB Foundation Level v4.0.1, Section 5.5)</p>
                 <ol>
-                    <li>[Step 1]</li>
-                    <li>[Step 2]</li>
-                    <li>[Step 3]</li>
-                    <li>[Continue as needed...]</li>
+                    <li>Navigate to <a href="https://nextjs15.dev.fishingbooker.com/fish/xyz123" target="_blank">https://nextjs15.dev.fishingbooker.com/fish/xyz123</a> (invalid slug)</li>
+                    <li>Log in with credentials: fishingbooker / QAFBTest (if required)</li>
+                    <li>Observe error page displayed</li>
+                    <li>Check Network tab to verify HTTP status code</li>
+                    <li>Note page returns 500 instead of 404</li>
                 </ol>
-                <p><strong>Note:</strong> Include any relevant test logs, database dumps, or other context that helps reproduce the issue.</p>
 
                 <h3>Expected Result</h3>
-                <p>[What should happen when following the steps. This is the test oracle - the source used to determine expected results (ISTQB Foundation Level v4.0.1, Section 1.3.4).]</p>
+                <p>Page should return 404 Not Found error indicating requested fish species page does not exist, with user-friendly message and navigation options.</p>
 
                 <h3>Actual Result</h3>
-                <p>[What actually happens when following the steps. This describes the failure observed during test execution.]</p>
+                <p>Page returns 500 Internal Server Error with message "500 This is an error. We are already working on this..." 500 status suggests server problem rather than missing resource.</p>
 
                 <h3>Impact</h3>
                 <ul>
-                    <li><strong>User Experience:</strong> [How this affects users]</li>
-                    <li><strong>Business Impact:</strong> [How this affects the business]</li>
-                    <li><strong>SEO Impact:</strong> [If applicable, how this affects SEO]</li>
+                    <li>Violates HTTP standards - 500 indicates server problems, not missing resources</li>
+                    <li>Developer confusion - error logs incorrectly show server crashes</li>
+                    <li>Users may think site is broken</li>
+                    <li>SEO impact - search engines may interpret as site problems</li>
+                    <li>Monitoring systems incorrectly categorize as critical server errors</li>
                 </ul>
 
-                <h3>Evidence</h3>
-                <div style="margin: 20px 0;">
-                    <p><strong>Screenshot: [Description of screenshot]</strong></p>
-                    <img src="bug_data/bug-xxx-screenshot1.png" alt="[Alt text]" style="max-width: 100%; height: auto; border: 1px solid #ccc; margin-bottom: 20px;">
-                    <p><em>[Caption explaining what the screenshot shows]</em></p>
-                </div>
-
-                <h3>Root Cause Analysis</h3>
-                <p>[If known, explanation of why this bug might be occurring]</p>
+                <h3>Root Cause</h3>
+                <p>Server-side code throws unhandled exception when processing invalid slug, or error handling middleware incorrectly maps all errors to 500 status.</p>
 
                 <h3>Suggested Fix</h3>
-                <p>[Recommendation for how to fix the bug]</p>
-
-                <h3>Additional Notes</h3>
-                <p>[Any additional information, workarounds, or related issues]</p>
-            </div>
-            -->
-
-            <div class="card" style="background-color: #FFF3CD; border-left: 4px solid #FFC107;">
-                <h3>📝 Instructions for Adding Bugs</h3>
-                <p>To add a new bug report:</p>
                 <ol>
-                    <li>Copy the template section above (between the HTML comments)</li>
-                    <li>Replace all placeholder text with actual bug information</li>
-                    <li>Save screenshots in the <code>docs/bug_data/</code> directory with descriptive names (e.g., <code>bug-001-screenshot1.png</code>)</li>
-                    <li>Reference screenshots using relative paths: <code>bug_data/your-screenshot.png</code></li>
-                    <li>Update the bug summary table below</li>
+                    <li>Implement proper error handling for invalid fish species slugs</li>
+                    <li>Return 404 when fish species slug does not exist in database</li>
+                    <li>Update error handling middleware to distinguish 500 (server errors) from 404 (missing resources)</li>
+                    <li>Add validation to check fish species existence before processing</li>
+                    <li>Test with various invalid slugs to ensure consistent 404 responses</li>
                 </ol>
-                <p><strong>Screenshot Naming Convention:</strong> <code>bug-[ID]-[description].png</code> (e.g., <code>bug-001-missing-alt-text.png</code>)</p>
             </div>
 
             <h2>Defect Summary</h2>
@@ -1366,52 +984,6 @@
                         </tr>
                     </tbody>
                 </table>
-            </div>
-
-
-            <h2>Bug Reporting Guidelines</h2>
-            
-            <div class="card">
-                <h3>Severity Levels (ISTQB Foundation Level v4.0.1)</h3>
-                <p>Severity indicates the <strong>degree of impact</strong> of the defect on the interests of stakeholders or requirements. Severity is typically assigned by the tester who discovers the defect.</p>
-                <ul>
-                    <li><strong>Critical:</strong> System crash, data loss, security vulnerability, complete feature failure, prevents core functionality</li>
-                    <li><strong>High:</strong> Major functionality broken, significant user impact, workaround not available, affects important features</li>
-                    <li><strong>Medium:</strong> Feature partially broken, moderate user impact, workaround available, affects secondary features</li>
-                    <li><strong>Low:</strong> Minor issue, cosmetic problem, low user impact, easy workaround, does not significantly affect functionality</li>
-                </ul>
-
-                <h3>Priority Levels</h3>
-                <p>Priority indicates the <strong>urgency to fix</strong> the defect. Priority is typically assigned by project management or product owner based on business needs.</p>
-                <ul>
-                    <li><strong>High:</strong> Must be fixed immediately, blocks other work, affects release schedule</li>
-                    <li><strong>Medium:</strong> Should be fixed soon, impacts user experience, should be fixed before release</li>
-                    <li><strong>Low:</strong> Can be fixed later, minor impact, may be deferred to future releases</li>
-                </ul>
-                <p><strong>Note:</strong> Severity and priority are independent. A high-severity defect may have low priority if it affects rarely-used features, while a low-severity defect may have high priority if it affects critical business processes.</p>
-
-                <h3>Defect Status Workflow</h3>
-                <p>Typical defect status values (ISTQB Foundation Level v4.0.1):</p>
-                <ul>
-                    <li><strong>Open:</strong> Defect has been reported and is awaiting analysis</li>
-                    <li><strong>Deferred:</strong> Defect fix is postponed to a future release</li>
-                    <li><strong>Duplicate:</strong> Defect is a duplicate of an existing defect</li>
-                    <li><strong>Waiting to be fixed:</strong> Defect has been confirmed and is in the development queue</li>
-                    <li><strong>Awaiting confirmation testing:</strong> Defect has been fixed and is waiting for retest</li>
-                    <li><strong>Re-opened:</strong> Defect was closed but has reappeared or was not properly fixed</li>
-                    <li><strong>Closed:</strong> Defect has been fixed and confirmed, or is accepted as-is</li>
-                    <li><strong>Rejected:</strong> Defect is not a real defect (e.g., false positive, works as designed)</li>
-                </ul>
-
-                <h3>Best Practices</h3>
-                <ul>
-                    <li>Provide clear, step-by-step reproduction instructions</li>
-                    <li>Include screenshots or screen recordings for visual bugs</li>
-                    <li>Test on multiple browsers/devices if applicable</li>
-                    <li>Check if the bug is reproducible consistently</li>
-                    <li>Document any workarounds that exist</li>
-                    <li>Link bugs to related test cases</li>
-                </ul>
             </div>
 
         </main>
