@@ -70,9 +70,14 @@
                             <td>3</td>
                             <td>Medium</td>
                         </tr>
+                        <tr>
+                            <td>Negative Testing</td>
+                            <td>1</td>
+                            <td>Medium</td>
+                        </tr>
                         <tr style="font-weight: 600;">
                             <td>TOTAL</td>
-                            <td>12</td>
+                            <td>13</td>
                             <td>-</td>
                         </tr>
                     </tbody>
@@ -85,6 +90,7 @@
                     <li><a href="#functional">Functional Tests (TC-001 to TC-005)</a></li>
                     <li><a href="#seo">SEO Tests (TC-006 to TC-009)</a></li>
                     <li><a href="#content">Content Validation Tests (TC-010 to TC-012)</a></li>
+                    <li><a href="#negative">Negative Tests (TC-013)</a></li>
                 </ul>
             </div>
 
@@ -113,7 +119,7 @@
 
                 <div class="test-case-section">
                     <h4>Test Data</h4>
-                    <p>Fish page URL: <a href="https://nextjs15.dev.fishingbooker.com/fish/snapper-red" target="_blank">https://nextjs15.dev.fishingbooker.com/fish/snapper-red</a></p>
+                    <p>Fish page URL: <a href="https://nextjs15.dev.fishingbooker.com/fish/snapper-red" target="_blank">https://nextjs15.dev.fishingbooker.com/fish/{species-slug}</a> (e.g., /fish/snapper-red)</p>
                 </div>
 
                 <div class="test-case-section">
@@ -128,7 +134,7 @@
 
                 <div class="test-case-section">
                     <h4>When</h4>
-                    <p>User navigates to a fish page (e.g., /fish/salmon)</p>
+                    <p>User navigates to a fish page (e.g., /fish/{species-slug})</p>
                 </div>
 
                 <div class="test-case-section">
@@ -878,6 +884,64 @@
                 </div>
             </div>
 
+            <!-- TC-013 -->
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-case-id">TC-013: Invalid Fish Species Slug Returns Appropriate Error</span>
+                    <div>
+                        <span class="badge badge-manual">Manual</span>
+                        <span class="badge badge-medium">Medium Priority</span>
+                    </div>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Objective</h4>
+                    <p>Verify that the fish page has clear and effective call-to-action (CTA) elements.</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Preconditions</h4>
+                    <p>User is on a fish page</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Data</h4>
+                    <p>CTA buttons, links, and prompts on the page</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Given</h4>
+                    <p>User is viewing a fish page</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>When</h4>
+                    <p>User looks for call-to-action elements</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Then</h4>
+                    <p>
+                        • At least one clear CTA is present<br>
+                        • CTA text is action-oriented (e.g., "Book Now", "View Charters", "Find Trips")<br>
+                        • CTA buttons are visually prominent<br>
+                        • CTA links lead to relevant pages (charter listings, booking pages)<br>
+                        • CTA placement is logical and visible<br>
+                        • Multiple CTAs may be present but are not overwhelming
+                    </p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Technique</h4>
+                    <p>Usability Testing, Visual Inspection</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Risk Coverage</h4>
+                    <p>Usability - Conversion optimization (MEDIUM risk)</p>
+                </div>
+            </div>
+
             <h2>Test Case Traceability Matrix</h2>
             
             <div class="card">
@@ -973,6 +1037,13 @@
                             <td>TC-012</td>
                             <td>Usability</td>
                             <td>Usability Testing</td>
+                            <td>Manual</td>
+                            <td>Medium</td>
+                        </tr>
+                        <tr>
+                            <td>TC-013</td>
+                            <td>PR-05</td>
+                            <td>Negative Testing</td>
                             <td>Manual</td>
                             <td>Medium</td>
                         </tr>
