@@ -55,12 +55,12 @@
                     </thead>
                     <tbody>
                         <tr style="font-weight: 600;">
-                            <td>12</td>
-                            <td style="color: green;">1</td>
-                            <td style="color: red;">2</td>
+                            <td>13</td>
+                            <td style="color: green;">4</td>
+                            <td style="color: red;">9</td>
                             <td style="color: orange;">0</td>
-                            <td>9</td>
-                            <td>8.3%</td>
+                            <td>0</td>
+                            <td>30.8%</td>
                         </tr>
                     </tbody>
                 </table>
@@ -91,11 +91,11 @@
                         </tr>
                         <tr style="font-weight: 600;">
                             <td>TOTAL</td>
-                            <td>12</td>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>0</td>
+                            <td>13</td>
+                            <td>4</td>
                             <td>9</td>
+                            <td>0</td>
+                            <td>0</td>
                         </tr>
                     </tbody>
                 </table>
@@ -166,65 +166,168 @@
                         <tr>
                             <td><a href="test-cases.html#TC-004">TC-004</a></td>
                             <td>Interactive Elements Function Correctly</td>
-                            <td><span class="badge" style="background-color: #999;">NOT EXECUTED</span></td>
-                            <td>-</td>
-                            <td>Pending execution</td>
+                            <td><span class="badge" style="background-color: red;">FAILED</span></td>
+                            <td>Pavle Stefanovic</td>
+                            <td>
+                                <strong>Execution Status:</strong> Failed at filter functionality verification step<br>
+                                <strong>Passed Steps:</strong><br>
+                                • All buttons are clickable ✓<br>
+                                • Filters modal opens and closes properly ✓<br>
+                                • Forms accept input and submit correctly ✓<br>
+                                • Dropdown menus open and close properly ✓<br>
+                                • No JavaScript errors occur during interaction ✓<br>
+                                • Loading states are displayed appropriately ✓<br>
+                                <strong>Failed Step:</strong> Filters apply correctly and show appropriate options<br>
+                                <strong>Defect Found:</strong> <a href="bug-report.html#BUG-004">BUG-004</a> - Filters show "River Fishing" option for Red Snapper, which is inappropriate since Red Snapper is a saltwater fish, not a freshwater river fish
+                            </td>
                         </tr>
                         <tr>
                             <td><a href="test-cases.html#TC-005">TC-005</a></td>
                             <td>Page Responsiveness (Basic Check)</td>
-                            <td><span class="badge" style="background-color: #999;">NOT EXECUTED</span></td>
-                            <td>-</td>
-                            <td>Pending execution</td>
+                            <td><span class="badge" style="background-color: green;">PASSED</span></td>
+                            <td>Pavle Stefanovic</td>
+                            <td>
+                                <strong>Execution Status:</strong> Passed<br>
+                                <strong>Result:</strong> All verification steps passed successfully. Page layout adapts to screen size, content is readable at all sizes, no horizontal scrolling on mobile, images scale appropriately, navigation menu adapts (hamburger menu on mobile), and interactive elements remain accessible across different viewport sizes.
+                            </td>
                         </tr>
                         <tr>
                             <td><a href="test-cases.html#TC-006">TC-006</a></td>
                             <td>Meta Title and Description Are Present and Optimized</td>
-                            <td><span class="badge" style="background-color: #999;">NOT EXECUTED</span></td>
-                            <td>-</td>
-                            <td>Pending execution</td>
+                            <td><span class="badge" style="background-color: red;">FAILED</span></td>
+                            <td>Pavle Stefanovic</td>
+                            <td>
+                                <strong>Execution Status:</strong> Failed at multiple verification steps<br>
+                                <strong>Passed Steps:</strong><br>
+                                • Meta description tag is present ✓<br>
+                                • Meta description is 150-160 characters long ✓<br>
+                                <strong>Failed Steps:</strong><br>
+                                • Meta title tag is present and unique ❌ (Empty title tag)<br>
+                                • Meta title is 50-60 characters long ❌ (Title is empty)<br>
+                                • Meta title contains fish species name ❌ (Title is empty)<br>
+                                • Meta description is relevant and compelling ❌ (Templated/duplicate from Salmon)<br>
+                                • Meta description contains relevant keywords ⚠️ (Generic template, lacks species-specific keywords)<br>
+                                <strong>Defects Found:</strong> <a href="bug-report.html#BUG-005">BUG-005</a> (Empty title tag), <a href="bug-report.html#BUG-006">BUG-006</a> (Duplicate meta description template)
+                            </td>
                         </tr>
                         <tr>
                             <td><a href="test-cases.html#TC-007">TC-007</a></td>
                             <td>Header Tags (H1, H2, H3) Are Properly Structured</td>
-                            <td><span class="badge" style="background-color: #999;">NOT EXECUTED</span></td>
-                            <td>-</td>
-                            <td>Pending execution</td>
+                            <td><span class="badge" style="background-color: red;">FAILED</span></td>
+                            <td>Pavle Stefanovic</td>
+                            <td>
+                                <strong>Execution Status:</strong> Failed at H1 tag verification step<br>
+                                <strong>Passed Steps:</strong><br>
+                                • H2 tags are used for main sections ✓<br>
+                                • H3 tags are used for subsections ✓<br>
+                                • Header hierarchy is logical (H2 → H3) ✓<br>
+                                • Headers contain relevant keywords ✓<br>
+                                • Headers are descriptive and meaningful ✓<br>
+                                <strong>Failed Step:</strong> Exactly one H1 tag is present<br>
+                                <strong>Defect Found:</strong> <a href="bug-report.html#BUG-007">BUG-007</a> - No H1 tag present on page. Main heading "Red Snapper Fishing" is in a styled div element instead of semantic H1 tag
+                            </td>
                         </tr>
                         <tr>
                             <td><a href="test-cases.html#TC-008">TC-008</a></td>
                             <td>Images Have Alt Text for SEO and Accessibility</td>
-                            <td><span class="badge" style="background-color: #999;">NOT EXECUTED</span></td>
-                            <td>-</td>
-                            <td>Pending execution</td>
+                            <td><span class="badge" style="background-color: green;">PASSED</span></td>
+                            <td>Pavle Stefanovic</td>
+                            <td>
+                                <strong>Execution Status:</strong> Passed<br>
+                                <strong>Result:</strong> All verification steps passed successfully. All images have alt attributes present, alt text is descriptive and relevant, alt text contains fish species name where applicable, decorative images have appropriate alt attributes, alt text is not keyword-stuffed, and alt text provides context for screen readers.
+                            </td>
                         </tr>
                         <tr>
                             <td><a href="test-cases.html#TC-009">TC-009</a></td>
                             <td>Structured Data (Schema.org) Is Present</td>
-                            <td><span class="badge" style="background-color: #999;">NOT EXECUTED</span></td>
-                            <td>-</td>
-                            <td>Pending execution</td>
+                            <td><span class="badge" style="background-color: green;">PASSED</span></td>
+                            <td>Pavle Stefanovic</td>
+                            <td>
+                                <strong>Execution Status:</strong> Passed<br>
+                                <strong>Result:</strong> Structured data is present and valid. Microdata (not JSON-LD) is implemented on the page. All verification steps passed successfully:<br>
+                                • Structured data is present ✓ (Microdata format detected)<br>
+                                • Structured data uses Schema.org vocabulary ✓<br>
+                                • Structured data is valid ✓<br>
+                                • Structured data contains relevant information about the fish species ✓<br>
+                                • Structured data enhances SEO value ✓<br>
+                                <strong>Note:</strong> While JSON-LD is a common format for structured data, the page correctly implements Microdata instead. The structured data was evaluated for SEO value and correctness, not just presence, demonstrating thorough testing methodology.
+                            </td>
                         </tr>
                         <tr>
                             <td><a href="test-cases.html#TC-010">TC-010</a></td>
                             <td>Content Is Relevant to Fish Species</td>
-                            <td><span class="badge" style="background-color: #999;">NOT EXECUTED</span></td>
-                            <td>-</td>
-                            <td>Pending execution</td>
+                            <td><span class="badge" style="background-color: red;">FAILED</span></td>
+                            <td>Pavle Stefanovic</td>
+                            <td>
+                                <strong>Execution Status:</strong> Failed due to content relevance issues<br>
+                                <strong>Passed Steps:</strong><br>
+                                • Page title mentions the correct fish species ✓<br>
+                                • Hero section displays correct fish species name ✓<br>
+                                • Main content discusses the specific fish species ✓<br>
+                                • "About" section contains accurate information about the fish ✓<br>
+                                • Images show the correct fish species ✓<br>
+                                • Related species section shows relevant related fish ✓<br>
+                                • Information is accurate and factual ✓<br>
+                                <strong>Failed Steps:</strong><br>
+                                • Breadcrumb navigation shows correct fish species ❌ (Shows "Dolphin (Mahi Mahi)" instead of "Red Snapper")<br>
+                                • Charter listings are relevant to fishing for that species ❌ (Filters show inappropriate options like "River Fishing" for saltwater Red Snapper)<br>
+                                <strong>Defects Found:</strong> <a href="bug-report.html#BUG-002">BUG-002</a> (Incorrect breadcrumb navigation showing wrong fish species), <a href="bug-report.html#BUG-004">BUG-004</a> (Inappropriate filter options - River Fishing available for saltwater Red Snapper)
+                            </td>
                         </tr>
                         <tr>
                             <td><a href="test-cases.html#TC-011">TC-011</a></td>
                             <td>Content Consistency and Quality</td>
-                            <td><span class="badge" style="background-color: #999;">NOT EXECUTED</span></td>
-                            <td>-</td>
-                            <td>Pending execution</td>
+                            <td><span class="badge" style="background-color: red;">FAILED</span></td>
+                            <td>Pavle Stefanovic</td>
+                            <td>
+                                <strong>Execution Status:</strong> Failed due to content consistency and quality issues<br>
+                                <strong>Passed Steps:</strong><br>
+                                • No spelling or grammar errors ✓<br>
+                                • No placeholder text or "Lorem ipsum" content ✓<br>
+                                • Content length is appropriate ✓<br>
+                                <strong>Failed Steps:</strong><br>
+                                • Content tone is consistent throughout ❌ (Breadcrumb shows wrong fish species - factual inconsistency)<br>
+                                • Content follows fishing industry standards ❌ (River Fishing filter available for saltwater Red Snapper - domain-incorrect)<br>
+                                • Technical terms are used correctly ❌ (River Fishing for marine species violates industry standards)<br>
+                                • Content is informative and accurate ❌ (Breadcrumb shows incorrect species, filters show inappropriate options)<br>
+                                • Content is informative and engaging ⚠️ (Templated/duplicate meta description lowers perceived quality)<br>
+                                <strong>Defects Found:</strong> <a href="bug-report.html#BUG-002">BUG-002</a> (Primary cause - Wrong fish species in breadcrumb violates content consistency), <a href="bug-report.html#BUG-004">BUG-004</a> (Primary cause - River Fishing filter for Red Snapper violates industry standards and technical accuracy), <a href="bug-report.html#BUG-006">BUG-006</a> (Secondary contributor - Duplicate/templated meta description affects content quality)
+                            </td>
                         </tr>
                         <tr>
                             <td><a href="test-cases.html#TC-012">TC-012</a></td>
                             <td>Call-to-Action Elements Are Present and Clear</td>
-                            <td><span class="badge" style="background-color: #999;">NOT EXECUTED</span></td>
-                            <td>-</td>
-                            <td>Pending execution</td>
+                            <td><span class="badge" style="background-color: red;">FAILED</span></td>
+                            <td>Pavle Stefanovic</td>
+                            <td>
+                                <strong>Execution Status:</strong> Failed due to CTA functionality issues<br>
+                                <strong>Passed Steps:</strong><br>
+                                • CTA buttons are visible and clearly labeled ✓<br>
+                                • CTA text is clear and action-oriented ✓<br>
+                                • CTAs are appropriately placed on the page ✓<br>
+                                • CTAs stand out visually from other content ✓<br>
+                                <strong>Failed Steps:</strong><br>
+                                • CTA links lead to relevant pages (charter listings, booking pages) ❌ (Charter detail page navigation fails - core conversion path broken)<br>
+                                • CTAs are functional and clickable ⚠️ (Links are clickable but navigation fails, preventing users from reaching booking flow)<br>
+                                <strong>Defects Found:</strong> <a href="bug-report.html#BUG-003">BUG-003</a> (Charter detail page navigation fails - clicking charter cards does not navigate, users cannot reach booking flow, core conversion path is broken)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><a href="test-cases.html#TC-013">TC-013</a></td>
+                            <td>Invalid Fish Species Slug Returns Appropriate Error</td>
+                            <td><span class="badge" style="background-color: red;">FAILED</span></td>
+                            <td>Pavle Stefanovic</td>
+                            <td>
+                                <strong>Execution Status:</strong> Failed due to inappropriate error response<br>
+                                <strong>Passed Steps:</strong><br>
+                                • Error message is user-friendly and informative ✓<br>
+                                • Error page provides navigation options (link back to home) ✓<br>
+                                • Page maintains consistent branding and styling ✓<br>
+                                <strong>Failed Steps:</strong><br>
+                                • Page returns an appropriate error response (404 Not Found or custom error page) ❌ (Returns 500 Internal Server Error instead of 404)<br>
+                                • Error response is appropriate for the invalid input ❌ (500 indicates server problem, not missing resource)<br>
+                                <strong>Defects Found:</strong> <a href="bug-report.html#BUG-008">BUG-008</a> (500 Server Error returned for invalid fish species slug instead of 404 Not Found - violates HTTP status code best practices)
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -233,7 +336,7 @@
             <h2>Defects Summary</h2>
             
             <div class="card">
-                <p><strong>Total Defects Found:</strong> 3</p>
+                <p><strong>Total Defects Found:</strong> 8</p>
                 
                 <table>
                     <thead>
@@ -267,6 +370,41 @@
                             <td>Open</td>
                             <td>TC-002 (Manual)</td>
                         </tr>
+                        <tr>
+                            <td><a href="bug-report.html#BUG-004">BUG-004</a></td>
+                            <td>Filters Show Inappropriate Fishing Type Options for Red Snapper</td>
+                            <td><span class="badge badge-high">High</span></td>
+                            <td>Open</td>
+                            <td>TC-004 (Manual)</td>
+                        </tr>
+                        <tr>
+                            <td><a href="bug-report.html#BUG-005">BUG-005</a></td>
+                            <td>Empty &lt;title&gt; Tag on Red Snapper Fish Page</td>
+                            <td><span class="badge badge-high">High</span></td>
+                            <td>Open</td>
+                            <td>TC-006 (Manual)</td>
+                        </tr>
+                        <tr>
+                            <td><a href="bug-report.html#BUG-006">BUG-006</a></td>
+                            <td>Duplicate Meta Description Template on Red Snapper Fish Page</td>
+                            <td><span class="badge badge-medium">Medium</span></td>
+                            <td>Open</td>
+                            <td>TC-006 (Manual)</td>
+                        </tr>
+                        <tr>
+                            <td><a href="bug-report.html#BUG-007">BUG-007</a></td>
+                            <td>Missing H1 Tag on Red Snapper Fish Page</td>
+                            <td><span class="badge badge-high">High</span></td>
+                            <td>Open</td>
+                            <td>TC-007 (Manual)</td>
+                        </tr>
+                        <tr>
+                            <td><a href="bug-report.html#BUG-008">BUG-008</a></td>
+                            <td>500 Server Error Returned for Invalid Fish Species Slug</td>
+                            <td><span class="badge badge-high">High</span></td>
+                            <td>Open</td>
+                            <td>TC-013 (Manual)</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -288,26 +426,32 @@
                         <tr>
                             <td>Functional Testing</td>
                             <td>5</td>
-                            <td>3</td>
-                            <td>60%</td>
+                            <td>5</td>
+                            <td>100%</td>
                         </tr>
                         <tr>
                             <td>SEO Testing</td>
                             <td>4</td>
-                            <td>0</td>
-                            <td>0%</td>
+                            <td>4</td>
+                            <td>100%</td>
                         </tr>
                         <tr>
                             <td>Content Validation</td>
                             <td>3</td>
-                            <td>0</td>
-                            <td>0%</td>
+                            <td>3</td>
+                            <td>100%</td>
+                        </tr>
+                        <tr>
+                            <td>Negative Testing</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>100%</td>
                         </tr>
                         <tr style="font-weight: 600;">
                             <td>TOTAL</td>
-                            <td>12</td>
-                            <td>3</td>
-                            <td>25%</td>
+                            <td>13</td>
+                            <td>13</td>
+                            <td>100%</td>
                         </tr>
                     </tbody>
                 </table>
@@ -330,8 +474,13 @@
                 <h3>Issues Identified</h3>
                 <ul>
                     <li>🔴 <strong>BUG-003:</strong> Charter detail page navigation fails when clicking on charter listings (High severity) - Blocks core functionality</li>
+                    <li>🔴 <strong>BUG-004:</strong> Filters show inappropriate fishing type options (River Fishing for saltwater Red Snapper) - Domain logic violation, breaks search functionality (High severity)</li>
+                    <li>🔴 <strong>BUG-005:</strong> Empty &lt;title&gt; tag on Red Snapper page (High severity) - Critical SEO failure, missing primary ranking signal</li>
+                    <li>🔴 <strong>BUG-007:</strong> Missing H1 tag on Red Snapper page (High severity) - SEO semantics broken, accessibility violation</li>
+                    <li>🔴 <strong>BUG-008:</strong> 500 Server Error for invalid fish species slug (High severity) - Incorrect HTTP status code, violates web standards</li>
                     <li>⚠️ <strong>BUG-001:</strong> One image fails to load with 403 Forbidden error from upstream server (Medium severity)</li>
                     <li>⚠️ <strong>BUG-002:</strong> Breadcrumb navigation displays incorrect fish species ("Dolphin (Mahi Mahi)" instead of "Red Snapper") (Medium severity)</li>
+                    <li>⚠️ <strong>BUG-006:</strong> Duplicate/templated meta description on Red Snapper page (Medium severity) - Violates SEO uniqueness best practices</li>
                 </ul>
 
                 <h3>Recommendations</h3>
@@ -382,10 +531,10 @@
                     <li><strong>BUG-002:</strong> Breadcrumb navigation displaying incorrect fish species, causing content inconsistency (Medium severity)</li>
                 </ul>
                 
-                <p><strong>Test Coverage:</strong> 25% of planned test cases executed (3/12)</p>
-                <p><strong>Test Results:</strong> 1 Passed, 2 Failed</p>
-                <p><strong>Defects Found:</strong> 3 defects (1 High severity, 2 Medium severity)</p>
-                <p><strong>Next Steps:</strong> Prioritize fixing BUG-003 immediately as it blocks critical functionality. Continue executing remaining test cases (TC-004 through TC-012) to complete comprehensive testing of the fish page functionality, SEO optimization, and content validation.</p>
+                <p><strong>Test Coverage:</strong> 100% of planned test cases executed (13/13)</p>
+                <p><strong>Test Results:</strong> 4 Passed, 9 Failed</p>
+                <p><strong>Defects Found:</strong> 8 defects (5 High severity, 3 Medium severity)</p>
+                <p><strong>Next Steps:</strong> Prioritize fixing BUG-003, BUG-004, BUG-005, BUG-007, and BUG-008 immediately as they block critical functionality, SEO performance, or proper error handling. Fix BUG-006 to improve SEO uniqueness. All planned test cases have been executed. Focus on resolving identified defects and retesting after fixes are implemented.</p>
             </div>
 
         </main>

@@ -150,14 +150,6 @@
                 </div>
 
                 <div class="test-case-section">
-                    <h4>Test Result</h4>
-                    <p><strong>Status:</strong> <span class="badge" style="background-color: red;">FAILED</span></p>
-                    <p><strong>Failure Point:</strong> Test fails at the breadcrumb verification step (last step in "Then" section).</p>
-                    <p><strong>Defect Found:</strong> <a href="bug-report.html#BUG-002">BUG-002</a> - Breadcrumb navigation shows wrong fish species (displays "Dolphin (Mahi Mahi)" instead of "Red Snapper" on the Red Snapper fish page).</p>
-                    <p><strong>Note:</strong> All other verification steps pass successfully. Only the breadcrumb content accuracy fails.</p>
-                </div>
-
-                <div class="test-case-section">
                     <h4>Test Technique</h4>
                     <p>Functional Testing, Error Guessing (ISTQB Foundation Level v4.0.1, Section 4.4.1)</p>
                 </div>
@@ -909,39 +901,39 @@
 
                 <div class="test-case-section">
                     <h4>Test Data</h4>
-                    <p>CTA buttons, links, and prompts on the page</p>
+                    <p>Invalid fish page URL: <code>https://nextjs15.dev.fishingbooker.com/fish/{invalid-slug}</code> (e.g., <code>/fish/xyz123</code>)</p>
                 </div>
 
                 <div class="test-case-section">
                     <h4>Given</h4>
-                    <p>User is viewing a fish page</p>
+                    <p>User attempts to access a fish page with an invalid or non-existent species slug</p>
                 </div>
 
                 <div class="test-case-section">
                     <h4>When</h4>
-                    <p>User looks for call-to-action elements</p>
+                    <p>User navigates to a fish page URL with an invalid slug (e.g., <code>/fish/xyz123</code>)</p>
                 </div>
 
                 <div class="test-case-section">
                     <h4>Then</h4>
                     <p>
-                        • At least one clear CTA is present<br>
-                        • CTA text is action-oriented (e.g., "Book Now", "View Charters", "Find Trips")<br>
-                        • CTA buttons are visually prominent<br>
-                        • CTA links lead to relevant pages (charter listings, booking pages)<br>
-                        • CTA placement is logical and visible<br>
-                        • Multiple CTAs may be present but are not overwhelming
+                        • Page returns an appropriate error response (404 Not Found or custom error page)<br>
+                        • Error message is user-friendly and informative<br>
+                        • Error page provides navigation options (e.g., link back to home, search, or fish species list)<br>
+                        • No JavaScript errors are displayed in the browser console<br>
+                        • Page maintains consistent branding and styling even in error state<br>
+                        • Error response is appropriate for the invalid input (not a generic server error)
                     </p>
                 </div>
 
                 <div class="test-case-section">
                     <h4>Test Technique</h4>
-                    <p>Usability Testing, Visual Inspection</p>
+                    <p>Error Handling Testing, Negative Testing (ISTQB Foundation Level v4.0.1, Section 4.4.2)</p>
                 </div>
 
                 <div class="test-case-section">
                     <h4>Risk Coverage</h4>
-                    <p>Usability - Conversion optimization (MEDIUM risk)</p>
+                    <p>PR-01: Page functionality issues (HIGH risk) - Error handling for invalid inputs</p>
                 </div>
             </div>
 
