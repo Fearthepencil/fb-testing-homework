@@ -33,7 +33,7 @@
             <h1>Test Cases</h1>
             
             <div class="card">
-                <p>This document contains 12 test cases covering FishingBooker's fish page functionality, SEO optimization, and content validation. All test cases are written in BDD (Behavior-Driven Development) Given-When-Then format for clarity and follow <strong>ISTQB Foundation Level v4.0.1</strong> standards.</p>
+                <p>This document contains 12 test cases covering FishingBooker's fish page functionality, SEO optimization, and content validation. Each test case focuses on a specific aspect without redundancy. All test cases are written in BDD (Behavior-Driven Development) Given-When-Then format for clarity and follow <strong>ISTQB Foundation Level v4.0.1</strong> standards.</p>
                 
                 <h3>ISTQB Test Case Structure</h3>
                 <p>According to ISTQB Foundation Level v4.0.1 (Section 1.4.1), each test case includes:</p>
@@ -138,13 +138,7 @@
                         • No JavaScript errors in browser console<br>
                         • No 404 or 500 errors displayed<br>
                         • Page content is visible and rendered correctly<br>
-                        • No broken images or missing assets<br>
-                        • Page is interactive (buttons, links respond to clicks)<br>
-                        • Hero section with fish name and search bar is displayed<br>
-                        • Breadcrumb navigation is present and correct<br>
-                        • Charter listings section is visible<br>
-                        • Related species section is displayed<br>
-                        • About section with fish information is present
+                        • Main page sections are present (hero, charter listings, related species, about section)
                     </p>
                 </div>
 
@@ -210,8 +204,6 @@
                         • Links navigate to correct pages<br>
                         • No broken links (404 errors)<br>
                         • External links open in new tab (if applicable)<br>
-                        • Breadcrumb navigation works correctly and displays correct fish species name<br>
-                        • Breadcrumb links navigate to correct pages (Home, Fish Species)<br>
                         • Charter listing links navigate to charter detail pages<br>
                         • Related species links navigate to correct fish pages<br>
                         • Destination links in carousels navigate correctly<br>
@@ -278,10 +270,9 @@
                 <div class="test-case-section">
                     <h4>Then</h4>
                     <p>
-                        • All images load successfully<br>
+                        • All images load successfully (no 403, 404, or other HTTP errors)<br>
                         • No broken image placeholders displayed<br>
                         • Images are properly sized and not distorted<br>
-                        • Images are relevant to the fish species<br>
                         • Image quality is acceptable (not pixelated)<br>
                         • Lazy loading works correctly (if implemented)
                     </p>
@@ -736,8 +727,6 @@
                         • Images show the correct fish species<br>
                         • Related species section shows relevant related fish<br>
                         • Charter listings are relevant to fishing for that species<br>
-                        • Reviews mention the correct fish species<br>
-                        • Catch photos show the correct fish species<br>
                         • No content about unrelated fish species<br>
                         • Information is accurate and factual
                     </p>
