@@ -300,6 +300,129 @@
                 </div>
             </div>
 
+                        <!-- BUG-003: Charter Detail Page Navigation Error -->
+            <div class="bug">
+                <div class="bug-header">
+                    <span class="bug-id">BUG-003: Charter Detail Page Navigation Fails</span>
+                    <div>
+                        <span class="badge badge-high">High Severity</span>
+                        <span class="badge badge-high">High Priority</span>
+                    </div>
+                </div>
+
+                <table style="margin-top: 15px;">
+                    <tr>
+                        <th style="width: 200px;">Bug ID</th>
+                        <td>BUG-003</td>
+                    </tr>
+                    <tr>
+                        <th>Summary</th>
+                        <td>Clicking on any charter listing link from the fish page fails to navigate to the charter detail page, preventing users from viewing charter information and booking trips.</td>
+                    </tr>
+                    <tr>
+                        <th>Type</th>
+                        <td>Functional Bug / Navigation Issue</td>
+                    </tr>
+                    <tr>
+                        <th>Reported By</th>
+                        <td>Pavle Stefanovic</td>
+                    </tr>
+                    <tr>
+                        <th>Date Reported</th>
+                        <td>January 2025</td>
+                    </tr>
+                    <tr>
+                        <th>Status</th>
+                        <td>Open</td>
+                    </tr>
+                    <tr>
+                        <th>Severity</th>
+                        <td><span class="badge badge-high">High</span> - Navigation failure prevents users from accessing charter details, which is a core functionality of the fish page. This blocks the primary user journey of viewing and booking fishing trips.</td>
+                    </tr>
+                    <tr>
+                        <th>Priority</th>
+                        <td><span class="badge badge-high">High</span> - This is a critical navigation issue that directly impacts user experience and business goals (trip bookings). Should be fixed immediately.</td>
+                    </tr>
+                    <tr>
+                        <th>Test Environment</th>
+                        <td>
+                            <strong>URL:</strong> <a href="https://nextjs15.dev.fishingbooker.com/fish/snapper-red" target="_blank">https://nextjs15.dev.fishingbooker.com/fish/snapper-red</a><br>
+                            <strong>Browser:</strong> Chrome (latest version)<br>
+                            <strong>OS:</strong> Windows 10<br>
+                            <strong>Login:</strong> fishingbooker / QAFBTest
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Test Case Reference</th>
+                        <td><a href="test-cases.html#TC-002">TC-002: Navigation and Internal Links Work Correctly</a> - Fails at step: "Charter listing links navigate to charter detail pages"</td>
+                    </tr>
+                </table>
+
+                <div style="margin-top: 20px;">
+                    <h3>Description</h3>
+                    <p>When clicking on any charter listing card or link from the fish page (e.g., Red Snapper page), the navigation to the charter detail page fails. This prevents users from viewing detailed information about fishing charters, including pricing, availability, boat specifications, and booking options. All other navigation links in TC-002 pass successfully, but this specific step fails consistently across all charter listings.</p>
+
+                    <h3>Steps to Reproduce</h3>
+                    <ol>
+                        <li>Navigate to <a href="https://nextjs15.dev.fishingbooker.com/fish/snapper-red" target="_blank">https://nextjs15.dev.fishingbooker.com/fish/snapper-red</a></li>
+                        <li>Log in with credentials: fishingbooker / QAFBTest (if required)</li>
+                        <li>Wait for the page to load and charter listings to be displayed</li>
+                        <li>Locate any charter listing card in the charter listings section</li>
+                        <li>Click on the charter name/link or the charter card to navigate to the detail page</li>
+                        <li>Observe the navigation behavior</li>
+                    </ol>
+
+                    <h3>Expected Result</h3>
+                    <p>Clicking on a charter listing should successfully navigate to the charter detail page, displaying comprehensive information about the charter including boat details, pricing, availability calendar, reviews, photos, and booking options.</p>
+
+                    <h3>Actual Result</h3>
+                    <p>Clicking on any charter listing link fails to navigate to the charter detail page. The navigation does not complete successfully, preventing users from accessing charter information. The exact error or behavior observed is shown in the screenshot below.</p>
+
+                    <h3>Evidence</h3>
+                    <div style="margin: 20px 0;">
+                        <img src="bug_data/bug3_screenshot1.png" alt="Screenshot showing charter detail page navigation failure" style="max-width: 100%; height: auto; border: 1px solid #ccc; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                    </div>
+
+                    <h3>Impact</h3>
+                    <ul>
+                        <li><strong>User Experience:</strong> Critical navigation failure prevents users from accessing charter details, blocking the primary user journey</li>
+                        <li><strong>Business Impact:</strong> Users cannot view charter information or proceed with bookings, directly impacting revenue and conversions</li>
+                        <li><strong>Functionality:</strong> Core feature (charter detail page access) is completely broken</li>
+                        <li><strong>User Trust:</strong> Broken navigation links damage user confidence in the platform</li>
+                        <li><strong>SEO:</strong> Internal linking issues may negatively impact SEO if search engines cannot crawl charter detail pages</li>
+                    </ul>
+
+                    <h3>Possible Root Causes</h3>
+                    <ul>
+                        <li>Broken URL routing or incorrect URL generation for charter detail pages</li>
+                        <li>JavaScript error preventing navigation event from executing</li>
+                        <li>Missing or incorrect href attributes on charter listing links</li>
+                        <li>Authentication or authorization issue blocking access to charter detail pages</li>
+                        <li>API endpoint failure when fetching charter detail data</li>
+                        <li>Client-side routing error in Next.js application</li>
+                        <li>404 error for charter detail page routes that don't exist</li>
+                        <li>Network request failure or timeout when loading charter detail page</li>
+                    </ul>
+
+                    <h3>Suggested Fix</h3>
+                    <ol>
+                        <li>Verify charter listing links have correct href attributes pointing to valid charter detail page URLs</li>
+                        <li>Check browser console for JavaScript errors when clicking charter links</li>
+                        <li>Verify the charter detail page route exists and is properly configured in Next.js routing</li>
+                        <li>Test API endpoints that fetch charter detail data to ensure they return valid responses</li>
+                        <li>Check network tab in browser DevTools to see if requests are being made and what responses are returned</li>
+                        <li>Verify authentication/authorization is not blocking access to charter detail pages</li>
+                        <li>Test URL generation logic to ensure charter IDs/slugs are correctly formatted</li>
+                        <li>Check if the issue is specific to certain charter listings or affects all listings</li>
+                        <li>Verify client-side navigation (if using Next.js Link component) is properly configured</li>
+                        <li>Test on multiple browsers to rule out browser-specific issues</li>
+                    </ol>
+
+                    <h3>Additional Notes</h3>
+                    <p>This bug was discovered during execution of TC-002 (Navigation and Internal Links Work Correctly). All other navigation elements in TC-002 pass successfully (breadcrumb links, related species links, destination links, etc.), but charter listing links consistently fail. This is a critical issue as charter detail pages are essential for the booking flow and user decision-making process.</p>
+                </div>
+            </div>
+
             <!-- Template for bug reports - Copy this section for each new bug -->
             <!--
             <div class="bug">
@@ -503,129 +626,6 @@
                         </tr>
                     </tbody>
                 </table>
-            </div>
-
-            <!-- BUG-003: Charter Detail Page Navigation Error -->
-            <div class="bug">
-                <div class="bug-header">
-                    <span class="bug-id">BUG-003: Charter Detail Page Navigation Fails</span>
-                    <div>
-                        <span class="badge badge-high">High Severity</span>
-                        <span class="badge badge-high">High Priority</span>
-                    </div>
-                </div>
-
-                <table style="margin-top: 15px;">
-                    <tr>
-                        <th style="width: 200px;">Bug ID</th>
-                        <td>BUG-003</td>
-                    </tr>
-                    <tr>
-                        <th>Summary</th>
-                        <td>Clicking on any charter listing link from the fish page fails to navigate to the charter detail page, preventing users from viewing charter information and booking trips.</td>
-                    </tr>
-                    <tr>
-                        <th>Type</th>
-                        <td>Functional Bug / Navigation Issue</td>
-                    </tr>
-                    <tr>
-                        <th>Reported By</th>
-                        <td>Pavle Stefanovic</td>
-                    </tr>
-                    <tr>
-                        <th>Date Reported</th>
-                        <td>January 2025</td>
-                    </tr>
-                    <tr>
-                        <th>Status</th>
-                        <td>Open</td>
-                    </tr>
-                    <tr>
-                        <th>Severity</th>
-                        <td><span class="badge badge-high">High</span> - Navigation failure prevents users from accessing charter details, which is a core functionality of the fish page. This blocks the primary user journey of viewing and booking fishing trips.</td>
-                    </tr>
-                    <tr>
-                        <th>Priority</th>
-                        <td><span class="badge badge-high">High</span> - This is a critical navigation issue that directly impacts user experience and business goals (trip bookings). Should be fixed immediately.</td>
-                    </tr>
-                    <tr>
-                        <th>Test Environment</th>
-                        <td>
-                            <strong>URL:</strong> <a href="https://nextjs15.dev.fishingbooker.com/fish/snapper-red" target="_blank">https://nextjs15.dev.fishingbooker.com/fish/snapper-red</a><br>
-                            <strong>Browser:</strong> Chrome (latest version)<br>
-                            <strong>OS:</strong> Windows 10<br>
-                            <strong>Login:</strong> fishingbooker / QAFBTest
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Test Case Reference</th>
-                        <td><a href="test-cases.html#TC-002">TC-002: Navigation and Internal Links Work Correctly</a> - Fails at step: "Charter listing links navigate to charter detail pages"</td>
-                    </tr>
-                </table>
-
-                <div style="margin-top: 20px;">
-                    <h3>Description</h3>
-                    <p>When clicking on any charter listing card or link from the fish page (e.g., Red Snapper page), the navigation to the charter detail page fails. This prevents users from viewing detailed information about fishing charters, including pricing, availability, boat specifications, and booking options. All other navigation links in TC-002 pass successfully, but this specific step fails consistently across all charter listings.</p>
-
-                    <h3>Steps to Reproduce</h3>
-                    <ol>
-                        <li>Navigate to <a href="https://nextjs15.dev.fishingbooker.com/fish/snapper-red" target="_blank">https://nextjs15.dev.fishingbooker.com/fish/snapper-red</a></li>
-                        <li>Log in with credentials: fishingbooker / QAFBTest (if required)</li>
-                        <li>Wait for the page to load and charter listings to be displayed</li>
-                        <li>Locate any charter listing card in the charter listings section</li>
-                        <li>Click on the charter name/link or the charter card to navigate to the detail page</li>
-                        <li>Observe the navigation behavior</li>
-                    </ol>
-
-                    <h3>Expected Result</h3>
-                    <p>Clicking on a charter listing should successfully navigate to the charter detail page, displaying comprehensive information about the charter including boat details, pricing, availability calendar, reviews, photos, and booking options.</p>
-
-                    <h3>Actual Result</h3>
-                    <p>Clicking on any charter listing link fails to navigate to the charter detail page. The navigation does not complete successfully, preventing users from accessing charter information. The exact error or behavior observed is shown in the screenshot below.</p>
-
-                    <h3>Evidence</h3>
-                    <div style="margin: 20px 0;">
-                        <img src="bug_data/bug3_screenshot1.png" alt="Screenshot showing charter detail page navigation failure" style="max-width: 100%; height: auto; border: 1px solid #ccc; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-                    </div>
-
-                    <h3>Impact</h3>
-                    <ul>
-                        <li><strong>User Experience:</strong> Critical navigation failure prevents users from accessing charter details, blocking the primary user journey</li>
-                        <li><strong>Business Impact:</strong> Users cannot view charter information or proceed with bookings, directly impacting revenue and conversions</li>
-                        <li><strong>Functionality:</strong> Core feature (charter detail page access) is completely broken</li>
-                        <li><strong>User Trust:</strong> Broken navigation links damage user confidence in the platform</li>
-                        <li><strong>SEO:</strong> Internal linking issues may negatively impact SEO if search engines cannot crawl charter detail pages</li>
-                    </ul>
-
-                    <h3>Possible Root Causes</h3>
-                    <ul>
-                        <li>Broken URL routing or incorrect URL generation for charter detail pages</li>
-                        <li>JavaScript error preventing navigation event from executing</li>
-                        <li>Missing or incorrect href attributes on charter listing links</li>
-                        <li>Authentication or authorization issue blocking access to charter detail pages</li>
-                        <li>API endpoint failure when fetching charter detail data</li>
-                        <li>Client-side routing error in Next.js application</li>
-                        <li>404 error for charter detail page routes that don't exist</li>
-                        <li>Network request failure or timeout when loading charter detail page</li>
-                    </ul>
-
-                    <h3>Suggested Fix</h3>
-                    <ol>
-                        <li>Verify charter listing links have correct href attributes pointing to valid charter detail page URLs</li>
-                        <li>Check browser console for JavaScript errors when clicking charter links</li>
-                        <li>Verify the charter detail page route exists and is properly configured in Next.js routing</li>
-                        <li>Test API endpoints that fetch charter detail data to ensure they return valid responses</li>
-                        <li>Check network tab in browser DevTools to see if requests are being made and what responses are returned</li>
-                        <li>Verify authentication/authorization is not blocking access to charter detail pages</li>
-                        <li>Test URL generation logic to ensure charter IDs/slugs are correctly formatted</li>
-                        <li>Check if the issue is specific to certain charter listings or affects all listings</li>
-                        <li>Verify client-side navigation (if using Next.js Link component) is properly configured</li>
-                        <li>Test on multiple browsers to rule out browser-specific issues</li>
-                    </ol>
-
-                    <h3>Additional Notes</h3>
-                    <p>This bug was discovered during execution of TC-002 (Navigation and Internal Links Work Correctly). All other navigation elements in TC-002 pass successfully (breadcrumb links, related species links, destination links, etc.), but charter listing links consistently fail. This is a critical issue as charter detail pages are essential for the booking flow and user decision-making process.</p>
-                </div>
             </div>
 
             <h2>Bug Reporting Guidelines</h2>
