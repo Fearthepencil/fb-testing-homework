@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Execution Report - FishingBooker QA Homework</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div>
+                <h1>Test Execution Report - FishingBooker Fish Page Testing</h1>
+                <p class="subtitle">Comprehensive Testing Summary and Results</p>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="test-plan.html">Test Plan</a></li>
+                <li><a href="test-cases.html">Test Cases</a></li>
+                <li><a href="bug-report.html">Bug Report</a></li>
+                <li><a href="test-execution-report.html" class="active">Execution Report</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <main>
+            <h1>Test Execution Report</h1>
+            
+            <div class="card">
+                <h2>Executive Summary</h2>
+                <p><strong>Project:</strong> FishingBooker Fish Page Testing</p>
+                <p><strong>Test Scope:</strong> Red Snapper fish page functionality, SEO optimization, and content validation</p>
+                <p><strong>Testing Period:</strong> January 2025</p>
+                <p><strong>Test Environment:</strong> <a href="https://nextjs15.dev.fishingbooker.com" target="_blank">https://nextjs15.dev.fishingbooker.com</a></p>
+                <p><strong>Test Fish Page:</strong> <a href="https://nextjs15.dev.fishingbooker.com/fish/snapper-red" target="_blank">https://nextjs15.dev.fishingbooker.com/fish/snapper-red</a></p>
+                <p><strong>Login Credentials:</strong> fishingbooker / QAFBTest</p>
+                
+                <h3>Overall Test Results</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Total Tests</th>
+                            <th>Passed</th>
+                            <th>Failed</th>
+                            <th>In Progress</th>
+                            <th>Not Executed</th>
+                            <th>Pass Rate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="font-weight: 600;">
+                            <td>12</td>
+                            <td style="color: green;">0</td>
+                            <td style="color: red;">1</td>
+                            <td style="color: orange;">0</td>
+                            <td>11</td>
+                            <td>0%</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top: 10px;"><em>Note: Testing is in progress. This report will be updated as more test cases are executed.</em></p>
+            </div>
+
+            <div class="card">
+                <h2>Test Execution by Type</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Test Type</th>
+                            <th>Total</th>
+                            <th>Passed</th>
+                            <th>Failed</th>
+                            <th>In Progress</th>
+                            <th>Not Executed</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Manual Tests</strong></td>
+                            <td>12</td>
+                            <td style="color: green;">0</td>
+                            <td style="color: red;">1</td>
+                            <td style="color: orange;">0</td>
+                            <td>11</td>
+                        </tr>
+                        <tr style="font-weight: 600;">
+                            <td>TOTAL</td>
+                            <td>12</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>11</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>Manual Test Results</h2>
+            
+            <div class="card">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 80px;">Test ID</th>
+                            <th>Test Case Name</th>
+                            <th style="width: 100px;">Status</th>
+                            <th style="width: 150px;">Tested By</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a href="test-cases.html#TC-001">TC-001</a></td>
+                            <td>Fish Page Loads Successfully</td>
+                            <td><span class="badge" style="background-color: red;">FAILED</span></td>
+                            <td>Pavle Stefanovic</td>
+                            <td>
+                                <strong>Execution Status:</strong> Partially passed with defects found<br>
+                                • Page loads successfully within acceptable time<br>
+                                • No JavaScript errors in browser console<br>
+                                • No 404 or 500 errors displayed<br>
+                                • Page content is visible and rendered correctly<br>
+                                • Hero section with fish name and search bar displayed correctly<br>
+                                • <strong>FAILED:</strong> Breadcrumb navigation shows incorrect fish species ("Dolphin (Mahi Mahi)" instead of "Red Snapper") - Documented as <a href="bug-report.html#BUG-002">BUG-002</a><br>
+                                • Charter listings section is visible<br>
+                                • Related species section is displayed<br>
+                                • About section with fish information is present<br>
+                                • <strong>FAILED:</strong> One image fails to load with 403 Forbidden error - Documented as <a href="bug-report.html#BUG-001">BUG-001</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><a href="test-cases.html#TC-002">TC-002</a></td>
+                            <td>Navigation and Internal Links Work Correctly</td>
+                            <td><span class="badge" style="background-color: #999;">NOT EXECUTED</span></td>
+                            <td>-</td>
+                            <td>Pending execution</td>
+                        </tr>
+                        <tr>
+                            <td><a href="test-cases.html#TC-003">TC-003</a></td>
+                            <td>Images Load and Display Correctly</td>
+                            <td><span class="badge" style="background-color: #999;">NOT EXECUTED</span></td>
+                            <td>-</td>
+                            <td>Pending execution (BUG-001 found during TC-001 execution)</td>
+                        </tr>
+                        <tr>
+                            <td><a href="test-cases.html#TC-004">TC-004</a></td>
+                            <td>Interactive Elements Function Correctly</td>
+                            <td><span class="badge" style="background-color: #999;">NOT EXECUTED</span></td>
+                            <td>-</td>
+                            <td>Pending execution</td>
+                        </tr>
+                        <tr>
+                            <td><a href="test-cases.html#TC-005">TC-005</a></td>
+                            <td>Page Responsiveness (Basic Check)</td>
+                            <td><span class="badge" style="background-color: #999;">NOT EXECUTED</span></td>
+                            <td>-</td>
+                            <td>Pending execution</td>
+                        </tr>
+                        <tr>
+                            <td><a href="test-cases.html#TC-006">TC-006</a></td>
+                            <td>Meta Title and Description Are Present and Optimized</td>
+                            <td><span class="badge" style="background-color: #999;">NOT EXECUTED</span></td>
+                            <td>-</td>
+                            <td>Pending execution</td>
+                        </tr>
+                        <tr>
+                            <td><a href="test-cases.html#TC-007">TC-007</a></td>
+                            <td>Header Tags (H1, H2, H3) Are Properly Structured</td>
+                            <td><span class="badge" style="background-color: #999;">NOT EXECUTED</span></td>
+                            <td>-</td>
+                            <td>Pending execution</td>
+                        </tr>
+                        <tr>
+                            <td><a href="test-cases.html#TC-008">TC-008</a></td>
+                            <td>Images Have Alt Text for SEO and Accessibility</td>
+                            <td><span class="badge" style="background-color: #999;">NOT EXECUTED</span></td>
+                            <td>-</td>
+                            <td>Pending execution</td>
+                        </tr>
+                        <tr>
+                            <td><a href="test-cases.html#TC-009">TC-009</a></td>
+                            <td>Structured Data (Schema.org) Is Present</td>
+                            <td><span class="badge" style="background-color: #999;">NOT EXECUTED</span></td>
+                            <td>-</td>
+                            <td>Pending execution</td>
+                        </tr>
+                        <tr>
+                            <td><a href="test-cases.html#TC-010">TC-010</a></td>
+                            <td>Content Is Relevant to Fish Species</td>
+                            <td><span class="badge" style="background-color: #999;">NOT EXECUTED</span></td>
+                            <td>-</td>
+                            <td>Pending execution</td>
+                        </tr>
+                        <tr>
+                            <td><a href="test-cases.html#TC-011">TC-011</a></td>
+                            <td>Content Consistency and Quality</td>
+                            <td><span class="badge" style="background-color: #999;">NOT EXECUTED</span></td>
+                            <td>-</td>
+                            <td>Pending execution</td>
+                        </tr>
+                        <tr>
+                            <td><a href="test-cases.html#TC-012">TC-012</a></td>
+                            <td>Call-to-Action Elements Are Present and Clear</td>
+                            <td><span class="badge" style="background-color: #999;">NOT EXECUTED</span></td>
+                            <td>-</td>
+                            <td>Pending execution</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>Defects Summary</h2>
+            
+            <div class="card">
+                <p><strong>Total Defects Found:</strong> 2</p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Bug ID</th>
+                            <th>Summary</th>
+                            <th>Severity</th>
+                            <th>Status</th>
+                            <th>Found By</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a href="bug-report.html#BUG-001">BUG-001</a></td>
+                            <td>Image Returns 403 Forbidden Error from Upstream Server</td>
+                            <td><span class="badge badge-medium">Medium</span></td>
+                            <td>Open</td>
+                            <td>Exploratory Testing / TC-001</td>
+                        </tr>
+                        <tr>
+                            <td><a href="bug-report.html#BUG-002">BUG-002</a></td>
+                            <td>Breadcrumb Navigation Shows Wrong Fish Species</td>
+                            <td><span class="badge badge-medium">Medium</span></td>
+                            <td>Open</td>
+                            <td>TC-001 (Manual)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>Test Coverage Analysis</h2>
+            
+            <div class="card">
+                <h3>Feature Coverage</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Feature Area</th>
+                            <th>Test Cases</th>
+                            <th>Executed</th>
+                            <th>Coverage %</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Functional Testing</td>
+                            <td>5</td>
+                            <td>1</td>
+                            <td>20%</td>
+                        </tr>
+                        <tr>
+                            <td>SEO Testing</td>
+                            <td>4</td>
+                            <td>0</td>
+                            <td>0%</td>
+                        </tr>
+                        <tr>
+                            <td>Content Validation</td>
+                            <td>3</td>
+                            <td>0</td>
+                            <td>0%</td>
+                        </tr>
+                        <tr style="font-weight: 600;">
+                            <td>TOTAL</td>
+                            <td>12</td>
+                            <td>1</td>
+                            <td>8.3%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>Key Findings & Observations</h2>
+            
+            <div class="card">
+                <h3>Positive Findings</h3>
+                <ul>
+                    <li>✅ Page loads successfully without critical errors</li>
+                    <li>✅ No JavaScript errors in browser console</li>
+                    <li>✅ Hero section displays correctly with fish name and search functionality</li>
+                    <li>✅ Charter listings section is visible and functional</li>
+                    <li>✅ Related species section displays correctly</li>
+                    <li>✅ About section with fish information is present and readable</li>
+                    <li>✅ Page content is generally well-structured and visually appealing</li>
+                </ul>
+
+                <h3>Issues Identified</h3>
+                <ul>
+                    <li>⚠️ <strong>BUG-001:</strong> One image fails to load with 403 Forbidden error from upstream server (Medium severity)</li>
+                    <li>⚠️ <strong>BUG-002:</strong> Breadcrumb navigation displays incorrect fish species ("Dolphin (Mahi Mahi)" instead of "Red Snapper") (Medium severity)</li>
+                </ul>
+
+                <h3>Recommendations</h3>
+                <ol>
+                    <li><strong>BUG-001:</strong> Verify image file permissions on upstream server, check CDN configuration, or replace broken image with working alternative</li>
+                    <li><strong>BUG-002:</strong> Fix breadcrumb component to dynamically read correct fish species from page data/URL. Verify all fish species pages for similar issues</li>
+                    <li><strong>Test Execution:</strong> Continue executing remaining test cases (TC-002 through TC-012) to complete test coverage</li>
+                    <li><strong>Regression Testing:</strong> After fixes are implemented, re-execute TC-001 to verify both bugs are resolved</li>
+                </ol>
+            </div>
+
+            <h2>Test Environment</h2>
+            
+            <div class="card">
+                <table>
+                    <tr>
+                        <th style="width: 200px;">Operating System</th>
+                        <td>Windows 10</td>
+                    </tr>
+                    <tr>
+                        <th>Browser</th>
+                        <td>Chrome (latest version)</td>
+                    </tr>
+                    <tr>
+                        <th>Application URL</th>
+                        <td><a href="https://nextjs15.dev.fishingbooker.com" target="_blank">https://nextjs15.dev.fishingbooker.com</a></td>
+                    </tr>
+                    <tr>
+                        <th>Test Fish Page</th>
+                        <td><a href="https://nextjs15.dev.fishingbooker.com/fish/snapper-red" target="_blank">https://nextjs15.dev.fishingbooker.com/fish/snapper-red</a></td>
+                    </tr>
+                    <tr>
+                        <th>Login Credentials</th>
+                        <td>fishingbooker / QAFBTest</td>
+                    </tr>
+                </table>
+            </div>
+
+            <h2>Conclusion</h2>
+            
+            <div class="card">
+                <p>Testing of the FishingBooker Red Snapper fish page is <strong>currently in progress</strong>. Initial execution of TC-001 (Fish Page Loads Successfully) revealed that the page generally functions well with proper content structure and visual presentation. However, two defects were identified during this initial test execution:</p>
+                
+                <ul>
+                    <li><strong>BUG-001:</strong> Image loading issue (403 Forbidden error) affecting visual content completeness</li>
+                    <li><strong>BUG-002:</strong> Breadcrumb navigation displaying incorrect fish species, causing content inconsistency</li>
+                </ul>
+                
+                <p><strong>Test Coverage:</strong> 8.3% of planned test cases executed (1/12)</p>
+                <p><strong>Defects Found:</strong> 2 defects (both Medium severity)</p>
+                <p><strong>Next Steps:</strong> Continue executing remaining test cases (TC-002 through TC-012) to complete comprehensive testing of the fish page functionality, SEO optimization, and content validation.</p>
+            </div>
+
+        </main>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 FishingBooker QA Testing Project | Test Execution Report</p>
+            <p>Created for QA Engineer Assessment</p>
+        </div>
+    </footer>
+</body>
+</html>
+

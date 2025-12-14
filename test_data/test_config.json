@@ -1,0 +1,16 @@
+{
+  "login": {
+    "username": "fishingbooker",
+    "password": "QAFBTest"
+  },
+  "urls": {
+    "base_url": "https://nextjs15.dev.fishingbooker.com/sitemap",
+    "sitemap_url": "https://nextjs15.dev.fishingbooker.com/sitemap"
+  },
+  "test_requirements": {
+    "min_charter_cards": 10,
+    "expected_tooltip_text": "wishlist",
+    "price_sort_timeout": 10000
+  }
+}
+

@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Plan - FishingBooker QA Homework</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div>
+                <h1>Test Plan - FishingBooker Fish Page Testing</h1>
+                <p class="subtitle">Fish Landing Page Functionality, SEO, and Content Validation</p>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="test-plan.html" class="active">Test Plan</a></li>
+                <li><a href="test-cases.html">Test Cases</a></li>
+                <li><a href="bug-report.html">Bug Report</a></li>
+                <li><a href="test-execution-report.html">Execution Report</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <main>
+            <h1>Test Plan</h1>
+            
+            <div class="card">
+                <table>
+                    <tr>
+                        <th style="width: 200px;">Document Information</th>
+                        <th>Details</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Project Name</strong></td>
+                        <td>FishingBooker Fish Page Testing</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Version</strong></td>
+                        <td>1.0</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Date</strong></td>
+                        <td>January 2025</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Author</strong></td>
+                        <td>Pavle Stefanovic</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Status</strong></td>
+                        <td>Final</td>
+                    </tr>
+                </table>
+            </div>
+
+            <h2>1. Introduction</h2>
+            
+            <div class="card">
+                <h3>1.1 Purpose</h3>
+                <p>This test plan defines the testing approach, scope, objectives, and strategy for testing FishingBooker's fish page (landing page for specific fish species). The plan focuses on functional validation, SEO optimization, and content quality assurance. This document follows ISTQB Foundation Level v4.0.1 standards and ISO/IEC/IEEE 29119-3 test documentation guidelines.</p>
+                
+                <h3>1.2 Document Scope</h3>
+                <p>This document covers:</p>
+                <ul>
+                    <li>Test objectives and scope</li>
+                    <li>Test strategy and approach</li>
+                    <li>Test design techniques (black-box, experience-based)</li>
+                    <li>Test environment and data requirements</li>
+                    <li>Entry and exit criteria</li>
+                    <li>Product risk analysis and risk-based testing approach</li>
+                    <li>Test deliverables and testware</li>
+                    <li>Test monitoring and control</li>
+                </ul>
+
+                <h3>1.3 References</h3>
+                <ul>
+                    <li>ISTQB Foundation Level Syllabus v4.0.1 (2024-09-15)</li>
+                    <li>ISO/IEC/IEEE 29119-3:2021 - Software testing - Part 3: Test documentation</li>
+                    <li>ISO/IEC 25010:2023 - Systems and software Quality Requirements and Evaluation (SQuaRE) - Product quality models</li>
+                    <li>FishingBooker testing environment: https://www.fishingbooker.com</li>
+                    <li>SEO Best Practices Guidelines</li>
+                </ul>
+            </div>
+
+            <h2>2. Test Objectives</h2>
+            
+            <div class="card">
+                <p>According to ISTQB Foundation Level v4.0.1, test objectives define what testing should achieve. The primary objectives of this testing effort are:</p>
+                <ol>
+                    <li><strong>Verify Page Functionality:</strong> Ensure the fish page loads correctly and all interactive elements work without critical errors (functional correctness)</li>
+                    <li><strong>Validate SEO Optimization:</strong> Confirm that the page is properly optimized for search engines (meta tags, titles, descriptions, structured data) - functional appropriateness</li>
+                    <li><strong>Assess Content Quality:</strong> Verify that content is meaningful, consistent, and appropriate for a fishing landing page (functional completeness)</li>
+                    <li><strong>Identify Defects:</strong> Discover and document any functional, SEO, or content-related issues (defect detection)</li>
+                    <li><strong>Ensure User Experience:</strong> Evaluate overall usability and user-friendliness of the page (usability quality characteristic per ISO 25010)</li>
+                    <li><strong>Provide Confidence:</strong> Build confidence in the quality of the fish page for stakeholders</li>
+                </ol>
+                <p><strong>Note:</strong> Testing shows the presence of defects, not their absence (ISTQB Testing Principle #1).</p>
+            </div>
+
+            <h2>3. Test Scope</h2>
+            
+            <div class="card">
+                <h3>3.1 In Scope</h3>
+                <ul>
+                    <li><strong>Functional Testing:</strong>
+                        <ul>
+                            <li>Page load and rendering</li>
+                            <li>Navigation and links</li>
+                            <li>Interactive elements (buttons, forms, filters)</li>
+                            <li>Image loading and display</li>
+                            <li>Responsive design (basic checks)</li>
+                        </ul>
+                    </li>
+                    <li><strong>SEO Testing:</strong>
+                        <ul>
+                            <li>Meta title and description</li>
+                            <li>Header tags (H1, H2, H3)</li>
+                            <li>Alt text for images</li>
+                            <li>Structured data (Schema.org markup)</li>
+                            <li>URL structure</li>
+                            <li>Internal linking</li>
+                        </ul>
+                    </li>
+                    <li><strong>Content Validation:</strong>
+                        <ul>
+                            <li>Content relevance to fish species</li>
+                            <li>Content consistency</li>
+                            <li>Grammar and spelling</li>
+                            <li>Image relevance and quality</li>
+                            <li>Call-to-action elements</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3>3.2 Out of Scope</h3>
+                <ul>
+                    <li>Performance testing (detailed load testing)</li>
+                    <li>Security testing (penetration testing)</li>
+                    <li>Cross-browser testing (all browsers)</li>
+                    <li>Mobile app testing</li>
+                    <li>Backend API testing</li>
+                </ul>
+            </div>
+
+            <h2>4. Test Strategy</h2>
+            
+            <div class="card">
+                <h3>4.1 Overall Approach</h3>
+                <p>The testing approach combines multiple methodologies:</p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Approach</th>
+                            <th>Description</th>
+                            <th>Coverage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Manual Testing</strong></td>
+                            <td>Scripted manual tests for functional and content validation</td>
+                            <td>8 test cases</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Exploratory Testing</strong></td>
+                            <td>Unscripted testing to discover unexpected issues</td>
+                            <td>4 test cases</td>
+                        </tr>
+                        <tr>
+                            <td><strong>SEO Validation</strong></td>
+                            <td>Tool-assisted and manual SEO checks</td>
+                            <td>4 test cases</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>4.2 Test Types</h3>
+                <ul>
+                    <li><strong>Functional Testing:</strong> Verify that page functionality works as expected</li>
+                    <li><strong>SEO Testing:</strong> Validate SEO optimization elements</li>
+                    <li><strong>Content Testing:</strong> Assess content quality and consistency</li>
+                    <li><strong>Usability Testing:</strong> Evaluate user experience</li>
+                    <li><strong>Exploratory Testing:</strong> Discover unexpected issues</li>
+                </ul>
+
+                <h3>4.3 Test Design Techniques</h3>
+                <p>The following ISTQB-recognized test techniques (Foundation Level v4.0.1, Chapter 4) are applied:</p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Technique</th>
+                            <th>Category</th>
+                            <th>Application</th>
+                            <th>Coverage Criterion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Equivalence Partitioning</td>
+                            <td>Black-box (Specification-based)</td>
+                            <td>Content validation (relevant/irrelevant content), SEO element validation</td>
+                            <td>Each partition exercised at least once</td>
+                        </tr>
+                        <tr>
+                            <td>Boundary Value Analysis</td>
+                            <td>Black-box (Specification-based)</td>
+                            <td>Content length validation, meta tag length limits</td>
+                            <td>Boundary values and their neighbors</td>
+                        </tr>
+                        <tr>
+                            <td>Checklist-Based Testing</td>
+                            <td>Experience-based</td>
+                            <td>SEO element validation, content completeness checks</td>
+                            <td>All checklist items verified</td>
+                        </tr>
+                        <tr>
+                            <td>Error Guessing</td>
+                            <td>Experience-based</td>
+                            <td>Exploratory testing for unexpected issues, common defect patterns</td>
+                            <td>Based on tester experience and knowledge</td>
+                        </tr>
+                        <tr>
+                            <td>Exploratory Testing</td>
+                            <td>Experience-based</td>
+                            <td>Simultaneous test design, execution, and learning about the test object</td>
+                            <td>Test charters guide exploration</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><strong>Note:</strong> Test techniques are selected based on product risks, test basis quality, and project constraints (ISTQB Foundation Level v4.0.1, Section 4.1).</p>
+            </div>
+
+            <h2>5. Test Environment</h2>
+            
+            <div class="card">
+                <h3>5.1 Hardware Requirements</h3>
+                <ul>
+                    <li>Desktop/Laptop computer</li>
+                    <li>Minimum 8GB RAM</li>
+                    <li>Internet connection (stable, minimum 10 Mbps)</li>
+                    <li>Display resolution: 1920x1080 (Full HD)</li>
+                </ul>
+
+                <h3>5.2 Software Requirements</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Component</th>
+                            <th>Version/Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Operating System</td>
+                            <td>Windows 10/11, macOS 12+, or Linux</td>
+                        </tr>
+                        <tr>
+                            <td>Browser</td>
+                            <td>Google Chrome (latest stable version)</td>
+                        </tr>
+                        <tr>
+                            <td>Testing Tools</td>
+                            <td>Chrome DevTools, SEO validators, Accessibility tools</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>5.3 Test Credentials</h3>
+                <p><strong>Username:</strong> fishingbooker</p>
+                <p><strong>Password:</strong> QAFBTest</p>
+                <p><strong>Note:</strong> Testing environment - safe to perform all testing activities</p>
+
+                <h3>5.4 Test URL</h3>
+                <p><strong>Base URL:</strong> <a href="https://nextjs15.dev.fishingbooker.com" target="_blank">https://nextjs15.dev.fishingbooker.com</a></p>
+                <p><strong>Test Fish Page:</strong> <a href="https://nextjs15.dev.fishingbooker.com/fish/snapper-red" target="_blank">https://nextjs15.dev.fishingbooker.com/fish/snapper-red</a></p>
+                <p><strong>Login Credentials:</strong> fishingbooker / QAFBTest</p>
+            </div>
+
+            <h2>6. Entry and Exit Criteria</h2>
+            
+            <div class="card">
+                <h3>6.1 Entry Criteria</h3>
+                <p>Testing can begin when:</p>
+                <ul>
+                    <li>✓ Test plan is reviewed and approved</li>
+                    <li>✓ Test environment is accessible</li>
+                    <li>✓ Login credentials are available</li>
+                    <li>✓ Test cases are designed</li>
+                    <li>✓ Testing tools are installed and ready</li>
+                </ul>
+
+                <h3>6.2 Exit Criteria</h3>
+                <p>Testing is considered complete when:</p>
+                <ul>
+                    <li>✓ All planned test cases (12) have been executed</li>
+                    <li>✓ All critical and high-severity defects are documented</li>
+                    <li>✓ Test execution results are documented</li>
+                    <li>✓ Bug reports are created for all discovered defects</li>
+                    <li>✓ Test summary report is prepared</li>
+                    <li>✓ All deliverables are completed</li>
+                </ul>
+            </div>
+
+            <h2>7. Risk Analysis</h2>
+            
+            <div class="card">
+                <h3>7.1 Risk-Based Testing Approach</h3>
+                <p>This test plan follows a <strong>risk-based testing</strong> approach (ISTQB Foundation Level v4.0.1, Section 5.2), where test activities are selected, prioritized, and managed based on product risk analysis. Risk is characterized by two factors:</p>
+                <ul>
+                    <li><strong>Risk Likelihood:</strong> The probability of the risk occurrence (greater than zero and less than one)</li>
+                    <li><strong>Risk Impact (Harm):</strong> The consequences of this occurrence</li>
+                </ul>
+                <p>Product risks are related to product quality characteristics (ISO 25010 quality model). When they occur, they may result in user dissatisfaction, loss of revenue, trust, or reputation.</p>
+
+                <h3>7.2 Product Risks</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Risk ID</th>
+                            <th>Risk Description</th>
+                            <th>Likelihood</th>
+                            <th>Impact</th>
+                            <th>Risk Level</th>
+                            <th>Mitigation Strategy</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>PR-01</td>
+                            <td>Page fails to load or displays critical errors (functional correctness)</td>
+                            <td><span class="badge badge-medium">Medium</span></td>
+                            <td><span class="badge badge-high">High</span></td>
+                            <td><span class="badge badge-high">HIGH</span></td>
+                            <td>Priority testing of page load and basic functionality using black-box techniques</td>
+                        </tr>
+                        <tr>
+                            <td>PR-02</td>
+                            <td>Poor SEO optimization affects search rankings (functional appropriateness)</td>
+                            <td><span class="badge badge-medium">Medium</span></td>
+                            <td><span class="badge badge-high">High</span></td>
+                            <td><span class="badge badge-high">HIGH</span></td>
+                            <td>Comprehensive SEO validation test cases using checklist-based testing</td>
+                        </tr>
+                        <tr>
+                            <td>PR-03</td>
+                            <td>Inconsistent or irrelevant content (functional completeness)</td>
+                            <td><span class="badge badge-medium">Medium</span></td>
+                            <td><span class="badge badge-medium">Medium</span></td>
+                            <td><span class="badge badge-medium">MEDIUM</span></td>
+                            <td>Content validation and consistency checks using equivalence partitioning</td>
+                        </tr>
+                        <tr>
+                            <td>PR-04</td>
+                            <td>Broken links or navigation issues (usability)</td>
+                            <td><span class="badge badge-low">Low</span></td>
+                            <td><span class="badge badge-medium">Medium</span></td>
+                            <td><span class="badge badge-medium">MEDIUM</span></td>
+                            <td>Link validation and navigation testing using checklist-based testing</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>7.3 Project Risks</h3>
+                <p>Project risks are related to the management and control of the project. Examples include:</p>
+                <ul>
+                    <li><strong>PJ-01:</strong> Testing environment availability issues</li>
+                    <li><strong>PJ-02:</strong> Time constraints for test execution</li>
+                    <li><strong>PJ-03:</strong> Limited access to test data or tools</li>
+                </ul>
+            </div>
+
+            <h2>8. Test Deliverables (Testware)</h2>
+            
+            <div class="card">
+                <p>According to ISTQB Foundation Level v4.0.1 (Section 1.4.3), testware includes all artifacts produced during the test process. The following testware will be delivered:</p>
+                
+                <h3>8.1 Test Planning Work Products</h3>
+                <ul>
+                    <li>✓ <strong>Test Plan</strong> (this document) - Defines test objectives, scope, approach, and strategy</li>
+                    <li>✓ <strong>Risk Register</strong> - Documented product risks and mitigation strategies</li>
+                </ul>
+
+                <h3>8.2 Test Analysis and Design Work Products</h3>
+                <ul>
+                    <li>✓ <strong><a href="test-cases.html">Test Cases</a></strong> - 12 detailed test cases in BDD format with test conditions, test data, and test oracles</li>
+                    <li>✓ <strong>Test Conditions</strong> - Documented in test cases, traceable to test basis</li>
+                    <li>✓ <strong>Test Data Requirements</strong> - Specified in test cases</li>
+                </ul>
+
+                <h3>8.3 Test Execution Work Products</h3>
+                <ul>
+                    <li>✓ <strong>Test Logs</strong> - Records of test execution activities</li>
+                    <li>✓ <strong><a href="bug-report.html">Defect Reports</a></strong> - Defects found during testing, following ISTQB defect reporting standards</li>
+                </ul>
+
+                <h3>8.4 Supporting Artifacts</h3>
+                <ul>
+                    <li>✓ <strong>Screenshots</strong> - Visual evidence of test execution and bugs (stored in <code>bug_data/</code> directory)</li>
+                    <li>✓ <strong>Test Execution Notes</strong> - Manual notes from test execution</li>
+                </ul>
+
+                <h3>8.5 Traceability</h3>
+                <p>Traceability is maintained between:</p>
+                <ul>
+                    <li>Test basis (requirements) → Test conditions → Test cases</li>
+                    <li>Test cases → Defect reports</li>
+                    <li>Product risks → Test cases (risk-based testing)</li>
+                </ul>
+            </div>
+
+            <h2>9. Test Schedule</h2>
+            
+            <div class="card">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Activity</th>
+                            <th>Duration</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Test Planning</td>
+                            <td>0.5 day</td>
+                            <td>✓ Completed</td>
+                        </tr>
+                        <tr>
+                            <td>Test Case Design</td>
+                            <td>0.5 day</td>
+                            <td>✓ Completed</td>
+                        </tr>
+                        <tr>
+                            <td>Test Execution</td>
+                            <td>2 days</td>
+                            <td>In Progress</td>
+                        </tr>
+                        <tr>
+                            <td>Bug Reporting</td>
+                            <td>1 day</td>
+                            <td>Pending</td>
+                        </tr>
+                        <tr>
+                            <td>Documentation</td>
+                            <td>1 day</td>
+                            <td>In Progress</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Total</strong></td>
+                            <td><strong>5 days</strong></td>
+                            <td>On Track</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>10. Test Case Summary</h2>
+            
+            <div class="card">
+                <p>This test plan includes <strong>12 test cases</strong> covering:</p>
+                <ul>
+                    <li><strong>Functional Testing (5 test cases):</strong> Page load, navigation, links, images, interactive elements</li>
+                    <li><strong>SEO Testing (4 test cases):</strong> Meta tags, titles, descriptions, structured data, alt text</li>
+                    <li><strong>Content Validation (3 test cases):</strong> Content relevance, consistency, grammar, image quality</li>
+                </ul>
+                <p>All test cases follow ISTQB standards and include:</p>
+                <ul>
+                    <li>Test conditions (what to test)</li>
+                    <li>Test data (inputs for test execution)</li>
+                    <li>Test oracles (expected results for pass/fail determination)</li>
+                    <li>Traceability to test basis and product risks</li>
+                </ul>
+                <p>See <a href="test-cases.html">Test Cases</a> document for detailed test case specifications in BDD (Given-When-Then) format.</p>
+            </div>
+
+            <h2>11. Test Monitoring and Control</h2>
+            
+            <div class="card">
+                <h3>11.1 Test Monitoring</h3>
+                <p>Test monitoring (ISTQB Foundation Level v4.0.1, Section 5.3.1) gathers information about testing to assess test progress. Metrics to be collected include:</p>
+                <ul>
+                    <li><strong>Test Progress Metrics:</strong> Number of test cases executed, passed/failed, test execution time</li>
+                    <li><strong>Defect Metrics:</strong> Number of defects found, severity distribution, defect density</li>
+                    <li><strong>Coverage Metrics:</strong> Requirements coverage, risk coverage</li>
+                </ul>
+
+                <h3>11.2 Test Control</h3>
+                <p>Test control uses monitoring information to provide guidance and corrective actions. Control directives may include:</p>
+                <ul>
+                    <li>Reprioritizing tests when identified risks become issues</li>
+                    <li>Adjusting test schedule based on progress</li>
+                    <li>Re-evaluating entry/exit criteria if needed</li>
+                </ul>
+            </div>
+
+            <h2>12. ISTQB Standards Compliance</h2>
+            
+            <div class="card">
+                <h3>12.1 Standards and References</h3>
+                <p>This test plan and all test documentation comply with:</p>
+                <ul>
+                    <li><strong>ISTQB Foundation Level Syllabus v4.0.1</strong> (2024-09-15) - All test activities, testware, and defect management follow ISTQB definitions and practices</li>
+                    <li><strong>ISO/IEC/IEEE 29119-3:2021</strong> - Test documentation structure and templates</li>
+                    <li><strong>ISO/IEC 25010:2023</strong> - Quality characteristics model (Functional Suitability, Usability)</li>
+                </ul>
+
+                <h3>12.2 ISTQB Concepts Applied</h3>
+                <ul>
+                    <li><strong>Test Objectives:</strong> Defined per ISTQB Section 1.1.1 (defect detection, quality assessment, confidence building)</li>
+                    <li><strong>Test Process:</strong> Follows ISTQB test activities (test planning, test analysis, test design, test implementation, test execution)</li>
+                    <li><strong>Test Techniques:</strong> Black-box (Equivalence Partitioning, Boundary Value Analysis) and Experience-based (Error Guessing, Exploratory Testing, Checklist-Based Testing)</li>
+                    <li><strong>Risk-Based Testing:</strong> Product risk analysis and risk control (ISTQB Section 5.2)</li>
+                    <li><strong>Defect Management:</strong> Defect reports follow ISTQB Section 5.5 structure</li>
+                    <li><strong>Traceability:</strong> Maintained between test basis, test conditions, test cases, and defects (ISTQB Section 1.4.4)</li>
+                </ul>
+
+                <h3>12.3 Testware Classification</h3>
+                <p>All testware follows ISTQB classification (Section 1.4.3):</p>
+                <ul>
+                    <li><strong>Test Planning Work Products:</strong> Test plan, risk register</li>
+                    <li><strong>Test Analysis Work Products:</strong> Test conditions, defect reports on test basis</li>
+                    <li><strong>Test Design Work Products:</strong> Test cases, test data requirements</li>
+                    <li><strong>Test Execution Work Products:</strong> Test logs, defect reports</li>
+                </ul>
+            </div>
+
+        </main>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 FishingBooker QA Testing Project</p>
+            <p>Created for QA Engineer Assessment</p>
+        </div>
+    </footer>
+</body>
+</html>
+

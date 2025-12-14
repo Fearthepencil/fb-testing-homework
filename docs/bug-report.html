@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bug Report - FishingBooker QA Homework</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div>
+                <h1>Bug Report - FishingBooker Fish Page Testing</h1>
+                <p class="subtitle">Defects Discovered During Testing</p>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="test-plan.html">Test Plan</a></li>
+                <li><a href="test-cases.html">Test Cases</a></li>
+                <li><a href="bug-report.html" class="active">Bug Report</a></li>
+                <li><a href="test-execution-report.html">Execution Report</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <main>
+            <h1>Bug Report</h1>
+            
+            <div class="card">
+                <p>This document contains defects discovered during testing of FishingBooker's fish page functionality. All bugs are documented following <strong>ISTQB Foundation Level v4.0.1</strong> defect reporting standards (Section 5.5) and <strong>ISO/IEC/IEEE 29119-3</strong> test documentation guidelines.</p>
+                
+                <p><strong>Defect Management Process:</strong> According to ISTQB, defect management includes a workflow for handling individual defects from discovery to closure. The workflow typically comprises activities to log, analyze, classify, decide on response, and close the defect report.</p>
+                
+                <p><strong>Defect Report Contents (per ISTQB v4.0.1, Section 5.5):</strong> Each defect report includes:</p>
+                <ul>
+                    <li><strong>Unique identifier</strong> - Bug ID for tracking</li>
+                    <li><strong>Title with short summary</strong> - Brief description of the anomaly</li>
+                    <li><strong>Date, organization, author, role</strong> - When and by whom the defect was reported</li>
+                    <li><strong>Test object and test environment identification</strong> - What was being tested and in what environment</li>
+                    <li><strong>Context of the defect</strong> - Test case being run, test activity, SDLC phase, test technique used</li>
+                    <li><strong>Description of the failure</strong> - Steps to reproduce, test logs, screenshots, recordings</li>
+                    <li><strong>Expected results and actual results</strong> - Clear comparison</li>
+                    <li><strong>Severity</strong> - Degree of impact on stakeholders or requirements</li>
+                    <li><strong>Priority to fix</strong> - Urgency of fixing the defect</li>
+                    <li><strong>Status</strong> - Current state (open, deferred, duplicate, fixed, closed, rejected, etc.)</li>
+                    <li><strong>References</strong> - Links to related test cases, requirements, or other defects</li>
+                </ul>
+                <p><strong>Note:</strong> Screenshots and evidence are stored in the <code>bug_data/</code> directory and referenced using relative paths.</p>
+            </div>
+
+            <h2>Discovered Defects</h2>
+
+            <!-- BUG-001: Image 403 Forbidden Error -->
+            <div class="bug">
+                <div class="bug-header">
+                    <span class="bug-id">BUG-001: Image Returns 403 Forbidden Error from Upstream Server</span>
+                    <div>
+                        <span class="badge badge-medium">Medium Severity</span>
+                        <span class="badge badge-medium">Medium Priority</span>
+                    </div>
+                </div>
+
+                <table style="margin-top: 15px;">
+                    <tr>
+                        <th style="width: 200px;">Bug ID</th>
+                        <td>BUG-001</td>
+                    </tr>
+                    <tr>
+                        <th>Summary</th>
+                        <td>An image on the fish page (snapper-red) fails to load and returns a 403 Forbidden error from an upstream server, resulting in a broken image display.</td>
+                    </tr>
+                    <tr>
+                        <th>Type</th>
+                        <td>Functional Bug / Content Issue</td>
+                    </tr>
+                    <tr>
+                        <th>Reported By</th>
+                        <td>Pavle Stefanovic</td>
+                    </tr>
+                    <tr>
+                        <th>Date Reported</th>
+                        <td>January 2025</td>
+                    </tr>
+                    <tr>
+                        <th>Status</th>
+                        <td>Open</td>
+                    </tr>
+                    <tr>
+                        <th>Severity</th>
+                        <td><span class="badge badge-medium">Medium</span> - The image failure affects user experience and page aesthetics, but does not prevent core functionality.</td>
+                    </tr>
+                    <tr>
+                        <th>Priority</th>
+                        <td><span class="badge badge-medium">Medium</span> - Should be fixed to maintain content quality and user experience, but not blocking critical functionality.</td>
+                    </tr>
+                    <tr>
+                        <th>Test Environment</th>
+                        <td>
+                            <strong>URL:</strong> <a href="https://nextjs15.dev.fishingbooker.com/fish/snapper-red" target="_blank">https://nextjs15.dev.fishingbooker.com/fish/snapper-red</a><br>
+                            <strong>Browser:</strong> Chrome (latest version)<br>
+                            <strong>OS:</strong> Windows 10<br>
+                            <strong>Login:</strong> fishingbooker / QAFBTest
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Test Case Reference</th>
+                        <td>TC-003: Images Load and Display Correctly</td>
+                    </tr>
+                </table>
+
+                <div style="margin-top: 20px;">
+                    <h3>Description</h3>
+                    <p>During exploratory testing of the fish page for Red Snapper, one image on the page fails to load and displays a 403 Forbidden error. The error originates from an upstream server, indicating a permissions or access control issue with the image resource.</p>
+
+                    <h3>Steps to Reproduce</h3>
+                    <ol>
+                        <li>Navigate to <a href="https://nextjs15.dev.fishingbooker.com/fish/snapper-red" target="_blank">https://nextjs15.dev.fishingbooker.com/fish/snapper-red</a></li>
+                        <li>Log in with credentials: fishingbooker / QAFBTest (if required)</li>
+                        <li>Scroll through the page to view all images</li>
+                        <li>Observe the page for any broken or failed image loads</li>
+                        <li>Open browser Developer Tools (F12) and check the Network tab</li>
+                        <li>Look for any image requests returning 403 Forbidden status</li>
+                    </ol>
+
+                    <h3>Expected Result</h3>
+                    <p>All images on the fish page should load successfully and display correctly without any HTTP error codes.</p>
+
+                    <h3>Actual Result</h3>
+                    <p>One image fails to load and returns a <strong>403 Forbidden</strong> error from the upstream server. The image either:</p>
+                    <ul>
+                        <li>Displays as a broken image placeholder</li>
+                        <li>Shows an error icon or message</li>
+                        <li>Appears as a blank space where the image should be</li>
+                    </ul>
+                    <p>The Network tab in Developer Tools shows the image request with HTTP status code <strong>403</strong>.</p>
+
+                    <h3>Evidence</h3>
+                    <p>Screenshots demonstrating the issue:</p>
+                    
+                    <div style="margin: 20px 0;">
+                        <img src="bug_data/bug1_screenshot1.png" alt="Screenshot showing broken image on fish page" style="max-width: 100%; height: auto; border: 1px solid #ccc; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                    </div>
+
+                    <div style="margin: 20px 0;">
+                        <img src="bug_data/bug1_screenshot2.png" alt="Screenshot showing 403 Forbidden error in browser Network tab" style="max-width: 100%; height: auto; border: 1px solid #ccc; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                    </div>
+
+                    <h3>Impact</h3>
+                    <ul>
+                        <li><strong>User Experience:</strong> Degraded visual experience due to missing/broken image</li>
+                        <li><strong>Content Quality:</strong> Incomplete content presentation affects page professionalism</li>
+                        <li><strong>SEO:</strong> Broken images may negatively impact SEO if alt text is not properly configured</li>
+                        <li><strong>Accessibility:</strong> Users relying on images may miss important visual information</li>
+                    </ul>
+
+                    <h3>Possible Root Causes</h3>
+                    <ul>
+                        <li>Image file permissions incorrectly configured on the upstream server</li>
+                        <li>CDN or image hosting service access control rules blocking the request</li>
+                        <li>Expired or invalid image URL/token</li>
+                        <li>Server-side authentication/authorization issue with the image resource</li>
+                        <li>CORS (Cross-Origin Resource Sharing) policy blocking the image request</li>
+                    </ul>
+
+                    <h3>Suggested Fix</h3>
+                    <ol>
+                        <li>Verify the image file exists and is accessible on the upstream server</li>
+                        <li>Check and correct file permissions on the upstream server (ensure read access is granted)</li>
+                        <li>Review CDN/image hosting service configuration and access control rules</li>
+                        <li>Verify the image URL is correct and not expired</li>
+                        <li>If using authentication tokens, ensure they are valid and properly included in the request</li>
+                        <li>Check CORS configuration if the image is hosted on a different domain</li>
+                        <li>Replace the broken image with a working alternative if the upstream issue cannot be resolved</li>
+                        <li>Implement proper error handling to display a fallback image or placeholder when images fail to load</li>
+                    </ol>
+
+                    <h3>Additional Notes</h3>
+                    <p>This issue was discovered during exploratory testing. The specific image URL and exact location on the page can be identified from the screenshots. It is recommended to test all images on the page to ensure no other images are affected by similar issues.</p>
+                </div>
+            </div>
+
+            <!-- BUG-002: Incorrect Breadcrumb Navigation -->
+            <div class="bug">
+                <div class="bug-header">
+                    <span class="bug-id">BUG-002: Breadcrumb Navigation Shows Wrong Fish Species</span>
+                    <div>
+                        <span class="badge badge-medium">Medium Severity</span>
+                        <span class="badge badge-medium">Medium Priority</span>
+                    </div>
+                </div>
+
+                <table style="margin-top: 15px;">
+                    <tr>
+                        <th style="width: 200px;">Bug ID</th>
+                        <td>BUG-002</td>
+                    </tr>
+                    <tr>
+                        <th>Summary</th>
+                        <td>Breadcrumb navigation on the Red Snapper fish page incorrectly displays "Dolphin (Mahi Mahi)" instead of "Red Snapper", causing confusion and incorrect navigation context.</td>
+                    </tr>
+                    <tr>
+                        <th>Type</th>
+                        <td>Functional Bug / Content Issue</td>
+                    </tr>
+                    <tr>
+                        <th>Reported By</th>
+                        <td>Pavle Stefanovic</td>
+                    </tr>
+                    <tr>
+                        <th>Date Reported</th>
+                        <td>January 2025</td>
+                    </tr>
+                    <tr>
+                        <th>Status</th>
+                        <td>Open</td>
+                    </tr>
+                    <tr>
+                        <th>Severity</th>
+                        <td><span class="badge badge-medium">Medium</span> - Incorrect breadcrumb affects user navigation context and content consistency, but does not prevent core functionality.</td>
+                    </tr>
+                    <tr>
+                        <th>Priority</th>
+                        <td><span class="badge badge-medium">Medium</span> - Should be fixed to maintain content accuracy and user trust, but not blocking critical functionality.</td>
+                    </tr>
+                    <tr>
+                        <th>Test Environment</th>
+                        <td>
+                            <strong>URL:</strong> <a href="https://nextjs15.dev.fishingbooker.com/fish/snapper-red" target="_blank">https://nextjs15.dev.fishingbooker.com/fish/snapper-red</a><br>
+                            <strong>Browser:</strong> Chrome (latest version)<br>
+                            <strong>OS:</strong> Windows 10<br>
+                            <strong>Login:</strong> fishingbooker / QAFBTest
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Test Case Reference</th>
+                        <td>TC-001: Fish Page Loads Successfully, TC-002: Navigation and Internal Links Work Correctly, TC-010: Content Is Relevant to Fish Species</td>
+                    </tr>
+                </table>
+
+                <div style="margin-top: 20px;">
+                    <h3>Description</h3>
+                    <p>When viewing the Red Snapper fish page, the breadcrumb navigation displays "Home / Fish Species / Dolphin (Mahi Mahi)" instead of the expected "Home / Fish Species / Red Snapper". This is incorrect as Dolphin (Mahi Mahi) and Red Snapper are completely different fish species. The breadcrumb should accurately reflect the current page content.</p>
+
+                    <h3>Steps to Reproduce</h3>
+                    <ol>
+                        <li>Navigate to <a href="https://nextjs15.dev.fishingbooker.com/fish/snapper-red" target="_blank">https://nextjs15.dev.fishingbooker.com/fish/snapper-red</a></li>
+                        <li>Log in with credentials: fishingbooker / QAFBTest (if required)</li>
+                        <li>Observe the breadcrumb navigation located below the hero section</li>
+                        <li>Note the breadcrumb text displayed</li>
+                    </ol>
+
+                    <h3>Expected Result</h3>
+                    <p>The breadcrumb navigation should display: <strong>"Home / Fish Species / Red Snapper"</strong> (or similar, accurately reflecting the current fish species page).</p>
+
+                    <h3>Actual Result</h3>
+                    <p>The breadcrumb navigation displays: <strong>"Home / Fish Species / Dolphin (Mahi Mahi)"</strong>, which is incorrect. The page content is about Red Snapper, but the breadcrumb shows a completely different fish species (Dolphin/Mahi Mahi).</p>
+
+                    <h3>Evidence</h3>
+                    <div style="margin: 20px 0;">
+                        <img src="bug_data/bug2_screenshot1.png" alt="Screenshot showing incorrect breadcrumb displaying Dolphin (Mahi Mahi) on Red Snapper page" style="max-width: 100%; height: auto; border: 1px solid #ccc; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                    </div>
+
+                    <h3>Impact</h3>
+                    <ul>
+                        <li><strong>User Experience:</strong> Confusion for users who rely on breadcrumbs for navigation context</li>
+                        <li><strong>Content Accuracy:</strong> Inconsistent information between page content and navigation elements</li>
+                        <li><strong>SEO:</strong> Incorrect breadcrumb schema may negatively impact SEO and structured data</li>
+                        <li><strong>Trust:</strong> Users may lose trust in the accuracy of the website content</li>
+                        <li><strong>Navigation:</strong> Users clicking on breadcrumb links may navigate to wrong pages</li>
+                    </ul>
+
+                    <h3>Possible Root Causes</h3>
+                    <ul>
+                        <li>Hardcoded breadcrumb text that was not updated when creating the Red Snapper page</li>
+                        <li>Template or component reuse issue where breadcrumb data is not dynamically populated based on the current page</li>
+                        <li>Database or CMS mapping error linking the wrong fish species to the breadcrumb</li>
+                        <li>URL routing issue where the breadcrumb is reading from incorrect page metadata</li>
+                        <li>Copy-paste error during page creation where breadcrumb was copied from Dolphin (Mahi Mahi) page</li>
+                    </ul>
+
+                    <h3>Suggested Fix</h3>
+                    <ol>
+                        <li>Verify the breadcrumb component is dynamically reading the correct fish species name from the page data/URL</li>
+                        <li>Check the database/CMS to ensure Red Snapper page has correct metadata for breadcrumb generation</li>
+                        <li>Update the breadcrumb to display "Home / Fish Species / Red Snapper" (or appropriate format)</li>
+                        <li>Verify breadcrumb links navigate to correct pages when clicked</li>
+                        <li>Test breadcrumb on all fish species pages to ensure this is not a systemic issue</li>
+                        <li>If using structured data (Schema.org BreadcrumbList), ensure it matches the visual breadcrumb</li>
+                        <li>Implement automated tests to catch breadcrumb mismatches in the future</li>
+                    </ol>
+
+                    <h3>Additional Notes</h3>
+                    <p>This bug was discovered during execution of TC-001 (Fish Page Loads Successfully). The breadcrumb is a critical navigation element that should accurately reflect the current page context. It is recommended to check all fish species pages to ensure breadcrumbs are correct across the site.</p>
+                </div>
+            </div>
+
+            <!-- Template for bug reports - Copy this section for each new bug -->
+            <!--
+            <div class="bug">
+                <div class="bug-header">
+                    <span class="bug-id">BUG-XXX: [Bug Title]</span>
+                    <div>
+                        <span class="badge badge-[severity]">[Severity] Severity</span>
+                        <span class="badge badge-[priority]">[Priority] Priority</span>
+                    </div>
+                </div>
+
+                <table style="margin-top: 15px;">
+                    <tr>
+                        <th style="width: 200px;">Bug ID</th>
+                        <td>BUG-XXX</td>
+                    </tr>
+                    <tr>
+                        <th>Summary</th>
+                        <td>[Brief summary of the bug]</td>
+                    </tr>
+                    <tr>
+                        <th>Type</th>
+                        <td>[Functional Bug / UI Issue / SEO Issue / Content Issue]</td>
+                    </tr>
+                    <tr>
+                        <th>Reported By</th>
+                        <td>[Your Name]</td>
+                    </tr>
+                    <tr>
+                        <th>Date Reported</th>
+                        <td>[Date]</td>
+                    </tr>
+                    <tr>
+                        <th>Status</th>
+                        <td>Open</td>
+                    </tr>
+                    <tr>
+                        <th>Severity</th>
+                        <td><span class="badge badge-[severity]">[Severity]</span> - [Explanation]</td>
+                    </tr>
+                    <tr>
+                        <th>Priority</th>
+                        <td><span class="badge badge-[priority]">[Priority]</span> - [Explanation]</td>
+                    </tr>
+                    <tr>
+                        <th>Related Test Case</th>
+                        <td><a href="test-cases.html#TC-XXX">TC-XXX: [Test Case Name]</a></td>
+                    </tr>
+                    <tr>
+                        <th>Test Object</th>
+                        <td>[Component or system being tested - e.g., Fish Page for Salmon]</td>
+                    </tr>
+                    <tr>
+                        <th>Test Environment</th>
+                        <td>
+                            <strong>OS:</strong> [Operating System]<br>
+                            <strong>Browser:</strong> [Browser and version]<br>
+                            <strong>URL:</strong> [Page URL where bug was found]<br>
+                            <strong>Date:</strong> [Date when anomaly was observed]
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Context</th>
+                        <td>
+                            <strong>Test Case:</strong> [Related test case ID]<br>
+                            <strong>Test Activity:</strong> [Test execution, exploratory testing, etc.]<br>
+                            <strong>Test Technique:</strong> [Test technique used - e.g., checklist-based, exploratory]<br>
+                            <strong>SDLC Phase:</strong> [System testing, acceptance testing, etc.]
+                        </td>
+                    </tr>
+                </table>
+
+                <h3>Description</h3>
+                <p>[Detailed description of the failure/anomaly, what it affects, and why it's a problem. According to ISTQB, this should enable reproduction and resolution.]</p>
+
+                <h3>Steps to Reproduce</h3>
+                <p><strong>Test Steps:</strong> The test steps that detected the anomaly (ISTQB Foundation Level v4.0.1, Section 5.5)</p>
+                <ol>
+                    <li>[Step 1]</li>
+                    <li>[Step 2]</li>
+                    <li>[Step 3]</li>
+                    <li>[Continue as needed...]</li>
+                </ol>
+                <p><strong>Note:</strong> Include any relevant test logs, database dumps, or other context that helps reproduce the issue.</p>
+
+                <h3>Expected Result</h3>
+                <p>[What should happen when following the steps. This is the test oracle - the source used to determine expected results (ISTQB Foundation Level v4.0.1, Section 1.3.4).]</p>
+
+                <h3>Actual Result</h3>
+                <p>[What actually happens when following the steps. This describes the failure observed during test execution.]</p>
+
+                <h3>Impact</h3>
+                <ul>
+                    <li><strong>User Experience:</strong> [How this affects users]</li>
+                    <li><strong>Business Impact:</strong> [How this affects the business]</li>
+                    <li><strong>SEO Impact:</strong> [If applicable, how this affects SEO]</li>
+                </ul>
+
+                <h3>Evidence</h3>
+                <div style="margin: 20px 0;">
+                    <p><strong>Screenshot: [Description of screenshot]</strong></p>
+                    <img src="bug_data/bug-xxx-screenshot1.png" alt="[Alt text]" style="max-width: 100%; height: auto; border: 1px solid #ccc; margin-bottom: 20px;">
+                    <p><em>[Caption explaining what the screenshot shows]</em></p>
+                </div>
+
+                <h3>Root Cause Analysis</h3>
+                <p>[If known, explanation of why this bug might be occurring]</p>
+
+                <h3>Suggested Fix</h3>
+                <p>[Recommendation for how to fix the bug]</p>
+
+                <h3>Additional Notes</h3>
+                <p>[Any additional information, workarounds, or related issues]</p>
+            </div>
+            -->
+
+            <div class="card" style="background-color: #FFF3CD; border-left: 4px solid #FFC107;">
+                <h3>📝 Instructions for Adding Bugs</h3>
+                <p>To add a new bug report:</p>
+                <ol>
+                    <li>Copy the template section above (between the HTML comments)</li>
+                    <li>Replace all placeholder text with actual bug information</li>
+                    <li>Save screenshots in the <code>docs/bug_data/</code> directory with descriptive names (e.g., <code>bug-001-screenshot1.png</code>)</li>
+                    <li>Reference screenshots using relative paths: <code>bug_data/your-screenshot.png</code></li>
+                    <li>Update the bug summary table below</li>
+                </ol>
+                <p><strong>Screenshot Naming Convention:</strong> <code>bug-[ID]-[description].png</code> (e.g., <code>bug-001-missing-alt-text.png</code>)</p>
+            </div>
+
+            <h2>Defect Summary</h2>
+            
+            <div class="card">
+                <p>During testing of FishingBooker's fish page functionality, bugs will be documented below as they are discovered.</p>
+                
+                <h3>Bug Statistics</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Severity</th>
+                            <th>Count</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="badge badge-critical">Critical</span></td>
+                            <td>0</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-high">High</span></td>
+                            <td>0</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-medium">Medium</span></td>
+                            <td>2</td>
+                            <td>2 Open</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-low">Low</span></td>
+                            <td>0</td>
+                            <td>-</td>
+                        </tr>
+                        <tr style="font-weight: 600;">
+                            <td>TOTAL</td>
+                            <td>2</td>
+                            <td>2 Open</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>List of Bugs</h3>
+                <table style="margin-top: 15px;">
+                    <thead>
+                        <tr>
+                            <th>Bug ID</th>
+                            <th>Summary</th>
+                            <th>Severity</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a href="#BUG-001">BUG-001</a></td>
+                            <td>Image Returns 403 Forbidden Error from Upstream Server</td>
+                            <td><span class="badge badge-medium">Medium</span></td>
+                            <td>Open</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#BUG-002">BUG-002</a></td>
+                            <td>Breadcrumb Navigation Shows Wrong Fish Species</td>
+                            <td><span class="badge badge-medium">Medium</span></td>
+                            <td>Open</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>Bug Reporting Guidelines</h2>
+            
+            <div class="card">
+                <h3>Severity Levels (ISTQB Foundation Level v4.0.1)</h3>
+                <p>Severity indicates the <strong>degree of impact</strong> of the defect on the interests of stakeholders or requirements. Severity is typically assigned by the tester who discovers the defect.</p>
+                <ul>
+                    <li><strong>Critical:</strong> System crash, data loss, security vulnerability, complete feature failure, prevents core functionality</li>
+                    <li><strong>High:</strong> Major functionality broken, significant user impact, workaround not available, affects important features</li>
+                    <li><strong>Medium:</strong> Feature partially broken, moderate user impact, workaround available, affects secondary features</li>
+                    <li><strong>Low:</strong> Minor issue, cosmetic problem, low user impact, easy workaround, does not significantly affect functionality</li>
+                </ul>
+
+                <h3>Priority Levels</h3>
+                <p>Priority indicates the <strong>urgency to fix</strong> the defect. Priority is typically assigned by project management or product owner based on business needs.</p>
+                <ul>
+                    <li><strong>High:</strong> Must be fixed immediately, blocks other work, affects release schedule</li>
+                    <li><strong>Medium:</strong> Should be fixed soon, impacts user experience, should be fixed before release</li>
+                    <li><strong>Low:</strong> Can be fixed later, minor impact, may be deferred to future releases</li>
+                </ul>
+                <p><strong>Note:</strong> Severity and priority are independent. A high-severity defect may have low priority if it affects rarely-used features, while a low-severity defect may have high priority if it affects critical business processes.</p>
+
+                <h3>Defect Status Workflow</h3>
+                <p>Typical defect status values (ISTQB Foundation Level v4.0.1):</p>
+                <ul>
+                    <li><strong>Open:</strong> Defect has been reported and is awaiting analysis</li>
+                    <li><strong>Deferred:</strong> Defect fix is postponed to a future release</li>
+                    <li><strong>Duplicate:</strong> Defect is a duplicate of an existing defect</li>
+                    <li><strong>Waiting to be fixed:</strong> Defect has been confirmed and is in the development queue</li>
+                    <li><strong>Awaiting confirmation testing:</strong> Defect has been fixed and is waiting for retest</li>
+                    <li><strong>Re-opened:</strong> Defect was closed but has reappeared or was not properly fixed</li>
+                    <li><strong>Closed:</strong> Defect has been fixed and confirmed, or is accepted as-is</li>
+                    <li><strong>Rejected:</strong> Defect is not a real defect (e.g., false positive, works as designed)</li>
+                </ul>
+
+                <h3>Best Practices</h3>
+                <ul>
+                    <li>Provide clear, step-by-step reproduction instructions</li>
+                    <li>Include screenshots or screen recordings for visual bugs</li>
+                    <li>Test on multiple browsers/devices if applicable</li>
+                    <li>Check if the bug is reproducible consistently</li>
+                    <li>Document any workarounds that exist</li>
+                    <li>Link bugs to related test cases</li>
+                </ul>
+            </div>
+
+        </main>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 FishingBooker QA Testing Project</p>
+            <p>Created for QA Engineer Assessment</p>
+        </div>
+    </footer>
+</body>
+</html>
+

@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Cases - FishingBooker QA Homework</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div>
+                <h1>Test Cases - FishingBooker Fish Page Testing</h1>
+                <p class="subtitle">Detailed Test Cases in BDD Format</p>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="test-plan.html">Test Plan</a></li>
+                <li><a href="test-cases.html" class="active">Test Cases</a></li>
+                <li><a href="bug-report.html">Bug Report</a></li>
+                <li><a href="test-execution-report.html">Execution Report</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <main>
+            <h1>Test Cases</h1>
+            
+            <div class="card">
+                <p>This document contains 12 test cases covering FishingBooker's fish page functionality, SEO optimization, and content validation. All test cases are written in BDD (Behavior-Driven Development) Given-When-Then format for clarity and follow <strong>ISTQB Foundation Level v4.0.1</strong> standards.</p>
+                
+                <h3>ISTQB Test Case Structure</h3>
+                <p>According to ISTQB Foundation Level v4.0.1 (Section 1.4.1), each test case includes:</p>
+                <ul>
+                    <li><strong>Test Condition:</strong> An item or event of a component or system that could be verified by one or more test cases (e.g., "Page loads successfully")</li>
+                    <li><strong>Test Data:</strong> Data needed for test execution (inputs, preconditions, postconditions)</li>
+                    <li><strong>Test Oracle:</strong> Source to determine expected results to compare with actual results (the "Then" section in BDD format)</li>
+                    <li><strong>Traceability:</strong> Links to test basis (requirements) and product risks</li>
+                </ul>
+                <p>All test cases in this document follow this structure, with test conditions traceable to product risks identified in the Test Plan.</p>
+                
+                <h3>Test Case Summary</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Test Cases</th>
+                            <th>Priority</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Functional Testing</td>
+                            <td>5</td>
+                            <td>High</td>
+                        </tr>
+                        <tr>
+                            <td>SEO Testing</td>
+                            <td>4</td>
+                            <td>High</td>
+                        </tr>
+                        <tr>
+                            <td>Content Validation</td>
+                            <td>3</td>
+                            <td>Medium</td>
+                        </tr>
+                        <tr style="font-weight: 600;">
+                            <td>TOTAL</td>
+                            <td>12</td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>Quick Navigation</h2>
+            <div class="card">
+                <ul>
+                    <li><a href="#functional">Functional Tests (TC-001 to TC-005)</a></li>
+                    <li><a href="#seo">SEO Tests (TC-006 to TC-009)</a></li>
+                    <li><a href="#content">Content Validation Tests (TC-010 to TC-012)</a></li>
+                </ul>
+            </div>
+
+            <!-- FUNCTIONAL TESTS -->
+            <h2 id="functional">Functional Tests</h2>
+
+            <!-- TC-001 -->
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-case-id">TC-001: Fish Page Loads Successfully</span>
+                    <div>
+                        <span class="badge badge-manual">Manual</span>
+                        <span class="badge badge-high">High Priority</span>
+                    </div>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Objective</h4>
+                    <p>Verify that the fish page loads successfully without critical errors.</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Preconditions</h4>
+                    <p>User is logged in with credentials: fishingbooker / QAFBTest</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Data</h4>
+                    <p>Fish page URL: <a href="https://nextjs15.dev.fishingbooker.com/fish/snapper-red" target="_blank">https://nextjs15.dev.fishingbooker.com/fish/snapper-red</a></p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Oracle</h4>
+                    <p>Expected results serve as the test oracle (ISTQB Foundation Level v4.0.1, Section 1.3.4) for determining pass/fail criteria.</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Given</h4>
+                    <p>User is logged into FishingBooker testing environment</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>When</h4>
+                    <p>User navigates to a fish page (e.g., /fish/salmon)</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Then</h4>
+                    <p>
+                        • Page loads within 5 seconds<br>
+                        • No JavaScript errors in browser console<br>
+                        • No 404 or 500 errors displayed<br>
+                        • Page content is visible and rendered correctly<br>
+                        • No broken images or missing assets<br>
+                        • Page is interactive (buttons, links respond to clicks)<br>
+                        • Hero section with fish name and search bar is displayed<br>
+                        • Breadcrumb navigation is present and correct<br>
+                        • Charter listings section is visible<br>
+                        • Related species section is displayed<br>
+                        • About section with fish information is present
+                    </p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Technique</h4>
+                    <p>Functional Testing, Error Guessing (ISTQB Foundation Level v4.0.1, Section 4.4.1)</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Condition</h4>
+                    <p>Fish page loads successfully without critical errors</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Traceability</h4>
+                    <p>
+                        <strong>Test Basis:</strong> Fish page requirements, functional specifications<br>
+                        <strong>Product Risk:</strong> PR-01 - Page fails to load or displays critical errors (HIGH risk)<br>
+                        <strong>Quality Characteristic:</strong> Functional Suitability - Correctness (ISO 25010)
+                    </p>
+                </div>
+            </div>
+
+            <!-- TC-002 -->
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-case-id">TC-002: Navigation and Internal Links Work Correctly</span>
+                    <div>
+                        <span class="badge badge-manual">Manual</span>
+                        <span class="badge badge-high">High Priority</span>
+                    </div>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Objective</h4>
+                    <p>Verify that all navigation elements and internal links on the fish page function correctly.</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Preconditions</h4>
+                    <p>User is on a fish page</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Data</h4>
+                    <p>Various internal links on the page (charter listings, related fish pages, filters)</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Given</h4>
+                    <p>User is viewing a fish page with navigation elements and internal links</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>When</h4>
+                    <p>User clicks on navigation elements and internal links</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Then</h4>
+                    <p>
+                        • All navigation links are clickable<br>
+                        • Links navigate to correct pages<br>
+                        • No broken links (404 errors)<br>
+                        • External links open in new tab (if applicable)<br>
+                        • Breadcrumb navigation works correctly and displays correct fish species name<br>
+                        • Breadcrumb links navigate to correct pages (Home, Fish Species)<br>
+                        • Charter listing links navigate to charter detail pages<br>
+                        • Related species links navigate to correct fish pages<br>
+                        • Destination links in carousels navigate correctly<br>
+                        • "Show more" expandable content links work correctly<br>
+                        • Back button returns to previous page
+                    </p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Technique</h4>
+                    <p>Functional Testing, Checklist-Based Testing (ISTQB Foundation Level v4.0.1, Section 4.4.3)</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Condition</h4>
+                    <p>Navigation elements and internal links function correctly</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Traceability</h4>
+                    <p>
+                        <strong>Test Basis:</strong> Navigation requirements, functional specifications<br>
+                        <strong>Product Risk:</strong> PR-04 - Broken links or navigation issues (MEDIUM risk)<br>
+                        <strong>Quality Characteristic:</strong> Functional Suitability - Correctness (ISO 25010)
+                    </p>
+                </div>
+            </div>
+
+            <!-- TC-003 -->
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-case-id">TC-003: Images Load and Display Correctly</span>
+                    <div>
+                        <span class="badge badge-manual">Manual</span>
+                        <span class="badge badge-medium">Medium Priority</span>
+                    </div>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Objective</h4>
+                    <p>Verify that all images on the fish page load correctly and display properly.</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Preconditions</h4>
+                    <p>User is on a fish page</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Data</h4>
+                    <p>All images on the page (hero images, fish images, charter thumbnails, related species images, catch photos, destination images, review avatars)</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Given</h4>
+                    <p>User is viewing a fish page with multiple images</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>When</h4>
+                    <p>User observes images on the page</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Then</h4>
+                    <p>
+                        • All images load successfully<br>
+                        • No broken image placeholders displayed<br>
+                        • Images are properly sized and not distorted<br>
+                        • Images are relevant to the fish species<br>
+                        • Image quality is acceptable (not pixelated)<br>
+                        • Lazy loading works correctly (if implemented)
+                    </p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Technique</h4>
+                    <p>Visual Testing, Checklist-Based Testing (ISTQB Foundation Level v4.0.1, Section 4.4.3)</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Condition</h4>
+                    <p>All images on the page load and display correctly</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Traceability</h4>
+                    <p>
+                        <strong>Test Basis:</strong> Image loading requirements, functional specifications<br>
+                        <strong>Product Risk:</strong> PR-01 - Page functionality issues (HIGH risk)<br>
+                        <strong>Quality Characteristic:</strong> Functional Suitability - Completeness (ISO 25010)
+                    </p>
+                </div>
+            </div>
+
+            <!-- TC-004 -->
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-case-id">TC-004: Interactive Elements Function Correctly</span>
+                    <div>
+                        <span class="badge badge-manual">Manual</span>
+                        <span class="badge badge-high">High Priority</span>
+                    </div>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Objective</h4>
+                    <p>Verify that all interactive elements (buttons, filters, forms) on the fish page function correctly.</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Preconditions</h4>
+                    <p>User is on a fish page</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Data</h4>
+                    <p>Search bar (destination, date, passengers), Filters button, Charter cards, Carousel navigation arrows, "Show more" links, Map interactions, Habitats and Techniques tags</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Given</h4>
+                    <p>User is viewing a fish page with interactive elements</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>When</h4>
+                    <p>User interacts with buttons, filters, forms, and dropdowns</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Then</h4>
+                    <p>
+                        • All buttons are clickable and respond to clicks<br>
+                        • Filters apply correctly and update results<br>
+                        • Forms accept input and submit correctly<br>
+                        • Dropdown menus open and close properly<br>
+                        • No JavaScript errors occur during interaction<br>
+                        • Loading states are displayed appropriately
+                    </p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Technique</h4>
+                    <p>Functional Testing, Error Guessing (ISTQB Foundation Level v4.0.1, Section 4.4.1)</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Condition</h4>
+                    <p>Interactive elements (buttons, filters, forms) function correctly</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Traceability</h4>
+                    <p>
+                        <strong>Test Basis:</strong> Interactive element requirements, functional specifications<br>
+                        <strong>Product Risk:</strong> PR-01 - Page functionality issues (HIGH risk)<br>
+                        <strong>Quality Characteristic:</strong> Functional Suitability - Correctness (ISO 25010)
+                    </p>
+                </div>
+            </div>
+
+            <!-- TC-005 -->
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-case-id">TC-005: Page Responsiveness (Basic Check)</span>
+                    <div>
+                        <span class="badge badge-manual">Manual</span>
+                        <span class="badge badge-medium">Medium Priority</span>
+                    </div>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Objective</h4>
+                    <p>Verify that the fish page displays correctly at different screen sizes.</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Preconditions</h4>
+                    <p>User is on a fish page</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Data</h4>
+                    <p>Different viewport sizes: Desktop (1920x1080), Tablet (768x1024), Mobile (375x667)</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Given</h4>
+                    <p>User is viewing a fish page</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>When</h4>
+                    <p>User resizes browser window or views page on different devices</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Then</h4>
+                    <p>
+                        • Page layout adapts to screen size<br>
+                        • Content is readable at all sizes<br>
+                        • No horizontal scrolling on mobile<br>
+                        • Images scale appropriately<br>
+                        • Navigation menu adapts (hamburger menu on mobile)<br>
+                        • Interactive elements remain accessible
+                    </p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Technique</h4>
+                    <p>Visual Testing, Responsive Design Validation, Boundary Value Analysis (ISTQB Foundation Level v4.0.1, Section 4.2.2)</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Condition</h4>
+                    <p>Page displays correctly at different screen sizes (boundary values: desktop, tablet, mobile)</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Traceability</h4>
+                    <p>
+                        <strong>Test Basis:</strong> Responsive design requirements, usability guidelines<br>
+                        <strong>Product Risk:</strong> Usability - Mobile experience (MEDIUM risk)<br>
+                        <strong>Quality Characteristic:</strong> Usability - User interface aesthetics (ISO 25010)
+                    </p>
+                </div>
+            </div>
+
+            <!-- SEO TESTS -->
+            <h2 id="seo">SEO Tests</h2>
+
+            <!-- TC-006 -->
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-case-id">TC-006: Meta Title and Description Are Present and Optimized</span>
+                    <div>
+                        <span class="badge badge-manual">Manual</span>
+                        <span class="badge badge-high">High Priority</span>
+                    </div>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Objective</h4>
+                    <p>Verify that the fish page has properly optimized meta title and description tags.</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Preconditions</h4>
+                    <p>User is on a fish page</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Data</h4>
+                    <p>Meta title and description from page source</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Given</h4>
+                    <p>User is viewing a fish page</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>When</h4>
+                    <p>User inspects page source or uses SEO tools to check meta tags</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Then</h4>
+                    <p>
+                        • Meta title tag is present and unique<br>
+                        • Meta title is 50-60 characters long<br>
+                        • Meta title contains fish species name<br>
+                        • Meta description tag is present<br>
+                        • Meta description is 150-160 characters long<br>
+                        • Meta description is relevant and compelling<br>
+                        • Meta description contains relevant keywords
+                    </p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Technique</h4>
+                    <p>SEO Validation, Checklist-Based Testing (ISTQB Foundation Level v4.0.1, Section 4.4.3)</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Condition</h4>
+                    <p>Meta title and description tags are present and optimized</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Traceability</h4>
+                    <p>
+                        <strong>Test Basis:</strong> SEO requirements, content guidelines<br>
+                        <strong>Product Risk:</strong> PR-02 - Poor SEO optimization affects search rankings (HIGH risk)<br>
+                        <strong>Quality Characteristic:</strong> Functional Suitability - Appropriateness (ISO 25010)
+                    </p>
+                </div>
+            </div>
+
+            <!-- TC-007 -->
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-case-id">TC-007: Header Tags (H1, H2, H3) Are Properly Structured</span>
+                    <div>
+                        <span class="badge badge-manual">Manual</span>
+                        <span class="badge badge-high">High Priority</span>
+                    </div>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Objective</h4>
+                    <p>Verify that header tags are properly structured and optimized for SEO.</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Preconditions</h4>
+                    <p>User is on a fish page</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Data</h4>
+                    <p>All H1, H2, H3 tags on the page</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Given</h4>
+                    <p>User is viewing a fish page</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>When</h4>
+                    <p>User inspects page structure and header tags</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Then</h4>
+                    <p>
+                        • Exactly one H1 tag is present<br>
+                        • H1 tag contains fish species name<br>
+                        • H2 tags are used for main sections<br>
+                        • H3 tags are used for subsections<br>
+                        • Header hierarchy is logical (H1 → H2 → H3)<br>
+                        • Headers contain relevant keywords<br>
+                        • Headers are descriptive and meaningful
+                    </p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Technique</h4>
+                    <p>SEO Validation, Structure Analysis</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Risk Coverage</h4>
+                    <p>PR-02: Poor SEO optimization (HIGH risk)</p>
+                </div>
+            </div>
+
+            <!-- TC-008 -->
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-case-id">TC-008: Images Have Alt Text for SEO and Accessibility</span>
+                    <div>
+                        <span class="badge badge-manual">Manual</span>
+                        <span class="badge badge-high">High Priority</span>
+                    </div>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Objective</h4>
+                    <p>Verify that all images on the fish page have appropriate alt text attributes.</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Preconditions</h4>
+                    <p>User is on a fish page</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Data</h4>
+                    <p>All images on the page</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Given</h4>
+                    <p>User is viewing a fish page with multiple images</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>When</h4>
+                    <p>User inspects image elements in page source or DevTools</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Then</h4>
+                    <p>
+                        • All images have alt attribute present<br>
+                        • Alt text is descriptive and relevant<br>
+                        • Alt text contains fish species name (where applicable)<br>
+                        • Decorative images have empty alt="" (if appropriate)<br>
+                        • Alt text is not keyword-stuffed<br>
+                        • Alt text provides context for screen readers
+                    </p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Technique</h4>
+                    <p>SEO Validation, Accessibility Testing</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Risk Coverage</h4>
+                    <p>PR-02: Poor SEO optimization (HIGH risk)</p>
+                </div>
+            </div>
+
+            <!-- TC-009 -->
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-case-id">TC-009: Structured Data (Schema.org) Is Present</span>
+                    <div>
+                        <span class="badge badge-manual">Manual</span>
+                        <span class="badge badge-medium">Medium Priority</span>
+                    </div>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Objective</h4>
+                    <p>Verify that the fish page includes structured data markup for better search engine understanding.</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Preconditions</h4>
+                    <p>User is on a fish page</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Data</h4>
+                    <p>Structured data in page source (JSON-LD, Microdata, or RDFa)</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Given</h4>
+                    <p>User is viewing a fish page</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>When</h4>
+                    <p>User inspects page source for structured data or uses Google Rich Results Test</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Then</h4>
+                    <p>
+                        • Structured data markup is present (JSON-LD, Microdata, or RDFa)<br>
+                        • Schema.org vocabulary is used<br>
+                        • Relevant schema types are implemented (e.g., Article, WebPage, FAQPage)<br>
+                        • Structured data is valid (no syntax errors)<br>
+                        • Structured data contains relevant information about the fish species<br>
+                        • Google Rich Results Test validates the markup
+                    </p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Technique</h4>
+                    <p>SEO Validation, Tool-Assisted Testing</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Risk Coverage</h4>
+                    <p>PR-02: Poor SEO optimization (HIGH risk)</p>
+                </div>
+            </div>
+
+            <!-- CONTENT VALIDATION TESTS -->
+            <h2 id="content">Content Validation Tests</h2>
+
+            <!-- TC-010 -->
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-case-id">TC-010: Content Is Relevant to Fish Species</span>
+                    <div>
+                        <span class="badge badge-manual">Manual</span>
+                        <span class="badge badge-medium">Medium Priority</span>
+                    </div>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Objective</h4>
+                    <p>Verify that all content on the fish page is relevant to the specific fish species.</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Preconditions</h4>
+                    <p>User is on a fish page for a specific species (e.g., /fish/salmon)</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Data</h4>
+                    <p>All text content, images, and information on the page</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Given</h4>
+                    <p>User is viewing a fish page for a specific species</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>When</h4>
+                    <p>User reviews all content on the page</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Then</h4>
+                    <p>
+                        • Page title mentions the correct fish species (e.g., "Red Snapper Fishing")<br>
+                        • Hero section displays correct fish species name<br>
+                        • Breadcrumb navigation shows correct fish species (not a different species)<br>
+                        • Main content discusses the specific fish species<br>
+                        • "About" section contains accurate information about the fish (size, food value, game quality)<br>
+                        • Images show the correct fish species<br>
+                        • Related species section shows relevant related fish<br>
+                        • Charter listings are relevant to fishing for that species<br>
+                        • Reviews mention the correct fish species<br>
+                        • Catch photos show the correct fish species<br>
+                        • No content about unrelated fish species<br>
+                        • Information is accurate and factual
+                    </p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Technique</h4>
+                    <p>Content Validation, Exploratory Testing (ISTQB Foundation Level v4.0.1, Section 4.4.2)</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Condition</h4>
+                    <p>Content on the page is relevant to the specific fish species</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Traceability</h4>
+                    <p>
+                        <strong>Test Basis:</strong> Content requirements, fish species specifications<br>
+                        <strong>Product Risk:</strong> PR-03 - Inconsistent or irrelevant content (MEDIUM risk)<br>
+                        <strong>Quality Characteristic:</strong> Functional Suitability - Completeness (ISO 25010)
+                    </p>
+                </div>
+            </div>
+
+            <!-- TC-011 -->
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-case-id">TC-011: Content Consistency and Quality</span>
+                    <div>
+                        <span class="badge badge-manual">Manual</span>
+                        <span class="badge badge-medium">Medium Priority</span>
+                    </div>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Objective</h4>
+                    <p>Verify that content is consistent, well-written, and appropriate for a fishing landing page.</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Preconditions</h4>
+                    <p>User is on a fish page</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Data</h4>
+                    <p>All text content on the page</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Given</h4>
+                    <p>User is viewing a fish page</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>When</h4>
+                    <p>User reads and reviews all text content</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Then</h4>
+                    <p>
+                        • No spelling or grammar errors<br>
+                        • Content tone is consistent throughout<br>
+                        • Content is informative and engaging<br>
+                        • Technical terms are used correctly<br>
+                        • Content follows fishing industry standards<br>
+                        • No placeholder text or "Lorem ipsum" content<br>
+                        • Content length is appropriate (not too short or too long)
+                    </p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Technique</h4>
+                    <p>Content Validation, Review-Based Testing</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Risk Coverage</h4>
+                    <p>PR-03: Inconsistent or irrelevant content (MEDIUM risk)</p>
+                </div>
+            </div>
+
+            <!-- TC-012 -->
+            <div class="test-case">
+                <div class="test-case-header">
+                    <span class="test-case-id">TC-012: Call-to-Action Elements Are Present and Clear</span>
+                    <div>
+                        <span class="badge badge-manual">Manual</span>
+                        <span class="badge badge-medium">Medium Priority</span>
+                    </div>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Objective</h4>
+                    <p>Verify that the fish page has clear and effective call-to-action (CTA) elements.</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Preconditions</h4>
+                    <p>User is on a fish page</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Data</h4>
+                    <p>CTA buttons, links, and prompts on the page</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Given</h4>
+                    <p>User is viewing a fish page</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>When</h4>
+                    <p>User looks for call-to-action elements</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Then</h4>
+                    <p>
+                        • At least one clear CTA is present<br>
+                        • CTA text is action-oriented (e.g., "Book Now", "View Charters", "Find Trips")<br>
+                        • CTA buttons are visually prominent<br>
+                        • CTA links lead to relevant pages (charter listings, booking pages)<br>
+                        • CTA placement is logical and visible<br>
+                        • Multiple CTAs may be present but are not overwhelming
+                    </p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Technique</h4>
+                    <p>Usability Testing, Visual Inspection</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Risk Coverage</h4>
+                    <p>Usability - Conversion optimization (MEDIUM risk)</p>
+                </div>
+            </div>
+
+            <h2>Test Case Traceability Matrix</h2>
+            
+            <div class="card">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Test Case ID</th>
+                            <th>Risk ID</th>
+                            <th>Test Technique</th>
+                            <th>Type</th>
+                            <th>Priority</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>TC-001</td>
+                            <td>PR-01</td>
+                            <td>Functional Testing</td>
+                            <td>Manual</td>
+                            <td>High</td>
+                        </tr>
+                        <tr>
+                            <td>TC-002</td>
+                            <td>PR-04</td>
+                            <td>Functional Testing</td>
+                            <td>Manual</td>
+                            <td>High</td>
+                        </tr>
+                        <tr>
+                            <td>TC-003</td>
+                            <td>PR-01</td>
+                            <td>Visual Testing</td>
+                            <td>Manual</td>
+                            <td>Medium</td>
+                        </tr>
+                        <tr>
+                            <td>TC-004</td>
+                            <td>PR-01</td>
+                            <td>Functional Testing</td>
+                            <td>Manual</td>
+                            <td>High</td>
+                        </tr>
+                        <tr>
+                            <td>TC-005</td>
+                            <td>Usability</td>
+                            <td>Responsive Design</td>
+                            <td>Manual</td>
+                            <td>Medium</td>
+                        </tr>
+                        <tr>
+                            <td>TC-006</td>
+                            <td>PR-02</td>
+                            <td>SEO Validation</td>
+                            <td>Manual</td>
+                            <td>High</td>
+                        </tr>
+                        <tr>
+                            <td>TC-007</td>
+                            <td>PR-02</td>
+                            <td>SEO Validation</td>
+                            <td>Manual</td>
+                            <td>High</td>
+                        </tr>
+                        <tr>
+                            <td>TC-008</td>
+                            <td>PR-02</td>
+                            <td>SEO Validation</td>
+                            <td>Manual</td>
+                            <td>High</td>
+                        </tr>
+                        <tr>
+                            <td>TC-009</td>
+                            <td>PR-02</td>
+                            <td>SEO Validation</td>
+                            <td>Manual</td>
+                            <td>Medium</td>
+                        </tr>
+                        <tr>
+                            <td>TC-010</td>
+                            <td>PR-03</td>
+                            <td>Content Validation</td>
+                            <td>Manual</td>
+                            <td>Medium</td>
+                        </tr>
+                        <tr>
+                            <td>TC-011</td>
+                            <td>PR-03</td>
+                            <td>Content Validation</td>
+                            <td>Manual</td>
+                            <td>Medium</td>
+                        </tr>
+                        <tr>
+                            <td>TC-012</td>
+                            <td>Usability</td>
+                            <td>Usability Testing</td>
+                            <td>Manual</td>
+                            <td>Medium</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </main>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 FishingBooker QA Testing Project</p>
+            <p>Created for QA Engineer Assessment</p>
+        </div>
+    </footer>
+</body>
+</html>
+
