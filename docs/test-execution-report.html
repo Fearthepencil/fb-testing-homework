@@ -121,17 +121,15 @@
                             <td><span class="badge" style="background-color: red;">FAILED</span></td>
                             <td>Pavle Stefanovic</td>
                             <td>
-                                <strong>Execution Status:</strong> Partially passed with defects found<br>
-                                • Page loads successfully within acceptable time<br>
-                                • No JavaScript errors in browser console<br>
-                                • No 404 or 500 errors displayed<br>
-                                • Page content is visible and rendered correctly<br>
-                                • Hero section with fish name and search bar displayed correctly<br>
-                                • <strong>FAILED:</strong> Breadcrumb navigation shows incorrect fish species ("Dolphin (Mahi Mahi)" instead of "Red Snapper") - Documented as <a href="bug-report.html#BUG-002">BUG-002</a><br>
-                                • Charter listings section is visible<br>
-                                • Related species section is displayed<br>
-                                • About section with fish information is present<br>
-                                • <strong>FAILED:</strong> One image fails to load with 403 Forbidden error - Documented as <a href="bug-report.html#BUG-001">BUG-001</a>
+                                <strong>Execution Status:</strong> Failed at breadcrumb verification step<br>
+                                <strong>Passed Steps:</strong><br>
+                                • Page loads within 5 seconds ✓<br>
+                                • No JavaScript errors in browser console ✓<br>
+                                • No 404 or 500 errors displayed ✓<br>
+                                • Page content is visible and rendered correctly ✓<br>
+                                • Main page sections are present ✓<br>
+                                <strong>Failed Step:</strong> Breadcrumb navigation displays correct fish species name<br>
+                                <strong>Defect Found:</strong> <a href="bug-report.html#BUG-002">BUG-002</a> - Breadcrumb shows "Dolphin (Mahi Mahi)" instead of "Red Snapper"
                             </td>
                         </tr>
                         <tr>
