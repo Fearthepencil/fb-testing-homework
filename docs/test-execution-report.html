@@ -229,7 +229,7 @@
             <h2>Defects Summary</h2>
             
             <div class="card">
-                <p><strong>Total Defects Found:</strong> 2</p>
+                <p><strong>Total Defects Found:</strong> 3</p>
                 
                 <table>
                     <thead>
@@ -256,6 +256,13 @@
                             <td>Open</td>
                             <td>TC-001 (Manual)</td>
                         </tr>
+                        <tr>
+                            <td><a href="bug-report.html#BUG-003">BUG-003</a></td>
+                            <td>Charter Detail Page Navigation Fails</td>
+                            <td><span class="badge badge-high">High</span></td>
+                            <td>Open</td>
+                            <td>TC-002 (Manual)</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -277,8 +284,8 @@
                         <tr>
                             <td>Functional Testing</td>
                             <td>5</td>
-                            <td>1</td>
-                            <td>20%</td>
+                            <td>2</td>
+                            <td>40%</td>
                         </tr>
                         <tr>
                             <td>SEO Testing</td>
@@ -295,8 +302,8 @@
                         <tr style="font-weight: 600;">
                             <td>TOTAL</td>
                             <td>12</td>
-                            <td>1</td>
-                            <td>8.3%</td>
+                            <td>2</td>
+                            <td>16.7%</td>
                         </tr>
                     </tbody>
                 </table>
@@ -318,16 +325,18 @@
 
                 <h3>Issues Identified</h3>
                 <ul>
+                    <li>🔴 <strong>BUG-003:</strong> Charter detail page navigation fails when clicking on charter listings (High severity) - Blocks core functionality</li>
                     <li>⚠️ <strong>BUG-001:</strong> One image fails to load with 403 Forbidden error from upstream server (Medium severity)</li>
                     <li>⚠️ <strong>BUG-002:</strong> Breadcrumb navigation displays incorrect fish species ("Dolphin (Mahi Mahi)" instead of "Red Snapper") (Medium severity)</li>
                 </ul>
 
                 <h3>Recommendations</h3>
                 <ol>
+                    <li><strong>Priority 1 - BUG-003:</strong> Fix charter detail page navigation immediately as it blocks core functionality and prevents users from viewing charter information and booking trips</li>
                     <li><strong>BUG-001:</strong> Verify image file permissions on upstream server, check CDN configuration, or replace broken image with working alternative</li>
                     <li><strong>BUG-002:</strong> Fix breadcrumb component to dynamically read correct fish species from page data/URL. Verify all fish species pages for similar issues</li>
-                    <li><strong>Test Execution:</strong> Continue executing remaining test cases (TC-002 through TC-012) to complete test coverage</li>
-                    <li><strong>Regression Testing:</strong> After fixes are implemented, re-execute TC-001 to verify both bugs are resolved</li>
+                    <li><strong>Test Execution:</strong> Continue executing remaining test cases (TC-003 through TC-012) to complete test coverage</li>
+                    <li><strong>Regression Testing:</strong> After fixes are implemented, re-execute TC-001 and TC-002 to verify all bugs are resolved</li>
                 </ol>
             </div>
 
@@ -361,16 +370,17 @@
             <h2>Conclusion</h2>
             
             <div class="card">
-                <p>Testing of the FishingBooker Red Snapper fish page is <strong>currently in progress</strong>. Initial execution of TC-001 (Fish Page Loads Successfully) revealed that the page generally functions well with proper content structure and visual presentation. However, two defects were identified during this initial test execution:</p>
+                <p>Testing of the FishingBooker Red Snapper fish page is <strong>currently in progress</strong>. Execution of TC-001 and TC-002 revealed that the page generally functions well with proper content structure and visual presentation. However, three defects were identified during test execution:</p>
                 
                 <ul>
-                    <li><strong>BUG-001:</strong> Image loading issue (403 Forbidden error) affecting visual content completeness</li>
-                    <li><strong>BUG-002:</strong> Breadcrumb navigation displaying incorrect fish species, causing content inconsistency</li>
+                    <li><strong>BUG-003:</strong> Critical navigation failure preventing access to charter detail pages (High severity) - Blocks core booking functionality</li>
+                    <li><strong>BUG-001:</strong> Image loading issue (403 Forbidden error) affecting visual content completeness (Medium severity)</li>
+                    <li><strong>BUG-002:</strong> Breadcrumb navigation displaying incorrect fish species, causing content inconsistency (Medium severity)</li>
                 </ul>
                 
-                <p><strong>Test Coverage:</strong> 8.3% of planned test cases executed (1/12)</p>
-                <p><strong>Defects Found:</strong> 2 defects (both Medium severity)</p>
-                <p><strong>Next Steps:</strong> Continue executing remaining test cases (TC-002 through TC-012) to complete comprehensive testing of the fish page functionality, SEO optimization, and content validation.</p>
+                <p><strong>Test Coverage:</strong> 16.7% of planned test cases executed (2/12)</p>
+                <p><strong>Defects Found:</strong> 3 defects (1 High severity, 2 Medium severity)</p>
+                <p><strong>Next Steps:</strong> Prioritize fixing BUG-003 immediately as it blocks critical functionality. Continue executing remaining test cases (TC-003 through TC-012) to complete comprehensive testing of the fish page functionality, SEO optimization, and content validation.</p>
             </div>
 
         </main>
