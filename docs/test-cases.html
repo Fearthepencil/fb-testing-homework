@@ -33,7 +33,7 @@
             <h1>Test Cases</h1>
             
             <div class="card">
-                <p>This document contains 12 test cases covering FishingBooker's fish page functionality, SEO optimization, and content validation. Each test case focuses on a specific aspect without redundancy. All test cases are written in BDD (Behavior-Driven Development) Given-When-Then format for clarity and follow <strong>ISTQB Foundation Level v4.0.1</strong> standards.</p>
+                <p>This document contains 17 test cases covering FishingBooker's fish page functionality, SEO optimization, content validation, and destination page automation. Each test case focuses on a specific aspect without redundancy. All test cases are written in BDD (Behavior-Driven Development) Given-When-Then format for clarity and follow <strong>ISTQB Foundation Level v4.0.1</strong> standards.</p>
                 
                 <h3>ISTQB Test Case Structure</h3>
                 <p>According to ISTQB Foundation Level v4.0.1 (Section 1.4.1), each test case includes:</p>
@@ -75,9 +75,14 @@
                             <td>1</td>
                             <td>Medium</td>
                         </tr>
+                        <tr>
+                            <td>Automated Testing</td>
+                            <td>4</td>
+                            <td>High</td>
+                        </tr>
                         <tr style="font-weight: 600;">
                             <td>TOTAL</td>
-                            <td>13</td>
+                            <td>17</td>
                             <td>-</td>
                         </tr>
                     </tbody>
@@ -91,6 +96,7 @@
                     <li><a href="#seo">SEO Tests (TC-006 to TC-009)</a></li>
                     <li><a href="#content">Content Validation Tests (TC-010 to TC-012)</a></li>
                     <li><a href="#negative">Negative Tests (TC-013)</a></li>
+                    <li><a href="#automated">Automated Tests (TC-014 to TC-017)</a></li>
                 </ul>
             </div>
 
@@ -937,6 +943,253 @@
                 </div>
             </div>
 
+            <!-- AUTOMATED TESTS -->
+            <h2 id="automated">Automated Tests</h2>
+
+            <!-- TC-014 -->
+            <div class="test-case" id="TC-014">
+                <div class="test-case-header">
+                    <span class="test-case-id">TC-014: Navigate to Destination from Sitemap</span>
+                    <div>
+                        <span class="badge badge-automated">Automated</span>
+                        <span class="badge badge-high">High Priority</span>
+                    </div>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Objective</h4>
+                    <p>Verify that user can successfully navigate from sitemap page to a destination page by selecting a destination from "Top Fishing Destinations" section.</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Preconditions</h4>
+                    <p>User is logged in with credentials: fishingbooker / QAFBTest</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Data</h4>
+                    <p>Sitemap URL: <code>https://nextjs15.dev.fishingbooker.com/sitemap</code></p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Given</h4>
+                    <p>User is logged into FishingBooker testing environment</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>When</h4>
+                    <p>User navigates to sitemap page and clicks on the first available destination link from "Top Fishing Destinations" section</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Then</h4>
+                    <p>
+                        • Sitemap page loads successfully<br>
+                        • "Top Fishing Destinations" section is visible<br>
+                        • At least one destination link is available in the section<br>
+                        • First available destination link is clickable<br>
+                        • Clicking on the first destination link navigates to the destination page<br>
+                        • Destination page loads successfully (network idle / DOM stable)<br>
+                        • URL changes to reflect the selected destination
+                    </p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Technique</h4>
+                    <p>Functional Testing, Navigation Testing</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Risk Coverage</h4>
+                    <p>PR-01: Page functionality issues (HIGH risk) - Navigation functionality</p>
+                </div>
+            </div>
+
+            <!-- TC-015 -->
+            <div class="test-case" id="TC-015">
+                <div class="test-case-header">
+                    <span class="test-case-id">TC-015: Validate First Charter Card Elements</span>
+                    <div>
+                        <span class="badge badge-automated">Automated</span>
+                        <span class="badge badge-high">High Priority</span>
+                    </div>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Objective</h4>
+                    <p>Verify that the first charter card on the destination page displays all required elements correctly: charter name, boat length, max number of people, price, wishlist tooltip, and "See availability" button.</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Preconditions</h4>
+                    <p>User is on a destination page with at least 10 charter cards displayed</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Data</h4>
+                    <p>Destination page with charter listings (minimum 10 cards)</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Given</h4>
+                    <p>User is on a destination page displaying charter listings</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>When</h4>
+                    <p>User examines the first charter card on the page</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Then</h4>
+                    <p>
+                        • At least 10 charter cards are displayed on the page<br>
+                        • First charter card contains charter name (as link/text)<br>
+                        • First charter card displays boat length information<br>
+                        • First charter card displays max number of people (format: "up to X people")<br>
+                        • First charter card displays price information (format: "Trips from ...")<br>
+                        • Wishlist tooltip is present and hover action displays expected info ("Add listing to wishlist")<br>
+                        • "See availability" button is present and clickable<br>
+                        • All elements are visible and properly formatted
+                    </p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Technique</h4>
+                    <p>Functional Testing, Data Validation Testing</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Risk Coverage</h4>
+                    <p>PR-01: Page functionality issues (HIGH risk) - Data display and completeness</p>
+                </div>
+            </div>
+
+            <!-- TC-016 -->
+            <div class="test-case" id="TC-016">
+                <div class="test-case-header">
+                    <span class="test-case-id">TC-016: Sort by Price (Lowest) - Ascending Order</span>
+                    <div>
+                        <span class="badge badge-automated">Automated</span>
+                        <span class="badge badge-high">High Priority</span>
+                    </div>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Objective</h4>
+                    <p>Verify that sorting charters by "Price (Lowest)" displays charter cards in ascending price order (lowest to highest).</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Preconditions</h4>
+                    <p>User is on a destination page with at least 10 charter cards displayed</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Data</h4>
+                    <p>Destination page with charter listings, "Sort by Price (Lowest)" filter option</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Given</h4>
+                    <p>User is on a destination page displaying charter listings</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>When</h4>
+                    <p>User clicks on "Sort by Price (Lowest)" filter</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Then</h4>
+                    <p>
+                        • Sort filter is applied successfully<br>
+                        • Page refreshes or updates to show sorted results (network idle / DOM stable)<br>
+                        • Charter cards are visible and loaded after sorting<br>
+                        • All charter card prices are collected from the page<br>
+                        • Prices are extracted correctly from "Trips from ..." format<br>
+                        • Prices are normalized to numeric values before comparison (handles currency symbols €/$, thousand separators, "from" wording)<br>
+                        • Prices are sorted in ascending order (lowest to highest)<br>
+                        • Each subsequent charter card has a price greater than or equal to the previous one<br>
+                        • At least 10 charter cards are still displayed after sorting
+                    </p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Technique</h4>
+                    <p>Functional Testing, Data Validation Testing, Sorting Validation</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Risk Coverage</h4>
+                    <p>PR-01: Page functionality issues (HIGH risk) - Sorting functionality and data accuracy</p>
+                </div>
+            </div>
+
+            <!-- TC-017 -->
+            <div class="test-case" id="TC-017">
+                <div class="test-case-header">
+                    <span class="test-case-id">TC-017: Sort by Price (Highest) - Descending Order</span>
+                    <div>
+                        <span class="badge badge-automated">Automated</span>
+                        <span class="badge badge-high">High Priority</span>
+                    </div>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Objective</h4>
+                    <p>Verify that sorting charters by "Price (Highest)" displays charter cards in descending price order (highest to lowest).</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Preconditions</h4>
+                    <p>User is on a destination page with charter listings, "Sort by Price" filter is available</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Data</h4>
+                    <p>Destination page with charter listings, "Sort by Price" filter dropdown with "Price (Highest)" option</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Given</h4>
+                    <p>User is on a destination page displaying charter listings</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>When</h4>
+                    <p>User clicks on "Sort by Price" filter, selects "Price (Highest)" from dropdown menu, and clicks "Apply" button</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Then</h4>
+                    <p>
+                        • Sort filter dropdown opens successfully<br>
+                        • "Price (Highest)" option is available and selectable<br>
+                        • "Apply" button is clickable<br>
+                        • Sort filter is applied successfully after clicking Apply<br>
+                        • Page refreshes or updates to show sorted results (network idle / DOM stable)<br>
+                        • Charter cards are visible and loaded after sorting<br>
+                        • All charter card prices are collected from the page<br>
+                        • Prices are extracted correctly from "Trips from ..." format<br>
+                        • Prices are normalized to numeric values before comparison (handles currency symbols €/$, thousand separators, "from" wording)<br>
+                        • Prices are sorted in descending order (highest to lowest)<br>
+                        • Each subsequent charter card has a price less than or equal to the previous one<br>
+                        • At least 10 charter cards are still displayed after sorting
+                    </p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Test Technique</h4>
+                    <p>Functional Testing, Data Validation Testing, Sorting Validation</p>
+                </div>
+
+                <div class="test-case-section">
+                    <h4>Risk Coverage</h4>
+                    <p>PR-01: Page functionality issues (HIGH risk) - Sorting functionality and data accuracy</p>
+                </div>
+            </div>
+
             <h2>Test Case Traceability Matrix</h2>
             
             <div class="card">
@@ -1041,6 +1294,34 @@
                             <td>Negative Testing</td>
                             <td>Manual</td>
                             <td>Medium</td>
+                        </tr>
+                        <tr>
+                            <td>TC-014</td>
+                            <td>PR-01</td>
+                            <td>Functional Testing</td>
+                            <td>Automated</td>
+                            <td>High</td>
+                        </tr>
+                        <tr>
+                            <td>TC-015</td>
+                            <td>PR-01</td>
+                            <td>Data Validation Testing</td>
+                            <td>Automated</td>
+                            <td>High</td>
+                        </tr>
+                        <tr>
+                            <td>TC-016</td>
+                            <td>PR-01</td>
+                            <td>Sorting Validation</td>
+                            <td>Automated</td>
+                            <td>High</td>
+                        </tr>
+                        <tr>
+                            <td>TC-017</td>
+                            <td>PR-01</td>
+                            <td>Sorting Validation</td>
+                            <td>Automated</td>
+                            <td>High</td>
                         </tr>
                     </tbody>
                 </table>

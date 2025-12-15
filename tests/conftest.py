@@ -1,41 +1,38 @@
-import pytest
-from playwright.sync_api import sync_playwright, BrowserContext, Page
-import json
 import os
-import tempfile
-
+import json
+import pytest
+from playwright.sync_api import sync_playwright, Browser, Page
 
 @pytest.fixture(scope="session")
-def browser_context():
-    """Use persistent browser context with your Chrome profile"""
+def browser(): 
     with sync_playwright() as playwright:
-        # Create a persistent context directory (stores cookies, session, etc.)
-        user_data_dir = tempfile.mkdtemp()
-        
-        context = playwright.chromium.launch_persistent_context(
-            user_data_dir=user_data_dir,
-            headless=False,
-            viewport={"width": 1920, "height": 1080},
-        )
-        
-        yield context
-        
-        context.close()
-
-
-@pytest.fixture(scope="function")
-def page(browser_context: BrowserContext) -> Page:
-    # Get a new page from the persistent context
-    page = browser_context.new_page()
-    
-    yield page
-    
-    # Don't close the page, just close it at the end
-    page.close()
-
+        browser = playwright.chromium.launch(headless=False)
+        yield browser
+        browser.close()
 
 @pytest.fixture(scope="session")
 def test_config():
-    config_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "test_data", "test_config.json")
-    with open(config_path, "r") as f:
+    #Load test configuration (URLs, credentials, timeouts).
+    config_path = os.path.join(
+        os.path.dirname(os.path.dirname(__file__)),
+        "test_data",
+        "test_config.json",
+    )
+    with open(config_path, "r", encoding="utf-8") as f:
         return json.load(f)
+
+@pytest.fixture(scope="function")
+def page(browser: Browser, test_config) -> Page:
+    #Basic Auth is handled at context level so that as soon as the page loads, 
+    #credentials are automatically sent and the Basic Auth prompt is bypassed.
+    context = browser.new_context(
+        http_credentials={
+            "username": test_config["login"]["username"],
+            "password": test_config["login"]["password"],
+        },
+    )
+    page = context.new_page()
+
+    yield page
+
+    context.close()

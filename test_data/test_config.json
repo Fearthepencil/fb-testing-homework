@@ -4,13 +4,14 @@
     "password": "QAFBTest"
   },
   "urls": {
-    "base_url": "https://nextjs15.dev.fishingbooker.com/sitemap",
-    "sitemap_url": "https://nextjs15.dev.fishingbooker.com/sitemap"
+    "base_url": "https://nextjs15.dev.fishingbooker.com",
+    "sitemap_url": "/sitemap",
+    "destination_url": "/destinations"
   },
   "test_requirements": {
     "min_charter_cards": 10,
-    "expected_tooltip_text": "wishlist",
-    "price_sort_timeout": 10000
+    "expected_tooltip_text": "Add listing to wishlist",
+    "price_sort_timeout": 5000
   }
 }
 
