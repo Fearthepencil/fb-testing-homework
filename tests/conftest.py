@@ -2,6 +2,8 @@ import os
 import json
 import pytest
 from playwright.sync_api import sync_playwright, Browser, Page
+from pages.destination_page import DestinationPage
+from pages.sitemap_page import SitemapPage
 
 
 @pytest.fixture(scope="session")
@@ -39,3 +41,15 @@ def page(browser: Browser, test_config) -> Page:
     yield page
 
     context.close()
+
+
+@pytest.fixture(scope="function")
+def destination_page(page: Page, test_config) -> DestinationPage:
+    sitemap_page = SitemapPage(page, test_config)
+    sitemap_page.navigate_to_sitemap()
+    sitemap_page.click_first_destination()
+
+    destination_page = DestinationPage(page, test_config)
+    destination_page.wait_for_charter_cards()
+
+    return destination_page

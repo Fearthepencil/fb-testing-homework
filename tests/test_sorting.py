@@ -1,5 +1,3 @@
-from pages.destination_page import DestinationPage
-from pages.sitemap_page import SitemapPage
 import pytest
 
 
@@ -11,14 +9,8 @@ import pytest
     ],
 )
 def test_sorting_price(
-    page, test_config: dict, sort_method: str, comparison_operator: callable
+    destination_page, sort_method: str, comparison_operator: callable
 ):
-    sitemap_page = SitemapPage(page, test_config)
-    sitemap_page.navigate_to_sitemap()
-    sitemap_page.click_first_destination()
-
-    destination_page = DestinationPage(page, test_config)
-    destination_page.wait_for_charter_cards()
 
     getattr(destination_page, sort_method)()
     destination_page.wait_for_charter_cards()

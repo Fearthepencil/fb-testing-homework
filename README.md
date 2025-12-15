@@ -15,19 +15,26 @@ fb-testing-homework/
 ├── docs/                      # HTML documentation deliverables
 │   ├── index.html            # Main landing page
 │   ├── test-plan.html        # Test strategy and approach (ISTQB)
-│   ├── test-cases.html       # 13 test cases (BDD format)
+│   ├── test-cases.html       # 17 test cases (13 manual + 4 automated, BDD format)
 │   ├── bug-report.html       # 8 defects with screenshots
 │   ├── test-execution-report.html  # Test results summary
 │   ├── bug_data/             # Bug evidence screenshots
 │   └── style.css             # Documentation styles
 ├── tests/                     # Automated test suite
-│   ├── conftest.py           # Pytest fixtures
-│   └── test_Basic.py         # Basic navigation test
+│   ├── conftest.py           # Pytest fixtures (browser, page, destination_page)
+│   ├── test_navigate_to_destination.py  # Navigation test (TC-014)
+│   ├── test_destination_page_elements.py  # Element validation (TC-015)
+│   └── test_sorting.py       # Price sorting tests (TC-016, TC-017)
 ├── pages/                     # Page Object Model
 │   ├── __init__.py
-│   └── base_page.py
+│   ├── base_page.py          # Base page class
+│   ├── sitemap_page.py       # Sitemap page object
+│   └── destination_page.py   # Destination page object
+├── utils/                     # Utility functions
+│   ├── __init__.py
+│   └── parser_functions.py   # Price and length parsing utilities
 ├── test_data/                 # Test data files
-│   └── test_config.json
+│   └── test_config.json      # Configuration (URLs, credentials, timeouts)
 ├── screenshots/               # Test screenshots
 ├── requirements.txt           # Python dependencies
 ├── pytest.ini                # Pytest configuration
@@ -70,7 +77,9 @@ pytest tests/ -v
 
 ### Run Specific Test File
 ```bash
-pytest tests/test_Basic.py -v
+pytest tests/test_navigate_to_destination.py -v
+pytest tests/test_destination_page_elements.py -v
+pytest tests/test_sorting.py -v
 ```
 
 ### Run with Screenshots
@@ -83,26 +92,43 @@ pytest tests/ -v -s
 pytest tests/ -v --html=test-report.html --self-contained-html
 ```
 
+### Run with Pylint
+```bash
+pylint tests/ --max-line-length=120 --disable=C0114,C0115,C0116,W0621
+```
+
 ---
 
 ## 📚 Documentation
 
 Open `docs/index.html` in your browser to access all deliverables:
-- Test Plan (ISTQB format)
-- Test Cases (BDD Given-When-Then)
-- Bug Reports (with screenshots)
-- Test Execution Report
+- **Test Plan** - Test strategy, scope, and approach (ISTQB format)
+- **Test Cases** - 17 test cases in BDD format (13 manual + 4 automated)
+- **Bug Reports** - 8 documented defects with screenshots
+- **Test Execution Report** - Test results summary with pass/fail rates
 
 ---
 
 ## 🏗️ Architecture
 
 ### Page Object Model (POM)
-- **BasePage:** Common functionality (navigation, screenshots)
+- **BasePage:** Common functionality (navigation, screenshots, page load waits)
+- **SitemapPage:** Sitemap page interactions (navigation, destination selection)
+- **DestinationPage:** Destination page interactions (charter cards, sorting, validation)
 
 ### Test Organization
-- **Fixtures:** Browser and page setup in `conftest.py`
+- **Fixtures:** 
+  - `browser` - Session-scoped browser instance
+  - `test_config` - Session-scoped configuration loader
+  - `page` - Function-scoped Playwright page with HTTP Basic Auth
+  - `destination_page` - Function-scoped fixture that navigates to destination page
 - **Test Data:** Centralized in `test_data/test_config.json`
+- **Utilities:** Price and length parsing functions in `utils/parser_functions.py`
+
+### Design Patterns
+- **Page Object Model** - Encapsulates page interactions
+- **Fixture-based Setup** - Reusable test fixtures for common setup
+- **DRY Principle** - Shared navigation logic in `destination_page` fixture
 
 ---
 
@@ -123,19 +149,21 @@ playwright install chromium
 - Update selectors in `pages/` directory
 - Use browser DevTools to inspect elements
 
-### Login issues
-- Verify credentials are correct: `fishingbooker` / `QAFBTest`
-- Check if login page structure has changed
-- Update selectors in `pages/login_page.py` if needed
+### Authentication issues
+- HTTP Basic Auth is handled automatically via `conftest.py`
+- Verify credentials in `test_data/test_config.json`: `fishingbooker` / `QAFBTest`
+- If authentication fails, check if the test environment URL or credentials have changed
 
 ---
 
 ## 📝 Notes
 
-- Tests run against live FishingBooker testing environment
-- Some tests may be flaky due to dynamic content
-- Screenshots saved to `screenshots/` directory
-- Selectors use multiple fallback options for resilience
+- Tests run against live FishingBooker testing environment: `https://nextjs15.dev.fishingbooker.com`
+- HTTP Basic Auth is automatically handled via Playwright context
+- Tests include explicit waits for network idle and DOM stability
+- Screenshots saved to `screenshots/` directory (if configured)
+- Selectors use `data-testid` attributes for reliability
+- All automated tests (TC-014 to TC-017) are passing with 100% pass rate
 
 ---
 

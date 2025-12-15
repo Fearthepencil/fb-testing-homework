@@ -140,10 +140,18 @@ th {
     font-weight: 600;
     position: sticky;
     top: 0;
+    text-align: left;
 }
 
 tr:hover {
     background-color: var(--hover-color);
+}
+
+/* Bug detail tables - top align and left align for better readability */
+.bug table th,
+.bug table td {
+    vertical-align: top;
+    text-align: left !important;
 }
 
 /* Badges */

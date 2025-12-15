@@ -1,15 +1,4 @@
-from pages.destination_page import DestinationPage
-from pages.sitemap_page import SitemapPage
-
-
-def test_destination_page_elements(page, test_config: dict):
-
-    sitemap_page = SitemapPage(page, test_config)
-    sitemap_page.navigate_to_sitemap()
-    sitemap_page.click_first_destination()
-
-    destination_page = DestinationPage(page, test_config)
-    destination_page.wait_for_charter_cards()
+def test_destination_page_elements(destination_page):
     destination_page.wait_for_page_load()
 
     cards_count = destination_page.get_charter_cards().count()
