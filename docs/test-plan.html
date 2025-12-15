@@ -64,213 +64,85 @@
             <h2>1. Introduction</h2>
             
             <div class="card">
-                <h3>1.1 Purpose</h3>
-                <p>This test plan defines the testing approach, scope, and strategy for testing FishingBooker's fish page. The plan focuses on functional validation, SEO optimization, and content quality assurance.</p>
-                
-                <h3>1.2 Document Scope</h3>
-                <p>This document covers test objectives, scope, strategy, environment, entry/exit criteria, risk analysis, and deliverables.</p>
-
-                <h3>1.3 References</h3>
-                <ul>
-                    <li>ISTQB Foundation Level v4.0.1</li>
-                    <li>FishingBooker testing environment: https://nextjs15.dev.fishingbooker.com</li>
-                </ul>
+                <p>This test plan defines the testing approach for FishingBooker's fish page and destination page functionality, focusing on functional validation, SEO optimization, and content quality assurance.</p>
+                <p><strong>References:</strong> ISTQB Foundation Level v4.0.1 | <a href="https://nextjs15.dev.fishingbooker.com" target="_blank">Testing Environment</a></p>
             </div>
 
             <h2>2. Test Objectives</h2>
             
             <div class="card">
-                <p>The primary objectives of this testing effort are:</p>
-                <ol>
-                    <li><strong>Verify Page Functionality:</strong> Ensure the fish page loads correctly and all interactive elements work without critical errors</li>
-                    <li><strong>Validate SEO Optimization:</strong> Confirm that the page is properly optimized for search engines (meta tags, titles, descriptions, structured data)</li>
-                    <li><strong>Assess Content Quality:</strong> Verify that content is meaningful, consistent, and appropriate for a fishing landing page</li>
-                    <li><strong>Identify Defects:</strong> Discover and document any functional, SEO, or content-related issues</li>
-                    <li><strong>Ensure User Experience:</strong> Evaluate overall usability and user-friendliness of the page</li>
-                </ol>
+                <ul>
+                    <li>Verify page functionality and interactive elements</li>
+                    <li>Validate SEO optimization (meta tags, titles, structured data)</li>
+                    <li>Assess content quality and consistency</li>
+                    <li>Identify and document defects</li>
+                    <li>Ensure user experience quality</li>
+                </ul>
             </div>
 
             <h2>3. Test Scope</h2>
             
             <div class="card">
-                <h3>3.1 In Scope</h3>
-                <ul>
-                    <li><strong>Functional Testing:</strong>
-                        <ul>
-                            <li>Page load and rendering</li>
-                            <li>Navigation and links</li>
-                            <li>Interactive elements (buttons, forms, filters)</li>
-                            <li>Image loading and display</li>
-                            <li>Responsive design (basic checks)</li>
-                        </ul>
-                    </li>
-                    <li><strong>SEO Testing:</strong>
-                        <ul>
-                            <li>Meta title and description</li>
-                            <li>Header tags (H1, H2, H3)</li>
-                            <li>Alt text for images</li>
-                            <li>Structured data (Schema.org markup)</li>
-                            <li>URL structure</li>
-                            <li>Internal linking</li>
-                        </ul>
-                    </li>
-                    <li><strong>Content Validation:</strong>
-                        <ul>
-                            <li>Content relevance to fish species</li>
-                            <li>Content consistency</li>
-                            <li>Grammar and spelling</li>
-                            <li>Image relevance and quality</li>
-                            <li>Call-to-action elements</li>
-                        </ul>
-                    </li>
-                </ul>
+                <h3>In Scope</h3>
+                <p><strong>Functional:</strong> Page load, navigation, links, interactive elements, images, responsive design</p>
+                <p><strong>SEO:</strong> Meta tags, titles, descriptions, header tags, alt text, structured data, URL structure</p>
+                <p><strong>Content:</strong> Relevance, consistency, grammar, image quality, CTAs</p>
+                <p><strong>Automated:</strong> Destination page navigation, charter card validation, price sorting</p>
 
-                <h3>3.2 Out of Scope</h3>
-                <ul>
-                    <li>Performance testing (detailed load testing)</li>
-                    <li>Security testing (penetration testing)</li>
-                    <li>Cross-browser testing (all browsers)</li>
-                    <li>Mobile app testing</li>
-                    <li>Backend API testing</li>
-                </ul>
+                <h3>Out of Scope</h3>
+                <p>Performance testing, security testing, cross-browser testing (all browsers), mobile app testing, backend API testing</p>
             </div>
 
             <h2>4. Test Strategy</h2>
             
             <div class="card">
-                <h3>4.1 Overall Approach</h3>
-                <p>The testing approach combines multiple methodologies:</p>
-                
                 <table>
                     <thead>
                         <tr>
                             <th>Approach</th>
-                            <th>Description</th>
                             <th>Coverage</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td><strong>Manual Testing</strong></td>
-                            <td>Scripted manual tests for functional and content validation</td>
-                            <td>8 test cases</td>
+                            <td>Manual Testing</td>
+                            <td>13 test cases</td>
                         </tr>
                         <tr>
-                            <td><strong>Exploratory Testing</strong></td>
-                            <td>Unscripted testing to discover unexpected issues</td>
-                            <td>4 test cases</td>
-                        </tr>
-                        <tr>
-                            <td><strong>SEO Validation</strong></td>
-                            <td>Tool-assisted and manual SEO checks</td>
+                            <td>Automated Testing</td>
                             <td>4 test cases</td>
                         </tr>
                     </tbody>
                 </table>
-
-                <h3>4.2 Test Types</h3>
-                <ul>
-                    <li><strong>Functional Testing:</strong> Verify that page functionality works as expected</li>
-                    <li><strong>SEO Testing:</strong> Validate SEO optimization elements</li>
-                    <li><strong>Content Testing:</strong> Assess content quality and consistency</li>
-                    <li><strong>Usability Testing:</strong> Evaluate user experience</li>
-                    <li><strong>Exploratory Testing:</strong> Discover unexpected issues</li>
-                </ul>
-
-                <h3>4.3 Test Design Techniques</h3>
-                <p>The following test techniques are applied:</p>
-                <ul>
-                    <li><strong>Equivalence Partitioning:</strong> Content validation, SEO element validation</li>
-                    <li><strong>Boundary Value Analysis:</strong> Content length validation, meta tag length limits</li>
-                    <li><strong>Checklist-Based Testing:</strong> SEO element validation, content completeness checks</li>
-                    <li><strong>Error Guessing:</strong> Exploratory testing for unexpected issues</li>
-                    <li><strong>Exploratory Testing:</strong> Simultaneous test design, execution, and learning</li>
-                </ul>
+                <p><strong>Test Types:</strong> Functional, SEO, Content Validation, Usability</p>
+                <p><strong>Techniques:</strong> Equivalence Partitioning, Boundary Value Analysis, Checklist-Based Testing, Exploratory Testing</p>
             </div>
 
             <h2>5. Test Environment</h2>
             
             <div class="card">
-                <h3>5.1 Hardware Requirements</h3>
-                <ul>
-                    <li>Desktop/Laptop computer</li>
-                    <li>Minimum 8GB RAM</li>
-                    <li>Internet connection (stable, minimum 10 Mbps)</li>
-                    <li>Display resolution: 1920x1080 (Full HD)</li>
-                </ul>
-
-                <h3>5.2 Software Requirements</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Component</th>
-                            <th>Version/Details</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Operating System</td>
-                            <td>Windows 10/11, macOS 12+, or Linux</td>
-                        </tr>
-                        <tr>
-                            <td>Browser</td>
-                            <td>Google Chrome (latest stable version)</td>
-                        </tr>
-                        <tr>
-                            <td>Testing Tools</td>
-                            <td>Chrome DevTools, SEO validators, Accessibility tools</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <h3>5.3 Test Credentials</h3>
-                <p><strong>Username:</strong> fishingbooker</p>
-                <p><strong>Password:</strong> QAFBTest</p>
-                <p><strong>Note:</strong> Testing environment - safe to perform all testing activities</p>
-
-                <h3>5.4 Test URL</h3>
                 <p><strong>Base URL:</strong> <a href="https://nextjs15.dev.fishingbooker.com" target="_blank">https://nextjs15.dev.fishingbooker.com</a></p>
-                <p><strong>Test Fish Page:</strong> <a href="https://nextjs15.dev.fishingbooker.com/fish/snapper-red" target="_blank">https://nextjs15.dev.fishingbooker.com/fish/snapper-red</a></p>
-                <p><strong>Login Credentials:</strong> fishingbooker / QAFBTest</p>
+                <p><strong>Credentials:</strong> fishingbooker / QAFBTest</p>
+                <p><strong>Browser:</strong> Google Chrome (latest)</p>
+                <p><strong>Tools:</strong> Chrome DevTools, Playwright (for automated tests), SEO validators</p>
             </div>
 
             <h2>6. Entry and Exit Criteria</h2>
             
             <div class="card">
-                <h3>6.1 Entry Criteria</h3>
-                <p>Testing can begin when:</p>
-                <ul>
-                    <li>✓ Test plan is reviewed and approved</li>
-                    <li>✓ Test environment is accessible</li>
-                    <li>✓ Login credentials are available</li>
-                    <li>✓ Test cases are designed</li>
-                    <li>✓ Testing tools are installed and ready</li>
-                </ul>
+                <h3>Entry Criteria</h3>
+                <p>Test plan approved, environment accessible, credentials available, test cases designed, tools ready</p>
 
-                <h3>6.2 Exit Criteria</h3>
-                <p>Testing is considered complete when:</p>
-                <ul>
-                    <li>✓ All planned test cases (12) have been executed</li>
-                    <li>✓ All critical and high-severity defects are documented</li>
-                    <li>✓ Test execution results are documented</li>
-                    <li>✓ Bug reports are created for all discovered defects</li>
-                    <li>✓ Test summary report is prepared</li>
-                    <li>✓ All deliverables are completed</li>
-                </ul>
+                <h3>Exit Criteria</h3>
+                <p>All 17 test cases executed, defects documented, test execution report prepared, all deliverables completed</p>
             </div>
 
             <h2>7. Risk Analysis</h2>
             
             <div class="card">
-                <h3>7.1 Risk-Based Testing Approach</h3>
-                <p>This test plan follows a <strong>risk-based testing</strong> approach (ISTQB Foundation Level v4.0.1, Section 5.2), where test activities are selected, prioritized, and managed based on product risk analysis. Risk is characterized by two factors:</p>
-                <ul>
-                    <li><strong>Risk Likelihood:</strong> The probability of the risk occurrence (greater than zero and less than one)</li>
-                    <li><strong>Risk Impact (Harm):</strong> The consequences of this occurrence</li>
-                </ul>
-                <p>Product risks are related to product quality characteristics (ISO 25010 quality model). When they occur, they may result in user dissatisfaction, loss of revenue, trust, or reputation.</p>
+                <p>This test plan follows a risk-based testing approach (ISTQB Foundation Level v4.0.1), prioritizing tests based on product risk analysis.</p>
 
-                <h3>7.2 Product Risks</h3>
+                <h3>Product Risks</h3>
                 <table>
                     <thead>
                         <tr>
@@ -318,25 +190,17 @@
                     </tbody>
                 </table>
 
-                <h3>7.3 Project Risks</h3>
-                <p>Project risks are related to the management and control of the project. Examples include:</p>
-                <ul>
-                    <li><strong>PJ-01:</strong> Testing environment availability issues</li>
-                    <li><strong>PJ-02:</strong> Time constraints for test execution</li>
-                    <li><strong>PJ-03:</strong> Limited access to test data or tools</li>
-                </ul>
             </div>
 
-            <h2>8. Test Deliverables (Testware)</h2>
+            <h2>8. Test Deliverables</h2>
             
             <div class="card">
-                <p>The following testware will be delivered:</p>
                 <ul>
-                    <li>✓ <strong>Test Plan</strong> (this document)</li>
-                    <li>✓ <strong><a href="test-cases.html">Test Cases</a></strong> - 12 test cases in BDD format</li>
-                    <li>✓ <strong><a href="bug-report.html">Defect Reports</a></strong> - Defects found during testing</li>
-                    <li>✓ <strong><a href="test-execution-report.html">Test Execution Report</a></strong> - Test execution results</li>
-                    <li>✓ <strong>Screenshots</strong> - Visual evidence (stored in <code>bug_data/</code> directory)</li>
+                    <li><strong>Test Plan</strong> (this document)</li>
+                    <li><strong><a href="test-cases.html">Test Cases</a></strong> - 17 test cases (13 manual, 4 automated)</li>
+                    <li><strong><a href="bug-report.html">Bug Reports</a></strong> - 8 defects documented</li>
+                    <li><strong><a href="test-execution-report.html">Test Execution Report</a></strong> - Execution results</li>
+                    <li><strong>Automated Test Suite</strong> - Playwright/Python tests</li>
                 </ul>
             </div>
 
@@ -347,40 +211,21 @@
                     <thead>
                         <tr>
                             <th>Activity</th>
-                            <th>Duration</th>
                             <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Test Planning</td>
-                            <td>0.5 day</td>
-                            <td>✓ Completed</td>
-                        </tr>
-                        <tr>
-                            <td>Test Case Design</td>
-                            <td>0.5 day</td>
+                            <td>Test Planning & Case Design</td>
                             <td>✓ Completed</td>
                         </tr>
                         <tr>
                             <td>Test Execution</td>
-                            <td>2 days</td>
-                            <td>In Progress</td>
+                            <td>✓ Completed</td>
                         </tr>
                         <tr>
-                            <td>Bug Reporting</td>
-                            <td>1 day</td>
-                            <td>Pending</td>
-                        </tr>
-                        <tr>
-                            <td>Documentation</td>
-                            <td>1 day</td>
-                            <td>In Progress</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Total</strong></td>
-                            <td><strong>5 days</strong></td>
-                            <td>On Track</td>
+                            <td>Bug Reporting & Documentation</td>
+                            <td>✓ Completed</td>
                         </tr>
                     </tbody>
                 </table>
@@ -389,35 +234,12 @@
             <h2>10. Test Case Summary</h2>
             
             <div class="card">
-                <p>This test plan includes <strong>13 test cases</strong> covering:</p>
+                <p>This test plan includes <strong>17 test cases</strong>:</p>
                 <ul>
-                    <li><strong>Functional Testing (5 test cases):</strong> Page load, navigation, links, images, interactive elements</li>
-                    <li><strong>SEO Testing (4 test cases):</strong> Meta tags, titles, descriptions, structured data, alt text</li>
-                    <li><strong>Content Validation (3 test cases):</strong> Content relevance, consistency, grammar, image quality</li>
-                    <li><strong>Negative Testing (1 test case):</strong> Invalid fish species slug handling</li>
+                    <li><strong>Manual Tests (13):</strong> Functional (5), SEO (4), Content (3), Negative (1)</li>
+                    <li><strong>Automated Tests (4):</strong> Navigation (1), Elements validation (1), Sorting (2)</li>
                 </ul>
-                <p>See <a href="test-cases.html">Test Cases</a> document for detailed test case specifications in BDD (Given-When-Then) format.</p>
-            </div>
-
-            <h2>11. Test Monitoring and Control</h2>
-            
-            <div class="card">
-                <h3>11.1 Test Monitoring</h3>
-                <p>Metrics to be collected include:</p>
-                <ul>
-                    <li>Number of test cases executed, passed/failed</li>
-                    <li>Number of defects found, severity distribution</li>
-                    <li>Requirements and risk coverage</li>
-                </ul>
-
-                <h3>11.2 Test Control</h3>
-                <p>Control activities include reprioritizing tests, adjusting schedule, and re-evaluating entry/exit criteria as needed.</p>
-            </div>
-
-            <h2>12. ISTQB Standards Compliance</h2>
-            
-            <div class="card">
-                <p>This test plan and all test documentation comply with ISTQB Foundation Level v4.0.1 standards. Test activities follow ISTQB test process, test techniques (black-box and experience-based), risk-based testing approach, and defect management practices.</p>
+                <p>See <a href="test-cases.html">Test Cases</a> for detailed specifications in BDD format.</p>
             </div>
 
         </main>

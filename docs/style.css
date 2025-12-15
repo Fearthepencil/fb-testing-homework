@@ -191,6 +191,69 @@ tr:hover {
     color: white;
 }
 
+/* Test Status Badges */
+.badge-passed, .badge-PASSED {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.badge-failed, .badge-FAILED {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+.badge-in-progress {
+    background-color: var(--warning-color);
+    color: white;
+}
+
+/* Table Row States */
+tr.failed {
+    background-color: #ffe6e6;
+}
+
+tr.passed {
+    background-color: #e8f5e9;
+}
+
+/* Table Caption */
+table caption {
+    font-weight: 600;
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    text-align: left;
+    color: var(--primary-color);
+}
+
+/* Number alignment in tables */
+table td:not(:first-child), table th:not(:first-child) {
+    text-align: center;
+}
+
+/* Responsive tables */
+@media (max-width: 768px) {
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
+
+/* Details/Summary for long notes */
+details {
+    margin: 10px 0;
+}
+
+details summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+details summary:hover {
+    text-decoration: underline;
+}
+
 /* Cards */
 .card {
     background-color: white;
