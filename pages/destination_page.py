@@ -12,8 +12,9 @@ class DestinationPage(BasePage):
     SEE_AVAILABILITY_BUTTON_SELECTOR = "[data-testid='charter-card-see-availability-button']"
     
     # Sort selectors
-    # To Be Added
-    
+    SORT_PRICE_LOWEST_BUTTON_SELECTOR = "[data-testid='sort-price-lowest-button']"
+    SORT_PRICE_HIGHEST_BUTTON_SELECTOR = "[data-testid='sort-price-highest-button']"
+
     def __init__(self, page, test_config: dict):
         super().__init__(page, test_config)
         self.min_charter_cards = test_config["test_requirements"]["min_charter_cards"]
@@ -80,11 +81,10 @@ class DestinationPage(BasePage):
         return tooltip.inner_text().strip()
     
     def get_see_availability_button(self, card_locator):
-
         return card_locator.locator(self.SEE_AVAILABILITY_BUTTON_SELECTOR).first
     
     def click_sort_price_lowest(self):
-        pass
+        self.page.locator(self.SORT_PRICE_LOWEST_BUTTON_SELECTOR).click()
     
     def click_sort_price_highest(self):
-        pass
+        self.page.locator(self.SORT_PRICE_HIGHEST_BUTTON_SELECTOR).click()
