@@ -9,6 +9,7 @@ def test_destination_page_elements(page, test_config: dict):
 
     destination_page = DestinationPage(page, test_config)
     destination_page.wait_for_charter_cards()
+    destination_page.wait_for_page_load()
 
     cards_count = destination_page.get_charter_cards().count()
     assert cards_count >= destination_page.min_charter_cards, (
