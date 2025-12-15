@@ -36,6 +36,8 @@ def test_sorting_price(
         for i in range(charter_cards.count())
     ]
     prices = [p for p in prices if p is not None and p > 0]
+    assert len(prices) >= 2, "Need at least 2 prices to verify sorting"
+
     for i in range(len(prices) - 1):
         assert comparison_operator(
             prices[i], prices[i + 1]
